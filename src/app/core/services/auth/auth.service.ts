@@ -27,16 +27,44 @@ export class AuthService {
   ) { }
 
   async createAccount(formData:any) {
+    formData['isAMentor'] =  false;
     const config = {
       url: urlConstants.API_URLS.CREATE_ACCOUNT,
       payload: formData,
     };
     try {
-      let data: any = await this.httpService.post(config);
-      let userData = this.setUserInLocal(data);
-      return userData;
+    await this.httpService.post(config).subscribe((data) => {
+        let userData = this.setUserInLocal(data);
+        return userData;
+      });
     }
     catch (error) {
+      this.toast.showToast(error, "danger")
+      return;
+    }
+  }
+
+  generateOTP(formData:any) {
+    // await this.loaderService.startLoader();
+    formData['isAMentor'] =  false;
+    if(formData.password != formData.cpassword){
+      throw new Error("Passwords don't match");
+    }
+    const config = {
+      url: urlConstants.API_URLS.REGISTRATION_OTP,
+      payload: formData,
+    };
+    try {
+      return this.httpService.post(config).subscribe((data:any)=>{
+        console.log(data)
+        this.toast.showToast(data.message, "success")
+        return data.result.user;
+    })
+      // this.loaderService.stopLoader();
+    }
+    catch (error: any) {
+      this.toast.showToast(error, "danger")
+      return null;
     }
   }
 
@@ -44,9 +72,12 @@ export class AuthService {
     // await this.loaderService.startLoader();
     const config = {
       url: urlConstants.API_URLS.ACCOUNT_LOGIN,
-      payload: formData,
+      payload: {
+        'email' : formData['email'],
+        'password' : formData['password']
+      },
     };
-    // try {
+    try {
       return this.httpService.post(config).pipe(
         map((data:any)=>{
           console.log(data)
@@ -56,10 +87,11 @@ export class AuthService {
       }))
       
       // this.loaderService.stopLoader();
-    // }
-    // catch (error) {
-      // this.loaderService.stopLoader();
-      // return null;
+    }
+    catch (error) {
+      this.toast.showToast(error, "danger")
+      return null;
+    }
     }
   
   setUserInLocal(data:any) {
@@ -72,7 +104,7 @@ export class AuthService {
           this.localStorage.delete(localKeys.TOKEN);
           throw Error();
         }
-        this.localStorage.setLocalData(localKeys.USER_DETAILS, JSON.stringify(userData)).then((data)=>{
+        this.localStorage.setLocalData(localKeys.USER_DETAILS, JSON.stringify(userData)).then((_data)=>{
           if(userData.preferredLanguage){
             this.localStorage.setLocalData(localKeys.SELECTED_LANGUAGE, JSON.stringify(userData.preferredLanguage));
             this.translate.use(userData.preferredLanguage);

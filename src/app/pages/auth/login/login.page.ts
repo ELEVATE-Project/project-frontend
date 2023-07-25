@@ -85,15 +85,15 @@ export class LoginPage implements OnInit {
   }
 
   onSubmit(form:any) {
-    console.log(form)
-    if (form.form.status=="VALID") {
-      this.authService.loginAccount(form.form.value).subscribe((userDetails:any)=>{
-        if (userDetails !== null) {
-            this.router.navigate(['/tabs/tab1'], { replaceUrl: true });
-        }
-        this.menuCtrl.enable(true);
-      })
-    }
+    // console.log(form)
+    // if (form.form.status=="VALID") {
+    //   this.authService.loginAccount(form.form.value).subscribe((userDetails:any)=>{
+    //     if (userDetails !== null) {
+    //         this.router.navigate(['/tabs/tab1'], { replaceUrl: true });
+    //     }
+    //     this.menuCtrl.enable(true);
+    //   })
+    // }
   }
 
   action(event:any) {

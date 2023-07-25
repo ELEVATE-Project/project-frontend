@@ -1,0 +1,59 @@
+# Ionic / Cordova specific
+platforms/
+plugins/
+www/build/
+www/cordova.js
+www/cordova_plugins.js
+
+# Node.js / NPM specific
+node_modules/
+npm-debug.log
+package-lock.json
+
+# IDEs / Editors specific
+.vscode/
+*.code-workspace
+
+# macOS specific
+.DS_Store
+
+# Android specific
+*.apk
+*.aab
+
+# iOS specific
+*.ipa
+*.app
+*.dSYM.zip
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+
+# Build artifacts
+*.map
+*.js.map
+*.css.map
+
+# Compiled JavaScript
+*.js
+!*.min.js
+
+# Compiled CSS
+*.css
+!*.min.css
+
+# Ionic Lab
+.ionic/lab
+
+# Miscellaneous
+.idea/
+*.iml
+*.log
+*.orig
+
+# Exclude environment files in the src directory
+src/environments/*.ts
+
+.angular/

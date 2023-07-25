@@ -1,34 +1,89 @@
-.landing-header{
-    margin-top: 30%;
-    padding-left: 30px;
-    margin-bottom: 10%;
+.heading{
+  font-size: 32px;
+  font-weight: bold;
+  padding-left: 20px;
+  margin-top: 70px;
+  margin-bottom: -60px;
 }
-.or-section {
-    display: flex;
-    justify-content: center;
-    p {
-      width: 85%;
-      text-align: center;
-      border-bottom: 2px solid gray;
-      line-height: 0.1em;
-      margin: 10px 0 10px;
-    }
-  
-    p span {
-      background: #fff;
-      padding: 0 10px;
-      font-weight: 600;
-    }
+.para{
+  font-size: 22px;
+  font-weight: 500;
+  padding-left: 20px;
+  margin-bottom: 70px;
+  color: #A6ABB1;
 }
-.section-config{
-    margin-top: 50px;
+.input-item{
+  padding-left: 20px;
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid #e2e2e2;
+  height: 70px;
+  ion-input{
+      margin-top: -12px;
+  }
+}
+.ion-item{
+  margin-top: 20px;
+}
+.forget-text{
+  a{
+      text-decoration: none;
+      color: primary;
+  }
+  text-align: end;
+  margin-bottom: -10px;
+  padding-right: 20px;
+  text-align: center;
+}
+.login-button{
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  --border-radius: 12px;
+  margin-top: 60px;
+  --box-shadow: none;
+}
+.google-button{
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  --border-radius: 12px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  --box-shadow: none;
+}
+.signup-text{
+  a{
+      text-decoration: none;
+      color: var(--ion-color-primary);
+  }
+  padding-right: 20px;
+  text-align: end;
+}
+ion-footer {
+  display: block;
+  // position: relative;
+  -ms-flex-order: 1;
+  order: 1;
+  width: 100%;
+  z-index: 10;
+}
+.centre-alignment{
+  text-align: center;
+}    
 
-}
-.text-config{
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.button-icon{
-  margin-right: 5px;
-}
+
+// .neumorphic-form {
+//     background-color: black;
+//     border-radius: 20px;
+//     padding: 20px;
+//     box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+//   }
+
+//   .neumorphic-form ion-input,
+//   .neumorphic-form ion-textarea {
+//     background-color: black;
+//     border-radius: 10px;
+//     padding: 10px;
+//     box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+//   }
