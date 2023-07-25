@@ -30,40 +30,51 @@ export class AuthService {
     formData['isAMentor'] =  false;
     const config = {
       url: urlConstants.API_URLS.CREATE_ACCOUNT,
-      payload: formData,
+      payload: {
+        'email' : formData['email'],
+        'password' : formData['password'],
+        'name' :formData['name'],
+        'cPassword' :formData['cPassword'],
+        'isAMentor' :formData['isAMentor'],
+        'otp': formData['otp'],
+      },
     };
-    try {
-    await this.httpService.post(config).subscribe((data) => {
-        let userData = this.setUserInLocal(data);
-        return userData;
-      });
-    }
-    catch (error) {
-      this.toast.showToast(error, "danger")
-      return;
-    }
+    return this.httpService.post(config).pipe(
+      map((data:any)=>{
+        console.log(data)
+        this.toast.showToast(data.message, "success")
+        this.setUserInLocal(data);
+        return data.result.user;
+    }))
   }
 
   generateOTP(formData:any) {
     // await this.loaderService.startLoader();
+    try {
     formData['isAMentor'] =  false;
     if(formData.password != formData.cpassword){
       throw new Error("Passwords don't match");
     }
     const config = {
       url: urlConstants.API_URLS.REGISTRATION_OTP,
-      payload: formData,
+      payload:{
+        'email' : formData['email'],
+        'password' : formData['password'],
+        'name' :formData['name'],
+        'cPassword' :formData['cPassword'],
+        'isAMentor' :formData['isAMentor'],
+      },
     };
-    try {
-      return this.httpService.post(config).subscribe((data:any)=>{
-        console.log(data)
-        this.toast.showToast(data.message, "success")
-        return data.result.user;
-    })
+      return this.httpService.post(config).pipe(
+        map((data:any)=>{
+          console.log(data)
+          this.toast.showToast(data.message, "success")
+          return true;
+      }))
       // this.loaderService.stopLoader();
     }
     catch (error: any) {
-      this.toast.showToast(error, "danger")
+      this.toast.showToast(error.message, "danger")
       return null;
     }
   }
@@ -77,7 +88,6 @@ export class AuthService {
         'password' : formData['password']
       },
     };
-    try {
       return this.httpService.post(config).pipe(
         map((data:any)=>{
           console.log(data)
@@ -87,11 +97,6 @@ export class AuthService {
       }))
       
       // this.loaderService.stopLoader();
-    }
-    catch (error) {
-      this.toast.showToast(error, "danger")
-      return null;
-    }
     }
   
   setUserInLocal(data:any) {

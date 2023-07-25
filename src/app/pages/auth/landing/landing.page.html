@@ -2,20 +2,21 @@
 
   <!-- Login Page -->
   <div class="neumorphic-form">
-  <div class="container"  *ngIf="screen == 'signin'">
+  <div  *ngIf="screen == 'signin'">
     <h1 class="heading">👋 Welcome<br><br></h1>
     <p class="para">Sign in to continue!</p>
-    <form  (ngSubmit)="login()" [formGroup]="formData">
+    <form  class="form" (ngSubmit)="login()" [formGroup]="formData">
       <ion-item lines="none" class="ion-item">
         <fieldset  class="input-item">
           <legend>Email Id</legend> 
-          <ion-input formControlName="email" type="email" placeholder="name@domain.com"></ion-input>
+          <ion-input formControlName="email" type="email" placeholder="user id"></ion-input>
         </fieldset>
       </ion-item>
+      <div style="padding: 20px;"></div>
       <ion-item lines="none" class="ion-item">
         <fieldset class="input-item">
           <legend>Password</legend> 
-          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+          <ion-input formControlName="password" type="password" placeholder="enter password"></ion-input>
         </fieldset>
       </ion-item>
       <p class="signup-text">I'm a new user&nbsp;<a (click)="change('signup')">Sign Up?</a></p>
@@ -26,32 +27,32 @@
   </div>
 
   <!-- Sign up page -->
-  <div class="container"  *ngIf="screen == 'signup'">
+  <div *ngIf="screen == 'signup'">
     <h1 class="heading">🚀 Create Account<br><br></h1>
     <p class="para">Sign up to get started!</p>
-    <form [formGroup]="formData">
+    <form class="form" [formGroup]="formData">
       <ion-item lines="none" class="ion-item">
         <fieldset  class="input-item">
           <legend>Full Name</legend> 
-          <ion-input formControlName="name" type="text" placeholder="John Doe"></ion-input>
+          <ion-input formControlName="name" type="text" placeholder="user name"></ion-input>
         </fieldset>
       </ion-item>
       <ion-item lines="none" class="ion-item">
         <fieldset  class="input-item">
           <legend>Email Id</legend> 
-          <ion-input formControlName="email" type="email" placeholder="john@doe.com"></ion-input>
+          <ion-input formControlName="email" type="email" placeholder="user id"></ion-input>
         </fieldset>
       </ion-item>
       <ion-item lines="none" class="ion-item">
         <fieldset class="input-item">
           <legend>Password</legend> 
-          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+          <ion-input formControlName="password" type="password" placeholder="enter password"></ion-input>
         </fieldset>
       </ion-item>
       <ion-item lines="none" class="ion-item">
         <fieldset class="input-item">
           <legend>Confirm Password</legend> 
-          <ion-input formControlName="cpassword" type="password" placeholder="*******"></ion-input>
+          <ion-input formControlName="cpassword" type="password" placeholder="confirm password"></ion-input>
         </fieldset>
       </ion-item>
       <ion-item lines="none" class="ion-item" *ngIf="isOTPGenerated">
@@ -69,13 +70,13 @@
   </div>
 
   <!-- Forget password page -->
-  <div class="container"  *ngIf="screen == 'forget'">
+  <div class="form" *ngIf="screen == 'forget'">
     <h1 class="heading">Forget Password?<br><br></h1>
     <p class="para">Enter email to reset</p>
     <ion-item lines="none" class="ion-item">
       <fieldset  class="input-item">
         <legend>Email Id</legend> 
-        <ion-input type="email" placeholder="name@domain.com"></ion-input>
+        <ion-input type="email" placeholder="user id"></ion-input>
       </fieldset>
     </ion-item>
     <p class="signup-text">Rememberd Password&nbsp;<a (click)="change('signin')">Sign In?</a></p>

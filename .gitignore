@@ -1,6 +1,7 @@
 # Ionic / Cordova specific
 platforms/
 plugins/
+www/
 www/build/
 www/cordova.js
 www/cordova_plugins.js
