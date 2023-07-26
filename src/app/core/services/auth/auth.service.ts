@@ -137,7 +137,7 @@ export class AuthService {
       this.localStorage.delete(localKeys.TOKEN);
       this.userService.token = null;
       this.userService.userEvent.next(null);
-      this.router.navigate(['/auth/login'], {
+      this.router.navigate(['/home'], {
         replaceUrl: true
       });
     }

@@ -12,7 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 
 export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
   new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -27,13 +27,13 @@ export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
         deps: [HttpClient],
     },
 }), AppRoutingModule,
-ServiceWorkerModule.register('ngsw-worker.js', {
-  // enabled: !isDevMode(),
-  enabled: true,
-  // Register the ServiceWorker as soon as the application is stable
-  // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'
-}),
+// ServiceWorkerModule.register('ngsw-worker.js', {
+//   // enabled: !isDevMode(),
+//   enabled: true,
+//   // Register the ServiceWorker as soon as the application is stable
+//   // or after 30 seconds (whichever comes first).
+//   registrationStrategy: 'registerWhenStable:30000'
+// }),
 ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

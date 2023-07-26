@@ -1,8 +1,9 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <!-- <ion-menu side="start" contentId="main-content" type="overlay">
+  <!-- <ion-split-pane contentId="main-content"> -->
+    <ion-menu side="start" contentId="main-content" type="overlay">
       <ion-header [translucent]="true" class="ion-no-border">
-        <ion-button (click)="addToHomeScreen()">Add to home screen</ion-button>
+        <ion-label>Unnati</ion-label>
+        <!-- <ion-button (click)="addToHomeScreen()">Add to home screen</ion-button> -->
       </ion-header>
       <ion-list>
         <ion-menu-toggle auto-hide="true">
@@ -11,13 +12,25 @@
             <ion-label>Home</ion-label>
           </ion-item>
           <ion-item routerLink="/about" routerDirection="root">
-            <ion-icon slot="start" name="information-circle"></ion-icon>
-            <ion-label>About</ion-label>
+            <ion-icon slot="start" name="school"></ion-icon>
+            <ion-label>Projects</ion-label>
+          </ion-item>
+          <ion-item routerLink="/home" routerDirection="root">
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-item>
+          <ion-item routerLink="/home" routerDirection="root">
+            <ion-icon slot="start" name="settings"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+          <ion-item (click)="logout()">
+            <ion-icon slot="start" name="log-out"></ion-icon>
+            <ion-label>Log Out</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
-    </ion-menu> -->
+    </ion-menu>
 
     <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+  <!-- </ion-split-pane> -->
 </ion-app>

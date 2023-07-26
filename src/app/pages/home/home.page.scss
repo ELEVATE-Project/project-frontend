@@ -1,0 +1,54 @@
+#container {
+    text-align: center;
+    background-color: #8c8c8c;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  // .searchbar-container {
+  //   display: flex;
+  //   justify-content: flex-end;
+  // }
+  
+  .top{
+    margin-top: 2%;
+  }
+  
+  .fixed-image {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .grid-container {
+   display: grid;
+   gap: 2%;
+  }
+  
+  .projects-details{
+    width: 100%;
+  }
+  
+  .center-container {
+    margin-top: 10px
+  }
