@@ -3,7 +3,7 @@ import { AlertController, MenuController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { localKeys } from './core/constants/localStorage.keys';
 import * as _ from 'lodash-es';
-import { UserService,AuthService, HttpService} from './core/services';
+import { UserService, HttpService} from './core/services';
 import { Router} from '@angular/router';
 import { ProfileService } from './core/services/profile/profile.service';
 import { Location } from '@angular/common';
@@ -35,7 +35,6 @@ export class AppComponent {
     private userService:UserService,
     private router: Router,
     private http: HttpService,
-    private authService:AuthService,
     private profile: ProfileService,
     private zone:NgZone,
     private _location: Location,
@@ -55,105 +54,106 @@ export class AppComponent {
     }
 }
   initializeApp() {
-    this.platform.ready().then(() => {
-      this.setHttpHeaders().then(() => {
-        this.languageSetting();
-        window.addEventListener('beforeinstallprompt', (e) => {
-          console.log(e)
-          // Prevent Chrome 67 and earlier from automatically showing the prompt
-          e.preventDefault();
-          // Stash the event so it can be triggered later on the button event.
-          this.deferredPrompt = e;
-        // Update UI by showing a button to notify the user they can add to home screen
-        });
-      })
-        this.localStorage.getLocalData(localKeys.USER_DETAILS).then((userDetails:any)=>{
-          if(userDetails){
-            this.getUser();
-          }
-        })
-      // setTimeout(() => {
-      //   document.querySelector('ion-menu').shadowRoot.querySelector('.menu-inner').setAttribute('style', 'border-radius:8px 8px 0px 0px');
-      // }, 2000);
+    this.translate.setDefaultLang('en')
+    // this.platform.ready().then(() => {
+    //   this.setHttpHeaders().then(() => {
+    //     this.languageSetting();
+    //     window.addEventListener('beforeinstallprompt', (e) => {
+    //       console.log(e)
+    //       // Prevent Chrome 67 and earlier from automatically showing the prompt
+    //       e.preventDefault();
+    //       // Stash the event so it can be triggered later on the button event.
+    //       this.deferredPrompt = e;
+    //     // Update UI by showing a button to notify the user they can add to home screen
+    //     });
+    //   })
+    //     this.localStorage.getLocalData(localKeys.USER_DETAILS).then((userDetails:any)=>{
+    //       if(userDetails){
+    //         this.getUser();
+    //       }
+    //     })
+    //   // setTimeout(() => {
+    //   //   document.querySelector('ion-menu').shadowRoot.querySelector('.menu-inner').setAttribute('style', 'border-radius:8px 8px 0px 0px');
+    //   // }, 2000);
 
-      this.userService.userEventEmitted$.subscribe(data=>{
-        if(data){
-          this.isMentor = data?.isAMentor;
-          this.user = data;
-        }
-      })
-      App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
-        this.zone.run(() => {
-          const domain = environment.deepLinkUrl
-          const slug = event.url.split(domain).pop();
-          if (slug) {
-            this.router.navigateByUrl(slug);
-          }
-        });
-    });
-    });
+    //   this.userService.userEventEmitted$.subscribe(data=>{
+    //     if(data){
+    //       this.isMentor = data?.isAMentor;
+    //       this.user = data;
+    //     }
+    //   })
+    //   App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
+    //     this.zone.run(() => {
+    //       const domain = environment.deepLinkUrl
+    //       const slug = event.url.split(domain).pop();
+    //       if (slug) {
+    //         this.router.navigateByUrl(slug);
+    //       }
+    //     });
+    // });
+    // });
   }
-  showInstallPromotion() {
-    throw new Error('Method not implemented.');
-  }
+  // showInstallPromotion() {
+  //   throw new Error('Method not implemented.');
+  // }
 
-  async setHttpHeaders() {
-    await this.http.setHeader();
-    this.userService.userEventEmitted$.subscribe(async () => {
-      await this.http.setHeader();
-    })
-  }
+//   async setHttpHeaders() {
+//     await this.http.setHeader();
+//     this.userService.userEventEmitted$.subscribe(async () => {
+//       await this.http.setHeader();
+//     })
+//   }
 
-  languageSetting() {
-    this.localStorage.getLocalData(localKeys.SELECTED_LANGUAGE).then(data =>{
-      if(data){
-        this.translate.use(data);
-      } else {
-      this.setLanguage('en');
-      }
-    }).catch(error => {
-      this.setLanguage('en');
-    })
-  }
+//   languageSetting() {
+//     this.localStorage.getLocalData(localKeys.SELECTED_LANGUAGE).then(data =>{
+//       if(data){
+//         this.translate.use(data);
+//       } else {
+//       this.setLanguage('en');
+//       }
+//     }).catch(error => {
+//       this.setLanguage('en');
+//     })
+//   }
 
-  setLanguage(lang:any){
-    this.localStorage.setLocalData(localKeys.SELECTED_LANGUAGE,lang).then(data =>{
-      this.translate.use(lang);
-    }).catch(error => {
-      this.translate.use(lang)
-    })
-  }
+//   setLanguage(lang:any){
+//     this.localStorage.setLocalData(localKeys.SELECTED_LANGUAGE,lang).then(data =>{
+//       this.translate.use(lang);
+//     }).catch(error => {
+//       this.translate.use(lang)
+//     })
+//   }
 
-  logout(){
-    this.translate.use("en")
-    this.authService.logoutAccount();
-  }
+//   logout(){
+//     this.translate.use("en")
+//     this.authService.logoutAccount();
+//   }
   
-  getUser() {
-    this.profile.profileDetails(false).then(profileDetails => {
-      this.user = profileDetails;
-      this.isMentor = this.user?.isAMentor
-    })
-  }
-  goToProfilePage(){
-    this.menuCtrl.close();
-    this.router.navigate(['/tabs/profile']);
-  }
+//   getUser() {
+//     this.profile.profileDetails(false).then(profileDetails => {
+//       this.user = profileDetails;
+//       this.isMentor = this.user?.isAMentor
+//     })
+//   }
+//   goToProfilePage(){
+//     this.menuCtrl.close();
+//     this.router.navigate(['/tabs/profile']);
+//   }
 
-  async menuItemAction(menu:any) {
-    switch (menu.title) {
-      case 'LANGUAGE': {
-        this.alert.create({
+//   async menuItemAction(menu:any) {
+//     switch (menu.title) {
+//       case 'LANGUAGE': {
+//         this.alert.create({
           
-        })
-        break;
-      }
-    }
-  }
+//         })
+//         break;
+//       }
+//     }
+//   }
 
-  async showAlert(alertData:any){
+//   async showAlert(alertData:any){
     
-  }
+//   }
 
 }
 

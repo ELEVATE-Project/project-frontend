@@ -20,7 +20,8 @@ export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule,FormsModule,
-    ReactiveFormsModule, IonicModule.forRoot(), TranslateModule.forRoot({
+    ReactiveFormsModule, IonicModule.forRoot(), 
+    TranslateModule.forRoot({
     loader: {
         provide: TranslateLoader,
         useFactory: translateHttpLoaderFactory,

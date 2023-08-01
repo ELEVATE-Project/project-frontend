@@ -7,7 +7,6 @@ import { UserService } from '../user/user.service';
 import { LocalStorageService } from '../localStorage/localstorage.service';
 import { urlConstants } from '../../constants/urlConstants';
 import { localKeys } from '../../constants/localStorage.keys';
-import { AuthService } from '../auth/auth.service';
 import { ModalController } from '@ionic/angular';
 import { catchError, map } from 'rxjs/operators'
 import { throwError } from 'rxjs';
@@ -147,25 +146,25 @@ export class HttpService {
 
   //token validation and logout 
 
-  async getToken() {
-    let token = _.get(this.userService.token, 'access_token');
-    if (!token) {
-      return null;
-    }
-    let isValidToken = this.userService.validateToken(token);
-    if (!isValidToken) {
-      let data: any = await this.getAccessToken();
-      let access_token = _.get(data, 'access_token');
-      if (!access_token) {
-        let authService = this.injector.get(AuthService);
-        authService.logoutAccount();
-      }
-      this.userService.token['access_token'] = access_token;
-      this.localStorage.setLocalData(localKeys.TOKEN, JSON.stringify(this.userService.token));
-    }
-    let userToken = 'bearer ' + _.get(this.userService.token, 'access_token');
-    return userToken;
-  }
+  // async getToken() {
+  //   let token = _.get(this.userService.token, 'access_token');
+  //   if (!token) {
+  //     return null;
+  //   }
+  //   let isValidToken = this.userService.validateToken(token);
+  //   if (!isValidToken) {
+  //     let data: any = await this.getAccessToken();
+  //     let access_token = _.get(data, 'access_token');
+  //     if (!access_token) {
+  //       let authService = this.injector.get(AuthService);
+  //       authService.logoutAccount();
+  //     }
+  //     this.userService.token['access_token'] = access_token;
+  //     this.localStorage.setLocalData(localKeys.TOKEN, JSON.stringify(this.userService.token));
+  //   }
+  //   let userToken = 'bearer ' + _.get(this.userService.token, 'access_token');
+  //   return userToken;
+  // }
 
   async getAccessToken() {
     const config = {
@@ -194,8 +193,8 @@ export class HttpService {
         this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')
         break
       case 401:
-        let auth = this.injector.get(AuthService);
-        auth.logoutAccount(true);
+        //let auth = this.injector.get(AuthService);
+        //auth.logoutAccount(true);
         break
       default:
         this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')

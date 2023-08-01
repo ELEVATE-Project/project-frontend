@@ -3,16 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { urlConstants } from 'src/app/core/constants/urlConstants';
+import { HttpService } from 'src/app/core/services';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
 
-
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.page.html',
-  styleUrls: ['./landing.page.scss'],
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.page.html',
+  styleUrls: ['./sign-up.page.scss'],
 })
-export class LandingPage implements OnInit {
+export class SignUpPage implements OnInit {
   labels=["CREATE_ACCOUNT","TO_CONNECT_SOLVE","&_SHARE"];
   screen: any = 'signin';
   formData: FormGroup;
@@ -23,16 +23,16 @@ export class LandingPage implements OnInit {
     private translateService: TranslateService,
     private menuCtrl: MenuController,
     private fb:FormBuilder,
-    private authService: AuthService,
     private toast: ToastService,
-    private ngZone: NgZone 
+    private ngZone: NgZone,
+    private http: HttpService
   ) {
     this.menuCtrl.enable(false);
     this.formData = this.fb.group({
-      name: ['',[]],
+      name: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.email]],
       password: ['',[Validators.required]],
-      cpassword: ['',[]],
+      cpassword: ['',[Validators.required]],
       otp: ['',[]],
     });
   }
@@ -43,11 +43,6 @@ export class LandingPage implements OnInit {
 
   resetForm(){
     this.formData.reset();
-  }
-
-  change(event: any){
-    this.screen = event;
-    this.resetForm();
   }
 
   async translateText() {
@@ -62,62 +57,63 @@ export class LandingPage implements OnInit {
       })
     })
   }
-  async login(){
-    // this.router.navigate(['/auth/login']);
-    var form: any = this.formData;
-    console.log(form)
-    if (form.status=="VALID") {
-      this.authService.loginAccount(form.value)?.subscribe(userDetails=>{
-        if (userDetails !== null) {
-          this.router.navigate(['/home'], { replaceUrl: true });
-      }
-      })
-       // this.menuCtrl.enable(true);
-    }else{
-       // show pop to complete teh required details
-       this.toast.showToast('Please enter the required details', 'danger');
-    }
-    }  
 
   async register(){
-    //this.router.navigate(['/auth/persona-selection'])
     var form: any = this.formData;
     console.log(form)
     if (form.status=="VALID") {
-      var userDetails =  await this.authService.generateOTP(form.value)?.subscribe(data => {
-        if (userDetails !== null) {
+    if(form.value.password != form.value.cpassword){
+        this.toast.showToast("Passwords don't match", 'danger');
+        return
+     }
+    form.value.isAMentor =  false;
+    const config = {
+      url: urlConstants.API_URLS.REGISTRATION_OTP,
+      payload: form.value,
+    };
+    this.http.post(config).subscribe((data: any) => {
+        if (data !== null) {
           // when OTP generated succesfully
-          this.ngZone.run( () => {
-            this.isOTPGenerated = true;
-         });
-         // this.menuCtrl.enable(true);
+          this.toast.showToast(data.message, "success")
+          this.isOTPGenerated = true;
+          this.menuCtrl.enable(true);
         }
       })
-     
-        
-  
     }else{
-      // show pop to complete teh required details
+      // show pop to complete the required details
       this.toast.showToast('Please enter the required details', 'danger');
     }
   }
 
   async createUser(){
-    // to crete user after OTP is generated
+    // to create user after OTP is generated
     var form: any = this.formData;
     console.log(form)
     if (form.status=="VALID") {
-      (await this.authService.createAccount(form.value)).subscribe(userDetails => {
-        if (userDetails !== null) {
+      form.value.isAMentor =  false;
+      const config = {
+      url: urlConstants.API_URLS.CREATE_ACCOUNT,
+      payload: form.value,
+    };
+       this.http.post(config).subscribe((data: any) => {
+        if (data !== null) {
+          this.menuCtrl.enable(true);
+          this.toast.showToast(data.message, "success")
           this.router.navigate(['/home'], { replaceUrl: true });
       }
-      // this.menuCtrl.enable(true);
+      this.menuCtrl.enable(true);
       });
       
     }else{
-      // show pop to complete teh required details
+      // show pop to complete the required details
       this.toast.showToast('Please enter the required details', 'danger');
     }
   }
+
+  redirectToSignIn(){
+    this.resetForm();
+    this.router.navigate(['/auth/login'], { replaceUrl: true });
+  }
+
 
 }

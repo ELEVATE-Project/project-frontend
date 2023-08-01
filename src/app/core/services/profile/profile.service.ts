@@ -5,7 +5,6 @@ import { localKeys } from '../../constants/localStorage.keys';
 import * as _ from 'lodash-es';
 import { Location } from '@angular/common';
 import { UserService } from '../user/user.service';
-import { AuthService } from '../auth/auth.service';
 import { map } from 'rxjs/operators';
 import { LocalStorageService } from '../localStorage/localstorage.service';
 import { HttpService } from '../http/http.service';
@@ -102,9 +101,9 @@ export class ProfileService {
     };
     try {
       let data: any = await this.httpService.post(config);
-      let authService = this.injector.get(AuthService);
-      let userData = authService.setUserInLocal(data);
-      return userData;
+      // let authService = this.injector.get(AuthService);
+      //let userData = authService.setUserInLocal(data);
+      // return userData;
     }
     catch (error) {
     }

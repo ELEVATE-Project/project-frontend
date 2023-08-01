@@ -1,0 +1,53 @@
+<ion-content [fullscreen]="true">
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <h1 class="heading">🚀 Create Account<br><br></h1>
+        <p class="para">Sign up to get started!</p>
+        <div class="logo-container">
+          <img src="assets/icon/favicon.png" alt="logo" class="logo-image">
+        </div>          
+      </ion-col>
+      <ion-col size="6">
+        <form class="form" [formGroup]="formData" class="top">
+          <ion-item lines="none" class="ion-item">
+            <fieldset  class="input-item">
+              <legend>Full Name</legend> 
+              <ion-input formControlName="name" type="text" placeholder="user name"></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item">
+            <fieldset  class="input-item">
+              <legend>Email Id</legend> 
+              <ion-input formControlName="email" type="email" placeholder="user id"></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item">
+            <fieldset class="input-item">
+              <legend>Password</legend> 
+              <ion-input formControlName="password" type="password" placeholder="enter password"></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item">
+            <fieldset class="input-item">
+              <legend>Confirm Password</legend> 
+              <ion-input formControlName="cpassword" type="password" placeholder="confirm password"></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item" *ngIf="isOTPGenerated">
+            <fieldset class="input-item">
+              <legend>OTP</legend> 
+              <ion-input formControlName="otp" type="text" placeholder="123456"></ion-input>
+            </fieldset>
+          </ion-item>
+          
+          <p class="signup-text">I'm already a member&nbsp;<a (click)="redirectToSignIn()">Sign in?</a></p>
+          <ion-button class="login-button" (click)="register()" *ngIf="!isOTPGenerated" expand="block">Sign Up</ion-button>
+          <ion-button class="login-button" (click)="createUser()" *ngIf="isOTPGenerated"  expand="block">Submit OTP</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+</ion-content>

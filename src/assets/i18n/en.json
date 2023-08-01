@@ -1,0 +1,33 @@
+{
+    "LOGIN" : {
+    "WELCOME": "👋 Welcome",
+    "SIGN_IN_HEADER": "Sign in to continue!",
+    "SIGN_UP_TEXT": "I'm a new user",
+    "SIGN_UP" : "Sign Up?",
+    "LOGIN_BTN" : "Login",
+    "FORGOT_PASSWORD" : "Forgot Password?"
+    },
+    "SIGN_UP_PAGE" : {
+        "CREATE_ACCOUNT" : "🚀 Create Account",
+        "SIGN_UP_HEAD" :  "Sign up to get started!",
+        "FULL_NAME_LABEL" : "Full Name",
+        "CONFIRM_PASSWORD" : "Confirm Password",
+        "OTP" : "OTP",
+        "ALREADY_MEMBER" : "I'm already a member",
+        "SIGN_UP_BTN" : "Sign Up",
+        "SUBMIT_OTP_BTN" : "Submit OTP" 
+    },
+    "FORGET_PASSWORD_PAGE" : {
+        "FORGET_PASSWORD" : "Forget Password?",
+        "PAGE_HEAD" : "Enter email to reset",
+        "REMEMBER_PASSWORD" : "Remembered Password",
+        "RESET_PASSWORD" : "Reset Password"
+    },
+    "EMAIL" : "Email Id",
+    "PASSWORD" : "Password",
+    "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
+    "PASSWORD_PLACEHOLDER" : "Enter your password",
+    "SIGN_IN" : "Sign in?",
+    "data": {
+    "name": "My name is {{name_value}}"}
+    }

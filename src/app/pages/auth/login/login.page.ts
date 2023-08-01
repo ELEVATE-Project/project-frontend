@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { localKeys } from 'src/app/core/constants/localStorage.keys';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { urlConstants } from 'src/app/core/constants/urlConstants';
+import { HttpService } from 'src/app/core/services';
 import { LocalStorageService } from 'src/app/core/services/localStorage/localstorage.service';
+import { ToastService } from 'src/app/core/services/toast/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -12,99 +14,73 @@ import { LocalStorageService } from 'src/app/core/services/localStorage/localsto
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  formData = {
-    controls: [
-      {
-        name: 'email',
-        label: 'Email',
-        value: '',
-        class: 'ion-no-margin',
-        type: 'text',
-        position: 'floating',
-        errorMessage:'Please enter registered email ID',
-        validators: {
-          required: true,
-        },
-      },
-      {
-        name: 'password',
-        label: 'Password',
-        value: '',
-        class: 'ion-margin',
-        type: 'password',
-        position: 'floating',
-        errorMessage:'Please enter password',
-        validators: {
-          required: true,
-          minLength: 8,
-        },
-      },
-    ],
-  };
-  id: any;
-  userDetails: any;
-  public headerConfig: any = {
-    backButton: {
-      label: '',
-      color: 'primary'
-    },
-    notification: false,
-    signupButton: true
-  };
-  labels = ["LOGIN_TO_MENTOR_ED"];
-  mentorId: any;
+  labels=["WELCOME"];
+  formData: FormGroup;
   constructor(
-    private authService: AuthService, 
     private router: Router,
-              private menuCtrl: MenuController, private activatedRoute: ActivatedRoute,
-              private translateService: TranslateService, private localStorage: LocalStorageService) {
+    private translateService: TranslateService,
+    private menuCtrl: MenuController,
+    private fb:FormBuilder,
+    private toast: ToastService,
+    private ngZone: NgZone,
+    private http: HttpService,
+  ) {
     this.menuCtrl.enable(false);
+    this.formData = this.fb.group({
+      email: ['',[Validators.required, Validators.email]],
+      password: ['',[Validators.required]],
+    });
   }
 
   ngOnInit() {
     this.translateText();
   }
 
+  resetForm(){
+    this.formData.reset();
+  }
+
   async translateText() {
-    this.translateService.get(this.labels).subscribe(translatedLabel => {
+    this.translateService.setDefaultLang('en');
+    this.translateService.get(this.labels).subscribe((translatedLabel:any) => {
       let labelKeys = Object.keys(translatedLabel);
-      labelKeys.forEach((key) => {
+      labelKeys.forEach((key)=>{
         let index = this.labels.findIndex(
           (label) => label === key
         )
-        this.labels[index] = translatedLabel[key];
+        this.labels[index]=translatedLabel[key];
       })
     })
   }
-
-  ionViewWillEnter() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.id = params['sessionId'] ? params['sessionId'] : this.id;
-      this.mentorId = params['mentorId']? params['mentorId']:this.mentorId;
-    });
-  }
-
-  onSubmit(form:any) {
-    // console.log(form)
-    // if (form.form.status=="VALID") {
-    //   this.authService.loginAccount(form.form.value).subscribe((userDetails:any)=>{
-    //     if (userDetails !== null) {
-    //         this.router.navigate(['/tabs/tab1'], { replaceUrl: true });
-    //     }
-    //     this.menuCtrl.enable(true);
-    //   })
-    // }
-  }
-
-  action(event:any) {
-    switch (event) {
-      case 'signup':
-        // this.goToSignup();
-        break;
+  async login(){
+    var form: any = this.formData;
+    if (form.status=="VALID") {
+      const config = {
+        url: urlConstants.API_URLS.ACCOUNT_LOGIN,
+        payload: form.value,
+      };
+      this.http.post(config).subscribe((userDetails : any)=>{
+        if (userDetails !== null) {
+          this.toast.showToast(userDetails.message, "success")
+          this.menuCtrl.enable(true);
+          this.router.navigate(['/home'], { replaceUrl: true });
+      }
+      })
+       this.menuCtrl.enable(true);
+    }else{
+       // show pop to complete teh required details
+       this.toast.showToast('Please enter the required details', 'danger');
     }
-  }
-  goToForgotPassword(){
+    }  
 
+  redirectToForget(){
+    this.resetForm();
+    this.router.navigate(['/auth/forget-password'], { replaceUrl: true });
+  }
+
+  redirectToSignUp(){
+    this.resetForm();
+    this.router.navigate(['/auth/sign-up'], { replaceUrl: true });
   }
 
 }

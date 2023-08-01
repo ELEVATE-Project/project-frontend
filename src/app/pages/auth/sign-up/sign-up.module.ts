@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LandingPageRoutingModule } from './landing-routing.module';
+import { SignUpPageRoutingModule } from './sign-up-routing.module';
 
-import { LandingPage } from './landing.page';
+import { SignUpPage } from './sign-up.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LandingPageRoutingModule,
+    SignUpPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [LandingPage]
+  declarations: [SignUpPage]
 })
-export class LandingPageModule {}
+export class SignUpPageModule {}
