@@ -11,6 +11,8 @@ import { ModalController } from '@ionic/angular';
 import { catchError, map } from 'rxjs/operators'
 import { throwError } from 'rxjs';
 import { ToastService } from '../toast/toast.service';
+import { ProfileService } from '../profile/profile.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Injectable({
@@ -26,6 +28,8 @@ export class HttpService {
     private localStorage: LocalStorageService,
     private injector: Injector,
     private toast: ToastService,
+    //private profileService: ProfileService,
+     private translate: TranslateService
   ) {
     this.baseUrl = environment.baseUrl;
   }
@@ -75,6 +79,36 @@ export class HttpService {
       //   return this.handleError(error);
       // });
   }
+
+  postBeforeAuth(requestParam: RequestParams) {
+    // if (!this.checkNetworkAvailability()) {
+    //   throw Error(null);
+    // }
+    // const headers = requestParam.headers ? requestParam.headers : await this.setHeaders();
+    let body = requestParam.payload ? requestParam.payload : {};
+    // this.http.setDataSerializer('json');
+    // this.http.setRequestTimeout(60);
+    console.log(this.baseUrl + requestParam.url, body)
+    return this.http.post(this.baseUrl + requestParam.url, body, {headers: this.httpHeaders}).pipe(
+      map((data:any)=>{
+      if (data.responseCode === "OK") {
+        return data;
+      }
+    }),
+    catchError((err) => {
+      this.handleError(err);    //Rethrow it back to component
+      throw Error(err);
+    }))
+      // .then((data: any) => {
+      //   let result: any = JSON.parse(data.data);
+      //   if (result.responseCode === "OK") {
+      //     return result;
+      //   }
+      // }, error => {
+      //   return this.handleError(error);
+      // });
+  }
+
 
   // get(config: any) {
     // console.log(this.httpHeaders);
@@ -201,6 +235,8 @@ export class HttpService {
     }
   }
 
+
+  
   // async openModal(sessionData) {
   //   const modal = await this.modalController.create({
   //     component: FeedbackPage,

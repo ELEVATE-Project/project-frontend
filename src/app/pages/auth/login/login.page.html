@@ -1,32 +1,32 @@
 <ion-content>
-    <div>
+    <div class="container">
       <ion-grid>
         <ion-row>
-          <ion-col size="6">
-            <h1 class="heading">labels.WELCOME<br><br></h1>
-            <p class="para">Sign in to continue!</p>
+          <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+            <h1 class="heading">{{ "LOGIN.WELCOME" | translate }}<br><br></h1>
+            <p class="para">{{ "LOGIN.SIGN_IN_HEADER" | translate}}</p>
             <div class="logo-container">
               <img src="assets/icon/favicon.png" alt="logo" class="logo-image">
             </div>          
           </ion-col>
-          <ion-col size="6">
-            <form  class="form" (ngSubmit)="login()" [formGroup]="formData" class="top">
+          <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+            <form  class="form" (ngSubmit)="login()" [formGroup]="formData">
               <ion-item lines="none" class="ion-item">
                 <fieldset  class="input-item">
-                  <legend>Email Id</legend> 
-                  <ion-input formControlName="email" type="email" placeholder="user id"></ion-input>
+                  <legend>{{ "EMAIL" | translate }}</legend> 
+                  <ion-input formControlName="email" type="email" placeholder='{{ "EMAIL_PLACEHOLDER" | translate }}'></ion-input>
                 </fieldset>
               </ion-item>
-              <div style="padding: 20px;"></div>
+              <div style="padding: 1%;"></div>
               <ion-item lines="none" class="ion-item">
                 <fieldset class="input-item">
-                  <legend>Password</legend> 
-                  <ion-input formControlName="password" type="password" placeholder="enter password"></ion-input>
+                  <legend>{{ "PASSWORD" | translate }}</legend> 
+                  <ion-input formControlName="password" type="password" placeholder='{{ "PASSWORD_PLACEHOLDER" | translate }}'></ion-input>
                 </fieldset>
               </ion-item>
-              <p class="signup-text">I'm a new user&nbsp;<a (click)="redirectToSignUp()">Sign Up?</a></p>
-              <ion-button class="login-button" (click)="login()" expand="block">Login</ion-button>
-              <p class="forget-text"><a (click)="redirectToForget()">Forgot Password?</a></p>
+              <p class="signup-text">{{ "LOGIN.SIGN_UP_TEXT" | translate }}&nbsp;<a (click)="redirectToSignUp()"> {{ "LOGIN.SIGN_UP" | translate }}</a></p>
+              <ion-button class="login-button" (click)="login()" expand="block">{{ "LOGIN.LOGIN_BTN" | translate }}</ion-button>
+              <p class="forget-text"><a (click)="redirectToForget()">{{ "LOGIN.FORGOT_PASSWORD" |translate }}</a></p>
             </form>
           </ion-col>
         </ion-row>

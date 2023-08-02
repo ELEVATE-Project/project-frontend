@@ -54,7 +54,7 @@ export class AppComponent {
     }
 }
   initializeApp() {
-    this.translate.setDefaultLang('en')
+    this.translate.setDefaultLang('hn')
     // this.platform.ready().then(() => {
     //   this.setHttpHeaders().then(() => {
     //     this.languageSetting();

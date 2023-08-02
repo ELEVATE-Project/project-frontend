@@ -25,16 +25,6 @@
   .ion-item{
     margin-top: 20px;
   }
-  .forget-text{
-    a{
-        text-decoration: none;
-        color: primary;
-    }
-    text-align: end;
-    margin-bottom: -10px;
-    padding-right: 20px;
-    text-align: center;
-  }
   .login-button{
     color: primary;
     padding-left: 20px;
@@ -53,24 +43,11 @@
     padding-right: 20px;
     text-align: end;
   }
-  ion-footer {
-    display: block;
-    // position: relative;
-    -ms-flex-order: 1;
-    order: 1;
-    width: 100%;
-    z-index: 10;
-  }
-  .centre-alignment{
-    text-align: center;
-  }    
-  
   .form{
     margin-left: 15%;
     margin-top: 5%;
     width: 75%;
   }
-  
   .top{
     margin-top: 10%;
   }

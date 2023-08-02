@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { PrivateGuard } from './core/gurads/private.guard';
 
 const routes: Routes = [
   {
@@ -13,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [PrivateGuard],
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
 

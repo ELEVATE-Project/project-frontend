@@ -18,11 +18,11 @@ export class PrivateGuard  {
         return true;
       }
       else {
-        this.router.navigate(['/auth/landing']);
+        this.router.navigate(['/auth/login']);
         return false;
       }
     }).catch(() => {
-      this.router.navigate(['/auth/landing']);
+      this.router.navigate(['/auth/login']);
         return false;
     });
   
