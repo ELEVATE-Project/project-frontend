@@ -1,4 +1,4 @@
-import { Component, Injector, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
@@ -28,11 +28,9 @@ export class SignUpPage implements OnInit {
     private menuCtrl: MenuController,
     private fb:FormBuilder,
     public toast: ToastService,
-    private ngZone: NgZone,
     private http: HttpService,
     private userService: UserService,
     private localStorage: LocalStorageService,
-    private injector: Injector,
     private profileService: ProfileService,
   ) {
     this.menuCtrl.enable(false);

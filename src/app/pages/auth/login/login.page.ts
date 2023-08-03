@@ -1,4 +1,4 @@
-import { Component, Injector, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
@@ -10,7 +10,7 @@ import { HttpService, UserService } from 'src/app/core/services';
 import { LocalStorageService } from 'src/app/core/services/localStorage/localstorage.service';
 import { ProfileService } from 'src/app/core/services/profile/profile.service';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
-import { TranslateConfigService } from 'src/app/translate-config.service';
+
 
 @Component({
   selector: 'app-login',
@@ -26,13 +26,10 @@ export class LoginPage implements OnInit {
     private menuCtrl: MenuController,
     private fb:FormBuilder,
     private toast: ToastService,
-    private ngZone: NgZone,
     private http: HttpService,
     private userService: UserService,
     private localStorage: LocalStorageService,
-    private injector: Injector,
     private profileService: ProfileService,
-    private translateConfigService: TranslateConfigService
   ) {
     this.menuCtrl.enable(false);
     this.formData = this.fb.group({
@@ -62,27 +59,25 @@ export class LoginPage implements OnInit {
     })
   }
   async login(){
-    this.translateConfigService.getCurrentLang();
-    this.translateConfigService.setLanguage('hn');
-    // var form: any = this.formData;
-    // if (form.status=="VALID") {
-    //   const config = {
-    //     url: urlConstants.API_URLS.ACCOUNT_LOGIN,
-    //     payload: form.value,
-    //   };
-    //   this.http.postBeforeAuth(config).subscribe(async (userDetails : any)=>{
-    //     if (userDetails !== null) {
-    //       this.setUserInLocal(userDetails);
-    //       this.toast.showToast(userDetails.message, "success")
-    //       this.menuCtrl.enable(true);
-    //       this.router.navigate(['/home'], { replaceUrl: true });
-    //   }
-    //   })
-    //    this.menuCtrl.enable(true);
-    // }else{
-    //    // show pop to complete teh required details
-    //    this.toast.showToast('Please enter the required details', 'danger');
-    // }
+    var form: any = this.formData;
+    if (form.status=="VALID") {
+      const config = {
+        url: urlConstants.API_URLS.ACCOUNT_LOGIN,
+        payload: form.value,
+      };
+      this.http.postBeforeAuth(config).subscribe(async (userDetails : any)=>{
+        if (userDetails !== null) {
+          this.setUserInLocal(userDetails);
+          this.toast.showToast(userDetails.message, "success")
+          this.menuCtrl.enable(true);
+          this.router.navigate(['/home'], { replaceUrl: true });
+      }
+      })
+       this.menuCtrl.enable(true);
+    }else{
+       // show pop to complete teh required details
+       this.toast.showToast('Please enter the required details', 'danger');
+    }
     }  
 
   redirectToForget(){
