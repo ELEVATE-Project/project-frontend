@@ -14,7 +14,7 @@ export class ForgetPasswordPage implements OnInit {
 
   constructor( private router: Router,
     private translateService: TranslateService,
-    private menuCtrl: MenuController,
+    public menuCtrl: MenuController,
     private fb:FormBuilder,
     private toast: ToastService,
     private ngZone: NgZone ) {

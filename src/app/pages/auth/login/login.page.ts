@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
   labels=["WELCOME"];
   formData: FormGroup;
   constructor(
-    private router: Router,
+    public router: Router,
     private translateService: TranslateService,
     private menuCtrl: MenuController,
     private fb:FormBuilder,
