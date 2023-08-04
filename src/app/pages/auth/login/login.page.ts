@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
-import { localKeys } from 'src/app/core/constants/localStorage.keys';
-import { urlConstants } from 'src/app/core/constants/urlConstants';
-import { HttpService, UserService } from 'src/app/core/services';
-import { LocalStorageService } from 'src/app/core/services/localStorage/localstorage.service';
-import { ProfileService } from 'src/app/core/services/profile/profile.service';
-import { ToastService } from 'src/app/core/services/toast/toast.service';
+import { urlConstants } from 'src/app/core/constants/';
+import { HttpService, UserService, ToastService } from 'src/app/core/services';
+
 
 
 @Component({
@@ -28,8 +25,6 @@ export class LoginPage implements OnInit {
     private toast: ToastService,
     private http: HttpService,
     private userService: UserService,
-    private localStorage: LocalStorageService,
-    private profileService: ProfileService,
   ) {
     this.menuCtrl.enable(false);
     this.formData = this.fb.group({
@@ -58,6 +53,7 @@ export class LoginPage implements OnInit {
       })
     })
   }
+
   async login(){
     var form: any = this.formData;
     if (form.status=="VALID") {
@@ -67,7 +63,7 @@ export class LoginPage implements OnInit {
       };
       this.http.postBeforeAuth(config).subscribe(async (userDetails : any)=>{
         if (userDetails !== null) {
-          this.setUserInLocal(userDetails);
+          this.userService.setUserInLocal(userDetails);
           this.toast.showToast(userDetails.message, "success")
           this.menuCtrl.enable(true);
           this.router.navigate(['/home'], { replaceUrl: true });
@@ -75,7 +71,7 @@ export class LoginPage implements OnInit {
       })
        this.menuCtrl.enable(true);
     }else{
-       // show pop to complete teh required details
+       // show pop to complete the required details
        this.toast.showToast('Please enter the required details', 'danger');
     }
     }  
@@ -88,28 +84,6 @@ export class LoginPage implements OnInit {
   redirectToSignUp(){
     this.resetForm();
     this.router.navigate(['/auth/sign-up'], { replaceUrl: true });
-  }
-
-  setUserInLocal(data:any) {
-    const result = _.pick(data.result, ['refresh_token', 'access_token']);
-    if (!result.access_token) { throw Error(); };
-    this.userService.token = result;
-    this.localStorage.setLocalData(localKeys.TOKEN, JSON.stringify(result)).then(()=>{
-      this.profileService.getProfileDetailsAPI().subscribe((userData:any)=>{
-        if (!userData) {
-          this.localStorage.delete(localKeys.TOKEN);
-          throw Error();
-        }
-        this.localStorage.setLocalData(localKeys.USER_DETAILS, JSON.stringify(userData)).then((data)=>{
-          if(userData.preferredLanguage){
-            this.localStorage.setLocalData(localKeys.SELECTED_LANGUAGE, JSON.stringify(userData.preferredLanguage));
-            this.translateService.use(userData.preferredLanguage);
-          }
-        })
-        this.userService.userEvent.next(userData);
-        return userData;
-      })
-    })
   }
 
 }

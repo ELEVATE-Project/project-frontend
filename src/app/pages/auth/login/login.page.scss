@@ -53,35 +53,11 @@
   padding-right: 20px;
   text-align: end;
 }
+
 .form {
-  /* Default styles for all screen sizes */
-  margin-left: 15%;
-  margin-top: 20%;
-  width: 75%;
-
-  /* Media queries for different screen sizes */
-  @media (max-width: 767px) {
-    /* Styles for small screens (e.g., smartphones) */
-    margin-left: 5%;
-    margin-top: 10%;
-    width: 90%;
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    /* Styles for medium screens (e.g., tablets) */
-    margin-left: 10%;
-    margin-top: 15%;
-    width: 80%;
-  }
-
-  @media (min-width: 1024px) {
-    /* Styles for large screens (e.g., desktops) */
-    margin-left: 15%;
-    margin-top: 20%;
-    width: 75%;
-  }
-
-  /* Add more media queries for larger screens if needed */
+  margin-left: 10%;
+  margin-top: 15%;
+  width: 80%;
 }
 
 .container{

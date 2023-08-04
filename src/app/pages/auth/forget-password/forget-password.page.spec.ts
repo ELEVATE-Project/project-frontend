@@ -24,9 +24,4 @@ describe('ForgetPasswordPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  // it('should disable the menu during initialization', () => {
-  //   const menuCtrlSpy = spyOn(component.menuCtrl, 'enable');
-  //   component.ngOnInit();
-  //   expect(menuCtrlSpy).toHaveBeenCalledWith(false);
-  // });
 });

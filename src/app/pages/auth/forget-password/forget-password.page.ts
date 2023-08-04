@@ -1,9 +1,9 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { ToastService } from 'src/app/core/services/toast/toast.service';
+import { ToastService } from 'src/app/core/services/';
 
 @Component({
   selector: 'app-forget-password',
@@ -12,12 +12,13 @@ import { ToastService } from 'src/app/core/services/toast/toast.service';
 })
 export class ForgetPasswordPage implements OnInit {
 
-  constructor( private router: Router,
+  constructor( 
+    private router: Router,
     private translateService: TranslateService,
     public menuCtrl: MenuController,
     private fb:FormBuilder,
     private toast: ToastService,
-    private ngZone: NgZone ) {
+    ) {
       this.menuCtrl.enable(false);
      }
 

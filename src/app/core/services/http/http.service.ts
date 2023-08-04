@@ -1,17 +1,11 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RequestParams } from '../../interface/request-param';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash-es';
-import { UserService } from '../user/user.service';
-import { LocalStorageService } from '../localStorage/localstorage.service';
-import { urlConstants } from '../../constants/urlConstants';
-import { localKeys } from '../../constants/localStorage.keys';
-import { ModalController } from '@ionic/angular';
 import { catchError, map } from 'rxjs/operators'
-import { throwError } from 'rxjs';
-import { ToastService } from '../toast/toast.service';
-import { ProfileService } from '../profile/profile.service';
+import { localKeys, urlConstants } from 'src/app/core/constants/';
+import { UserService, LocalStorageService, ToastService } from 'src/app/core/services/';
 import { TranslateService } from '@ngx-translate/core';
 
 
@@ -26,10 +20,8 @@ export class HttpService {
     private http: HttpClient,
     private userService: UserService,
     private localStorage: LocalStorageService,
-    private injector: Injector,
     private toast: ToastService,
-    //private profileService: ProfileService,
-     private translate: TranslateService
+    private translate: TranslateService
   ) {
     this.baseUrl = environment.baseUrl;
   }
@@ -52,6 +44,7 @@ export class HttpService {
   }
 
   post(requestParam: RequestParams) {
+    // to be used for network check
     // if (!this.checkNetworkAvailability()) {
     //   throw Error(null);
     // }
@@ -70,24 +63,14 @@ export class HttpService {
       this.handleError(err);    //Rethrow it back to component
       throw Error(err);
     }))
-      // .then((data: any) => {
-      //   let result: any = JSON.parse(data.data);
-      //   if (result.responseCode === "OK") {
-      //     return result;
-      //   }
-      // }, error => {
-      //   return this.handleError(error);
-      // });
   }
 
   postBeforeAuth(requestParam: RequestParams) {
+    // to be used for network check
     // if (!this.checkNetworkAvailability()) {
     //   throw Error(null);
     // }
-    // const headers = requestParam.headers ? requestParam.headers : await this.setHeaders();
     let body = requestParam.payload ? requestParam.payload : {};
-    // this.http.setDataSerializer('json');
-    // this.http.setRequestTimeout(60);
     console.log(this.baseUrl + requestParam.url, body)
     return this.http.post(this.baseUrl + requestParam.url, body, {headers: this.httpHeaders}).pipe(
       map((data:any)=>{
@@ -99,26 +82,10 @@ export class HttpService {
       this.handleError(err);    //Rethrow it back to component
       throw Error(err);
     }))
-      // .then((data: any) => {
-      //   let result: any = JSON.parse(data.data);
-      //   if (result.responseCode === "OK") {
-      //     return result;
-      //   }
-      // }, error => {
-      //   return this.handleError(error);
-      // });
   }
 
-
-  // get(config: any) {
-    // console.log(this.httpHeaders);
-    
-    //   .pipe(
-    //     catchError(this.handleError.bind(this))
-    //   );
-  // }
-
   get(requestParam: RequestParams) {
+    // to be used for network check
     // if (!this.checkNetworkAvailability()) {
     //   throw Error(null);
     // }
@@ -128,28 +95,15 @@ export class HttpService {
     console.log(this.httpHeaders)
     return this.http.get(`${this.baseUrl}${requestParam.url}`, {headers: this.httpHeaders}).pipe(
       map((data:any)=>{
-        // if(data?.meta?.data?.length){
-        //   this.openModal(data?.meta?.data[0]);
-        // }
         if (data.responseCode === "OK") {
           return data;
         }
       })
       )
-      // .then((data: any) => {
-      //   let result: any = JSON.parse(data.data);
-      //   if(result?.meta?.data?.length){
-      //     this.openModal(result?.meta?.data[0]);
-      //   }
-      //   if (result.responseCode === "OK") {
-      //     return result;
-      //   }
-      // }, error => {
-      //   return this.handleError(error);
-      // });
   }
 
   delete(requestParam: RequestParams) {
+    // to be used for network check
     // if (!this.checkNetworkAvailability()) {
     //   throw Error(null);
     // }
@@ -158,16 +112,9 @@ export class HttpService {
     // this.http.setRequestTimeout(60);
     return this.http.delete(this.baseUrl + requestParam.url, {headers: this.httpHeaders}).subscribe((data)=>{
     })
-      // .then((data: any) => {
-      //   let result: any = JSON.parse(data.data);
-      //   if (result.responseCode === "OK") {
-      //     return result;
-      //   }
-      // }, error => {
-      //   return this.handleError(error);
-      // });
   }
 
+  // to be used for network check and tokens
   //network check
   // checkNetworkAvailability() {
   //   if (!this.network.isNetworkAvailable) {
@@ -227,23 +174,9 @@ export class HttpService {
         this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')
         break
       case 401:
-        //let auth = this.injector.get(AuthService);
-        //auth.logoutAccount(true);
         break
       default:
         this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')
     }
   }
-
-
-  
-  // async openModal(sessionData) {
-  //   const modal = await this.modalController.create({
-  //     component: FeedbackPage,
-  //     componentProps: {
-  //       data: sessionData,
-  //     }
-  //   });
-  //   return await modal.present();
-  // }
 }
