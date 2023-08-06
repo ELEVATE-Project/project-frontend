@@ -19,14 +19,16 @@ export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule,FormsModule,
-    ReactiveFormsModule, IonicModule.forRoot(), TranslateModule.forRoot({
-    loader: {
+  imports: [
+    TranslateModule.forRoot({
+      loader: {
         provide: TranslateLoader,
-        useFactory: translateHttpLoaderFactory,
-        deps: [HttpClient],
-    },
-}), AppRoutingModule,
+          useFactory: translateHttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    }),
+     AppRoutingModule, BrowserModule, HttpClientModule,FormsModule,
+ReactiveFormsModule, IonicModule.forRoot(), 
 ServiceWorkerModule.register('ngsw-worker.js', {
   // enabled: !isDevMode(),
   enabled: true,
