@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
     this.translateText();
   }
 
-  resetForm(){
+  ngOnDestroy(){
     this.formData.reset();
   }
 
@@ -77,12 +77,10 @@ export class LoginPage implements OnInit {
     }  
 
   redirectToForget(){
-    this.resetForm();
     this.router.navigate(['/auth/forget-password'], { replaceUrl: true });
   }
 
   redirectToSignUp(){
-    this.resetForm();
     this.router.navigate(['/auth/sign-up'], { replaceUrl: true });
   }
 

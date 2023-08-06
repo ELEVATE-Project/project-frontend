@@ -41,10 +41,6 @@ export class SignUpPage implements OnInit {
     this.translateText();
   }
 
-  resetForm(){
-    this.formData.reset();
-  }
-
   async translateText() {
     this.translateService.setDefaultLang('en');
     this.translateService.get(this.labels).subscribe((translatedLabel:any) => {
@@ -110,8 +106,11 @@ export class SignUpPage implements OnInit {
     }
   }
 
+  ngOnDestroy(){
+    this.formData.reset();
+  }
+
   redirectToSignIn(){
-    this.resetForm();
     this.router.navigate(['/auth/login'], { replaceUrl: true });
   }
 
