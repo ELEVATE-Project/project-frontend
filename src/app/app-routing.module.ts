@@ -18,7 +18,6 @@ const routes: Routes = [
     canActivate: [PrivateGuard],
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
-
 ];
 @NgModule({
   imports: [

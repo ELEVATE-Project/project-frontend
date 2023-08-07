@@ -23,7 +23,7 @@
     "FORGET_PASSWORD_PAGE" : {
         "FORGET_PASSWORD" : "Forget Password?",
         "PAGE_HEAD" : "Enter email to reset",
-        "REMEMBER_PASSWORD" : "Remembered Password",
+        "REMEMBER_PASSWORD" : "Remember Password",
         "RESET_PASSWORD" : "Reset Password"
     },
     "EMAIL" : "Email Id",
@@ -32,5 +32,6 @@
     "PASSWORD_PLACEHOLDER" : "Enter your password",
     "SIGN_IN" : "Sign in?",
     "data": {
-    "name": "My name is {{name_value}}"}
+    "name": "Hello {{name_value}}"
+    }
     }

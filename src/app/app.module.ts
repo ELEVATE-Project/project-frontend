@@ -12,6 +12,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
@@ -28,7 +30,7 @@ export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
       }
     }),
      AppRoutingModule, BrowserModule, HttpClientModule,FormsModule,
-ReactiveFormsModule, IonicModule.forRoot(), 
+ReactiveFormsModule, IonicModule.forRoot(),  NgChartsModule,
 ServiceWorkerModule.register('ngsw-worker.js', {
   // enabled: !isDevMode(),
   enabled: true,
