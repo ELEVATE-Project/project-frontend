@@ -1,0 +1,22 @@
+<ion-card>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" style="color: black;">
+        <h1>{{ projectName }}</h1>
+        </ion-col>
+        <ion-col size="4" 
+        [ngClass]="{ 'completed': projectStatus === 'Completed', 'in-progress': projectStatus !== 'Completed' }">
+          <p>{{ projectStatus }}</p>
+        </ion-col>
+        <ion-col size="2"
+        [ngClass]="{ 'completed': projectStatus === 'Completed', 'in-progress': projectStatus !== 'Completed' }">
+          <p>{{ taskCount }}</p>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button expand="block"  (click)="onCourseBtnClicked(projectName)">View</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>     
+  </ion-card-content>
+</ion-card>

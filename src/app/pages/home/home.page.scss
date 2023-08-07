@@ -1,0 +1,73 @@
+#container {
+    text-align: center;
+    background-color: #8c8c8c;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: black;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  ion-searchbar {
+    --background: #e0e0e0; /* Grey background color */
+    --placeholder-color: black; /* White placeholder text color */
+    --color: black; 
+  
+    border-radius: 20px;
+  
+    /* Shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .top{
+    margin-top: 2%;
+  }
+  
+  .fixed-image {
+    height: 80%;
+    width: 80%;
+  }
+  
+  .grid-container {
+   display: grid;
+   gap: 2%;
+  }
+  
+  .projects-details{
+    width: 100%;
+    color: #F5F5F7;
+  }
+  
+  .center-container {
+    margin-top: 10px
+  }
+
+  .pie-chart{
+    // width: 30%;
+    // height: 40%;
+  }
+
+  .rounded-container {
+    width: 40%; 
+    border-radius: 10px; 
+    background-color: #F5F5F7;
+    //margin-left: 5%;
+  }
