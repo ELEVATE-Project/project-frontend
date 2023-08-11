@@ -11,7 +11,7 @@
         <ion-col size="1" size-sm="1" size-md="1" size-lg="1" class="center-container">
           <p  [ngClass]="{ 'completed': projectStatus === 'Completed', 'in-progress': projectStatus !== 'Completed' }">{{ taskCount }}</p>
         </ion-col>
-        <ion-col size="3" size-sm="3" size-md="3" size-lg="3">
+        <ion-col size="3" size-sm="3" size-md="3" size-lg="3" class="center-container">
           <ion-button color="light" expand="block"  (click)="onCourseBtnClicked(projectName)">View</ion-button>
         </ion-col>
       </ion-row>

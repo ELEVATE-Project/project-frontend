@@ -19,10 +19,13 @@ export class HomePage implements OnInit {
 
   projects: any;
   name: any;
+  started: any = 0;
+  notStarted: any = 0;
+  chartData: any;
+  
   async ionViewWillEnter(){
     this.makeApiCall();
   }
-  
   async makeApiCall() {
     let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
     const authToken = JSON.parse(data).access_token;
@@ -41,12 +44,18 @@ export class HomePage implements OnInit {
       ((data:any)=>{
         if(data){
          this.projects =  data.result.map((item: { title: any; status: string; tasks: string | any[]; }) => {
+          if(item.status == 'started') {
+            this.started+=1;
+          }else{
+            this.notStarted+=1;
+          }
             return {
               name: item.title,
-              status: item.status ,
+              status: item.status,
               taskCount: item.tasks.length
             };
           });
+          this.chartData = [{ data: [this.started,this.notStarted] }]
           return data;
         }        
       })
