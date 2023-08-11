@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user/user.service';
+import { LocalStorageService } from '../services';
+import { localKeys } from '../constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrivateGuard  {
-  constructor(private userService:UserService,private router: Router){}
+  constructor(private localStorage: LocalStorageService,private router: Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    return this.userService.getUserValue().then((result:any) => {
+    return this.localStorage.getLocalData(localKeys.USER_DETAILS).then((result:any) => {
       if (result) {
         return true;
       }

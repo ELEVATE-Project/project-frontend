@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
 import { PrivateGuard } from './core/gurads/private.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {

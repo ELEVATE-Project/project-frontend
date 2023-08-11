@@ -92,10 +92,9 @@ export class HttpService {
     // const headers = requestParam.headers ? requestParam.headers : await this.setHeaders();
     // this.http.setDataSerializer('json');
     // this.http.setRequestTimeout(60);
-    console.log(this.httpHeaders)
-    return this.http.get(`${this.baseUrl}${requestParam.url}`, {headers: this.httpHeaders}).pipe(
+    return this.http.get(`${this.baseUrl}${requestParam.url}`, {headers: requestParam.headers}).pipe(
       map((data:any)=>{
-        if (data.responseCode === "OK") {
+        if (data.status === 200) {
           return data;
         }
       })

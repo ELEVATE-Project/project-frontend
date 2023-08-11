@@ -1,7 +1,26 @@
-.completed {
-    color: #15A309; 
+.in-progress {
+  padding: 10px;
+  background-color: rgba(21, 163, 9, 0.7);
+  color: white;
+  border-radius: 20px;
+  box-shadow: none;
   }
   
-  .in-progress {
-    color: #F33939; 
+  .not-started {
+    padding: 10px;
+    background-color:  rgba(206, 6, 6, 0.7); 
+    color: white;
+    border-radius: 10px;
+    box-shadow: none;
+    width: 20%;
+    height: 50%;
+  
   }
+
+.custom-card {
+  background-color: #F5F5F7;
+  border-radius: 10px;
+  box-shadow: none;
+  font-size: 14px;
+}
+

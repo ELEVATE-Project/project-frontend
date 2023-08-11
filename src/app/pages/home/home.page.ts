@@ -1,6 +1,8 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'src/app/core/services/localStorage/localstorage.service';
-import { ProjectsInfoService } from 'src/app/core/services/projects/projects-info.service';
+import { Router } from '@angular/router';
+import { localKeys, urlConstants } from 'src/app/core/constants/';
+import { HttpService, LocalStorageService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-home',
@@ -8,31 +10,54 @@ import { ProjectsInfoService } from 'src/app/core/services/projects/projects-inf
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  public pieChartOptions = {
-    responsive: true,
-  };
 
-  chartData: any = [{ data: [10,20,15], label: "Stock price" }];
-  chartLabels = ["c", "p", "s"];
+  constructor(
+    private localStorage: LocalStorageService,
+    private http: HttpService,
+    private router: Router,
+    ) { }
 
-  chartOptions = {
-    responsive: true,
-  }
   projects: any;
-  ionViewWillEnter(){
-    this.projects = [
-      { name: 'Project 1', status: 'In Progress', taskCount: 5 },
-      { name: 'Project 2', status: 'Completed', taskCount: 10 },
-    ];
+  name: any;
+  async ionViewWillEnter(){
+    this.makeApiCall();
   }
-  constructor(private projectsService: ProjectsInfoService,
-    private localStorage: LocalStorageService,) { }
-
+  
+  async makeApiCall() {
+    let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
+    const authToken = JSON.parse(data).access_token;
+    this.name = JSON.parse(data).user.name;
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${authToken}`,
+        'X-authenticated-user-token': authToken,
+        'Content-Type': 'application/json'
+      });
+   
+    const config = {
+      url: urlConstants.API_URLS.GET_PROJECT,
+      headers : headers
+    };
+    this.http.get(config).subscribe(
+      ((data:any)=>{
+        if(data){
+         this.projects =  data.result.map((item: { title: any; status: string; tasks: string | any[]; }) => {
+            return {
+              name: item.title,
+              status: item.status ,
+              taskCount: item.tasks.length
+            };
+          });
+          return data;
+        }        
+      })
+    )     
+  }
  
   ngOnInit() {
-    // this.projectsService.getProject().subscribe(data => {
-    //   console.log(data);
-    // });
+  }
+
+  redirectToProjectCreation(){
+    this.router.navigate(['/create-projects']);
   }
 
 }
