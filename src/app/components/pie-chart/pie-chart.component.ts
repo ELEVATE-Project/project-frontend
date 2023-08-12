@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { chartLabels } from 'src/app/core/constants/pieChartLabels.keys';
 
 @Component({
   selector: 'app-pie-chart',
@@ -6,8 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./pie-chart.component.scss'],
 })
 export class PieChartComponent  implements OnInit {
-  @Input() chartData: any;
-  chartLabels = ["Started", "Not Started"];
+  @Input() chartData: any
+  @Input() title: any;
+  chartLabels = [chartLabels.SELECTED, chartLabels.NOT_STARTED];
 
   chartOptions = {
     responsive: true,

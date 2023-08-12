@@ -7,10 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { ProjectDetailsComponent } from 'src/app/components/project-details/project-details.component';
+import { ProjectCardComponent, PieChartComponent, SideMenuComponent } from 'src/app/components/index' ;
 import { NgChartsModule } from 'ng2-charts';
-import { PieChartComponent } from 'src/app/components/pie-chart/pie-chart.component';
 import { TranslateModule } from '@ngx-translate/core';
+
 
 
 @NgModule({
@@ -24,8 +24,9 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   declarations: [
     HomePage,
-    ProjectDetailsComponent,
+    ProjectCardComponent,
     PieChartComponent,
+    SideMenuComponent
   ]
 })
 export class HomePageModule {}

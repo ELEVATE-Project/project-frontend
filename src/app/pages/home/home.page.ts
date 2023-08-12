@@ -22,24 +22,23 @@ export class HomePage implements OnInit {
   started: any = 0;
   notStarted: any = 0;
   chartData: any;
-  
+  pieChartHeader = "Project Reports";
+
   async ionViewWillEnter(){
-    this.makeApiCall();
+    this.getProjectList();
+    this.getName();
   }
-  async makeApiCall() {
+
+  async getName(){
     let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
-    const authToken = JSON.parse(data).access_token;
     this.name = JSON.parse(data).user.name;
-    const headers = new HttpHeaders({
-        'Authorization': `Bearer ${authToken}`,
-        'X-authenticated-user-token': authToken,
-        'Content-Type': 'application/json'
-      });
-   
+  }
+  
+  async getProjectList() {   
     const config = {
       url: urlConstants.API_URLS.GET_PROJECT,
-      headers : headers
     };
+    await this.http.setHeader();
     this.http.get(config).subscribe(
       ((data:any)=>{
         if(data){

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestParams } from '../../interface/request-param';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash-es';
@@ -26,21 +26,14 @@ export class HttpService {
     this.baseUrl = environment.baseUrl;
   }
 
-  async setHeader(lang?:string): Promise<any> {
-    return new Promise(async (resolve) => {
-      try {
-        let userToken = (await this.userService.getUserValue()) ? 'bearer ' + (await this.userService.getUserValue()).access_token : '';
-        const headers = {
-          'X-auth-token': userToken ? userToken : '',
-          'Content-Type': 'application/json',
-          'timeZone': this.timeZone,
-          'accept-language': lang ? lang : 'en'
-        };
-        this.httpHeaders = headers;
-        resolve(true)
-      } catch (error) {
-      }
-    });
+  async setHeader(){
+    let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
+    const authToken = JSON.parse(data).access_token;
+    this.httpHeaders = new HttpHeaders({
+        'Authorization': `Bearer ${authToken}`,
+        'X-authenticated-user-token': authToken,
+        'Content-Type': 'application/json'
+      });
   }
 
   post(requestParam: RequestParams) {
@@ -89,10 +82,9 @@ export class HttpService {
     // if (!this.checkNetworkAvailability()) {
     //   throw Error(null);
     // }
-    // const headers = requestParam.headers ? requestParam.headers : await this.setHeaders();
     // this.http.setDataSerializer('json');
     // this.http.setRequestTimeout(60);
-    return this.http.get(`${this.baseUrl}${requestParam.url}`, {headers: requestParam.headers}).pipe(
+    return this.http.get(`${this.baseUrl}${requestParam.url}`, {headers: this.httpHeaders}).pipe(
       map((data:any)=>{
         if (data.status === 200) {
           return data;

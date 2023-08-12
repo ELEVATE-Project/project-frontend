@@ -43,8 +43,5 @@
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
     "PASSWORD_PLACEHOLDER" : "Enter your password",
-    "SIGN_IN" : "Sign in?",
-    "data": {
-    "name": "Hello {{name_value}}"
-    }
+    "SIGN_IN" : "Sign in?"
     }

@@ -1,32 +1,4 @@
-#container {
-    text-align: center;
-    background-color: #8c8c8c;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 5%;
-    transform: translateY(-50%);
-  }
-  
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-  
-    color: black;
-  
-    margin: 0;
-  }
-  
-  #container a {
-    text-decoration: none;
-  }
-  
-  .custom-searchbar {
+.custom-searchbar {
     --background: #F5F5F7; /* Gray background color */
     --color: var(--ion-color-primary); /* Primary color for text color */
   }
@@ -36,8 +8,8 @@ ion-searchbar.custom {
   --background: #F5F5F7;
   --color: var(--ion-color-primary);
   --placeholder-color:var(--ion-color-primary);
-  --icon-color: black;
-  --clear-button-color: black;
+  --icon-color: dark;
+  --clear-button-color: dark;
   --border-radius: 4px;
 }
 
