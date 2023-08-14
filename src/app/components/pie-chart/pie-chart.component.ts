@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { chartLabels } from 'src/app/core/constants/pieChartLabels.keys';
+import { chartLabels } from 'src/app/core/constants/';
 
 @Component({
   selector: 'app-pie-chart',

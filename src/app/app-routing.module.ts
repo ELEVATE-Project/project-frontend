@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { PrivateGuard } from './core/gurads/private.guard';
+import { HomeGuard } from './core/gurads/home.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate: [PrivateGuard],
+    canActivate: [HomeGuard],
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
 ];

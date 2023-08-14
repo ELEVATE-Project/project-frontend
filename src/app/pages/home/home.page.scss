@@ -1,18 +1,3 @@
-.custom-searchbar {
-    --background: #F5F5F7; /* Gray background color */
-    --color: var(--ion-color-primary); /* Primary color for text color */
-  }
-
-  /* Scoped components require higher specificity to customize */
-ion-searchbar.custom {
-  --background: #F5F5F7;
-  --color: var(--ion-color-primary);
-  --placeholder-color:var(--ion-color-primary);
-  --icon-color: dark;
-  --clear-button-color: dark;
-  --border-radius: 4px;
-}
-
   .fixed-image {
     height: 100%;
     width: 60%;

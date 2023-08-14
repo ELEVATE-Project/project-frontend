@@ -8,7 +8,7 @@ import { localKeys } from '../constants';
 @Injectable({
   providedIn: 'root'
 })
-export class PrivateGuard  {
+export class HomeGuard  {
   constructor(private localStorage: LocalStorageService,private router: Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -16,6 +16,7 @@ export class PrivateGuard  {
     
     return this.localStorage.getLocalData(localKeys.USER_DETAILS).then((result:any) => {
       if (result) {
+        //this.router.navigate(['/home']);
         return true;
       }
       else {
@@ -28,5 +29,7 @@ export class PrivateGuard  {
     });
   
   }
+
+ 
   
 }
