@@ -96,7 +96,7 @@ export class HomePage implements OnInit {
   }
 
   redirectToProjectCreation(){
-    this.router.navigate(['/create-projects']);
+    this.router.navigate(['/create-project']);
   }
 
 }
