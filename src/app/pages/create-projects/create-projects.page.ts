@@ -9,6 +9,8 @@ import { headerConfigKeys } from 'src/app/core/constants';
   styleUrls: ['./create-projects.page.scss'],
 })
 export class CreateProjectsPage implements OnInit {
+
+  proj_title: any = ""
   configHeader = [
     {[headerConfigKeys.SHOW_BACK]: true, "action":headerConfigKeys.BACK},
     {[headerConfigKeys.SHOW_MENU]: true, "action": headerConfigKeys.MENU},
@@ -21,8 +23,8 @@ export class CreateProjectsPage implements OnInit {
     {
         "field": "title",
         "label": "Project Title (mandatory)",
-        "labelTranslations": "{\"en\":\"Project Title (mandatory)\",\"hi\":\"शीर्षक\"}",
         "value": "",
+        "labelTranslations": "{\"en\":\"Project Title (mandatory)\",\"hi\":\"शीर्षक\"}",
         "visible": true,
         "editable": true,
         "input": "text",

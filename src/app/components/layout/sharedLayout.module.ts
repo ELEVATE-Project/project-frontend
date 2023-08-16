@@ -1,17 +1,33 @@
 import { NgModule } from '@angular/core';
-import { FooterComponent } from './footer/footer.component';
+import {  } from './footer/footer.component';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
+import { 
+    HeaderComponent, 
+    FooterComponent,
+    SideMenuComponent,
+    ProjectCardComponent,
+    BackButtonComponent } from '../index';
 import { IonicModule } from '@ionic/angular';
-import { SideMenuComponent } from './side-menu/side-menu.component';
-import { ProjectCardComponent } from '../project-card/project-card.component';
+import {  } from './side-menu/side-menu.component';
+import {  } from '../project-card/project-card.component';
+import {  } from './back-button/back-button.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent, FooterComponent, SideMenuComponent , ProjectCardComponent],
+    HeaderComponent, 
+    FooterComponent, 
+    SideMenuComponent , 
+    ProjectCardComponent,
+    BackButtonComponent
+],
   imports: [CommonModule, IonicModule],
   exports: [
-    HeaderComponent, FooterComponent, SideMenuComponent, ProjectCardComponent],
+    HeaderComponent, 
+    FooterComponent, 
+    SideMenuComponent, 
+    ProjectCardComponent,
+    BackButtonComponent
+],
 })
 export class LayoutModule {}

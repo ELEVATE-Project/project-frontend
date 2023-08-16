@@ -9,6 +9,11 @@
         <h1 class="heading">{{ "PROJECT_CREATION.HEADER" | translate }}<br><br></h1>       
       </ion-col> -->
     </ion-row>
+    <ion-row>
+      <ion-col >
+      <app-back-button [pageTitle]="proj_title"> </app-back-button>
+    </ion-col>
+    </ion-row>
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="glass-effect">
       <ion-list>
         <ion-item *ngFor="let field of formData">

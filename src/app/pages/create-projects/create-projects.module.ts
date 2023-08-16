@@ -17,7 +17,6 @@ import { LayoutModule } from 'src/app/components/layout/sharedLayout.module';
     IonicModule,
     CreateProjectsPageRoutingModule,
     ReactiveFormsModule,
-    
     TranslateModule
   ],
   declarations: [CreateProjectsPage]

@@ -1,0 +1,12 @@
+/* back-button.component.scss */
+ion-button {
+    --background: transparent;
+    --color: var(--ion-color-primary);
+    --border-radius: 0;
+    --box-shadow: none;
+  }
+
+  .back-button:hover {
+    background-color: var(--ion-color-dark); 
+  }
+  
