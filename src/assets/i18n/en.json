@@ -23,14 +23,25 @@
     "FORGET_PASSWORD_PAGE" : {
         "FORGET_PASSWORD" : "Forget Password?",
         "PAGE_HEAD" : "Enter email to reset",
-        "REMEMBER_PASSWORD" : "Remembered Password",
+        "REMEMBER_PASSWORD" : "Remember Password",
         "RESET_PASSWORD" : "Reset Password"
+    },
+    "HOME" : {
+        "HELLO": "Hello {{name}}!",
+        "WELCOME_LBL" : "Welcome back",
+        "CREATE_PROJECT_BTN" : "Create Project"
+    },
+    "PROJECT_CREATION" :{
+        "HEADER" : "PROJECT CREATION",
+        "NAME_LBL" : "Project Name",
+        "NAME_PLACEHOLDER" : "Enter your project name",
+        "DESC_LBL" : "Project Description",
+        "DESC_PLACEHOLDER" : "Enter project description",
+        "BTN" : "Create Project"
     },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
     "PASSWORD_PLACEHOLDER" : "Enter your password",
-    "SIGN_IN" : "Sign in?",
-    "data": {
-    "name": "My name is {{name_value}}"}
+    "SIGN_IN" : "Sign in?"
     }
