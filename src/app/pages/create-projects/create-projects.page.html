@@ -1,0 +1,37 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <app-header [configHeaders]="configHeader"
+      (actionEmitter)="handleAction($event)"
+      >  
+      </app-header>
+      <!-- <ion-col size="1" class="ion-text-center">
+        <h1 class="heading">{{ "PROJECT_CREATION.HEADER" | translate }}<br><br></h1>       
+      </ion-col> -->
+    </ion-row>
+    <ion-row>
+      <ion-col >
+      <app-back-button [pageTitle]="proj_title"> </app-back-button>
+    </ion-col>
+    </ion-row>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="glass-effect">
+      <ion-list>
+        <ion-item *ngFor="let field of formData">
+          <ion-label position="floating">
+            {{ field.labelTranslations | translate }}
+          </ion-label>
+          <ng-container [ngSwitch]="field.input">
+            <ion-input *ngSwitchCase="'text'" type="text" [formControlName]="field.field"></ion-input>
+            <ion-textarea *ngSwitchCase="'textarea'" rows="4" [formControlName]="field.field"></ion-textarea>
+            <ion-select *ngSwitchCase="'select'" [formControlName]="field.field" interface="popover">
+              <ion-select-option *ngFor="let option of field.options" [value]="option.value">
+                {{ option.labelTranslations | translate }}
+              </ion-select-option>
+            </ion-select>
+          </ng-container>
+        </ion-item>
+      </ion-list>
+      <ion-button type="submit" expand="full" color="primary">Submit</ion-button>
+    </form>
+  </ion-grid>
+</ion-content>

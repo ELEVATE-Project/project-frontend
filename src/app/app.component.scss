@@ -30,3 +30,9 @@ ion-menu {
   text-align: center;
   margin-top: 2%;
 }
+
+@media (max-width: 767px) {
+  ion-menu {
+    min-width: 100px;
+  }
+}

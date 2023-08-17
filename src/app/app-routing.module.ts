@@ -17,6 +17,10 @@ const routes: Routes = [
     canActivate: [HomeGuard],
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'create-project',
+    loadChildren: () => import('./pages/create-projects/create-projects.module').then( m => m.CreateProjectsPageModule)
+  },
 ];
 @NgModule({
   imports: [

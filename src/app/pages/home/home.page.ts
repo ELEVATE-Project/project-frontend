@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { headerConfigKeys, localKeys, urlConstants } from 'src/app/core/constants/';
+import { headerConfigKeys, localKeys, menuLabelKeys, urlConstants } from 'src/app/core/constants/';
 import { HttpService, LocalStorageService } from 'src/app/core/services';
 
 
@@ -31,6 +31,66 @@ export class HomePage implements OnInit {
     {[headerConfigKeys.SHOW_NOTIFICATION]: true, "action": headerConfigKeys.NOTIFICATION},
     {[headerConfigKeys.SHOW_PROFILE]: true, "action": headerConfigKeys.PROFILE},
   ]
+
+  configMenu = {
+    headContainer: {
+      content: [
+        {
+          type: 'p',
+          text: menuLabelKeys.HEADER
+        }
+      ]
+    },
+    iconButtons: [
+      {
+        iconName: 'home',
+        label: menuLabelKeys.HOME
+      },
+      {
+        iconName: 'school',
+        label: menuLabelKeys.SCHOOL
+      },
+      {
+        iconName: 'person',
+        label: menuLabelKeys.PERSON
+      },
+      {
+        iconName: 'settings',
+        label: menuLabelKeys.SETTINGS
+      },
+      {
+        iconName: 'log-out',
+        label: menuLabelKeys.LOGOUT
+      }
+    ]
+  };
+
+  handleMenuClicks(action: string){
+    switch (action) {
+      case menuLabelKeys.HOME:
+        // Handle search action
+        console.log('Search action triggered');
+        break;
+      case menuLabelKeys.SCHOOL:
+        // Handle notification action
+        console.log('Notification action triggered');
+        break;
+      case menuLabelKeys.PERSON:
+        // Handle profile action
+        console.log('Profile action triggered');
+        break;
+      case  menuLabelKeys.SETTINGS:
+        // Handle side menu action
+        console.log('Side menu action triggered');
+        break;
+        case  menuLabelKeys.LOGOUT:
+          // Handle side menu action
+          console.log('Side menu action triggered');
+          break;
+      default:
+        break;
+    }
+  }
 
   handleAction(action: string) {
     switch (action) {
@@ -96,7 +156,7 @@ export class HomePage implements OnInit {
   }
 
   redirectToProjectCreation(){
-    this.router.navigate(['/create-projects']);
+    this.router.navigate(['/create-project']);
   }
 
 }

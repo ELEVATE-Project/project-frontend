@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { chartLabels } from 'src/app/core/constants/';
+import { NgChartsModule } from 'ng2-charts';
 
 @Component({
   selector: 'app-pie-chart',
