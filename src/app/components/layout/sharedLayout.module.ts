@@ -1,31 +1,31 @@
 import { NgModule } from '@angular/core';
-import {  } from './footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { 
     HeaderComponent, 
     FooterComponent,
     SideMenuComponent,
+    SideMenuLayoutComponent,
     ProjectCardComponent,
     BackButtonComponent } from '../index';
 import { IonicModule } from '@ionic/angular';
 import {  } from './side-menu/side-menu.component';
-import {  } from '../project-card/project-card.component';
-import {  } from './back-button/back-button.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent, 
     FooterComponent, 
-    SideMenuComponent , 
     ProjectCardComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    SideMenuComponent,
+    SideMenuLayoutComponent, 
 ],
   imports: [CommonModule, IonicModule],
   exports: [
     HeaderComponent, 
     FooterComponent, 
-    SideMenuComponent, 
+    SideMenuComponent,
+    SideMenuLayoutComponent, 
     ProjectCardComponent,
     BackButtonComponent
 ],
