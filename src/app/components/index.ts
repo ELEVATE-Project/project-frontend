@@ -1,6 +1,5 @@
 export * from './layout/footer/footer.component';
 export * from './layout/header/header.component';
-//export * from './layout/side-menu-btn/side-menu-btn.component';
 export * from './pie-chart/pie-chart.component';
 export * from './project-card/project-card.component';
 export * from './layout/back-button/back-button.component'

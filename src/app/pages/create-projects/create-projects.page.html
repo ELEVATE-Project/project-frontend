@@ -1,14 +1,8 @@
 <ion-content>
   <ion-grid>
-    <ion-row>
       <app-header [configHeaders]="configHeader" (actionEmitter)="handleAction($event)">
       </app-header>
-    </ion-row>
-    <ion-row>
-      <ion-col>
         <app-back-button [pageTitle]="proj_title"></app-back-button>
-      </ion-col>
-    </ion-row>
     <form [formGroup]="formData" (ngSubmit)="onSubmit()" class="glass-effect">
       <ion-item lines="none" class="ion-item">
         <fieldset  class="input-item">

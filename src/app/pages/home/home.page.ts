@@ -69,24 +69,19 @@ export class HomePage implements OnInit {
   handleMenuClicks(action: string){
     switch (action) {
       case menuLabelKeys.HOME:
-        // Handle search action
-        console.log('Search action triggered');
+        // Handle home action
         break;
       case menuLabelKeys.SCHOOL:
-        // Handle notification action
-        console.log('Notification action triggered');
+        // Handle projects action
         break;
       case menuLabelKeys.PERSON:
         // Handle profile action
-        console.log('Profile action triggered');
         break;
       case  menuLabelKeys.SETTINGS:
-        // Handle side menu action
-        console.log('Side menu action triggered');
+        // Handle settings action
         break;
         case  menuLabelKeys.LOGOUT:
-          // Handle side menu action
-          console.log('Side menu action triggered');
+          // Handle log-out action
           break;
       default:
         break;
@@ -97,19 +92,15 @@ export class HomePage implements OnInit {
     switch (action) {
       case headerConfigKeys.SEARCH:
         // Handle search action
-        console.log('Search action triggered');
         break;
       case headerConfigKeys.NOTIFICATION:
-        // Handle notification action
-        console.log('Notification action triggered');
+        // Handle notification action     
         break;
       case headerConfigKeys.PROFILE:
         // Handle profile action
-        console.log('Profile action triggered');
         break;
       case headerConfigKeys.MENU:
         // Handle side menu action
-        console.log('Side menu action triggered');
         break;
       default:
         break;

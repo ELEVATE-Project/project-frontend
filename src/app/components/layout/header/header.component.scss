@@ -3,7 +3,6 @@
     --color: var(--ion-color-primary); /* Primary color for text color */
   }
 
-  /* Scoped components require higher specificity to customize */
 ion-searchbar.custom {
   --background: #F5F5F7;
   --color: var(--ion-color-primary);
@@ -13,12 +12,3 @@ ion-searchbar.custom {
   --border-radius: 4px;
 }
 
-@media (min-width: 768px) {
-  .side-menu-container {
-    display: none;
-  }
-}
-
-.no-collapse {
-  min-width: 50px; /* Adjust the value as needed */
-}
