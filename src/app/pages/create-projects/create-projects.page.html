@@ -9,55 +9,84 @@
         <app-back-button [pageTitle]="proj_title"></app-back-button>
       </ion-col>
     </ion-row>
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="glass-effect">
-      <ion-list>
-        <ion-item *ngFor="let field of formData">
-          <ion-label position="stacked">
-            {{ field.label | translate }}
-          </ion-label>
-          <ng-container [ngSwitch]="field.input">
-            <ion-input
-              *ngIf="field.visible && field.input === 'text'"
-              type="text"
-              [formControlName]="field.field"
-              placeholder="{{ field.hint | translate }}"
-            ></ion-input>
-            <ion-textarea
-              *ngIf="field.visible && field.input === 'textarea'"
-              rows="2"
-              [formControlName]="field.field"
-              placeholder="{{ field.hint | translate }}"
-            ></ion-textarea>
-            <ion-select
-              *ngIf="field.visible && field.input === 'select'"
-              [formControlName]="field.field"
-              interface="popover"
-              [multiple]="true"
-              (ionChange)="onCategoryChange($event)"
-            >
-              <ion-select-option
-                *ngFor="let option of field.options"
-                [value]="option.value"
-              >
-                {{ option.label | translate }}
-              </ion-select-option>
-            </ion-select>
-            <ion-datetime
-            *ngIf="field.visible && field.input === 'date'"
-            [formControlName]="field.field"
-          
-            display-format="MMM DD, YYYY"
-          ></ion-datetime>
-            <!-- <ion-input
-              *ngIf="field.visible && field.input === 'text' && showOtherInput"
-              type="text"
-              [formControlName]="field.field"
-              placeholder="{{ field.hint | translate }}"
-            ></ion-input> -->
-          </ng-container>
-        </ion-item>
-      </ion-list>
-      <ion-button type="submit" expand="full" color="primary">Submit</ion-button>
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()" class="glass-effect">
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>{{ "PROJECT_CREATION.PRJ_TITLE" | translate }}<span class="required-marker">*</span></legend> 
+          <ion-input formControlName="title" type="text" placeholder='{{ "PROJECT_CREATION.PRJ_TITLE_HINT" | translate }}'></ion-input>
+        </fieldset>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+        <legend>{{ "PROJECT_CREATION.OBJECTIVE" | translate }}<span class="required-marker">*</span></legend> 
+        <ion-input formControlName="description" type="text" placeholder='{{ "PROJECT_CREATION.OBJECTIVE_HINT" | translate }}'></ion-input>
+  </fieldset>
+    </ion-item>
+
+  <ion-row>
+    <ion-col size="12" size-lg="4" size-md="4" size-sm="12" class="center-container">
+      <ion-label>{{ "PROJECT_CREATION.ROLE" | translate }} <span class="required-marker">*</span></ion-label> 
+    </ion-col>
+    <ion-col size="12" size-lg="8" size-md="8" size-sm="12" class="center-container">
+      <ion-select
+      formControlName="categories"
+      interface="popover"
+      [multiple]="true"
+      class="placeholder-wrap"
+      placeholder='{{ "PROJECT_CREATION.ROLE_HINT" | translate }}'
+    >
+      <ion-select-option
+        *ngFor="let option of catOptions"
+        [value]="option"
+      >
+        {{ option.label }}
+      </ion-select-option>
+    </ion-select>
+  </ion-col>
+  </ion-row>
+
+
+  <ion-item lines="none" class="ion-item" *ngIf="showOthers">
+    <fieldset  class="input-item">
+    <legend>{{ "PROJECT_CREATION.OTHER" | translate }} </legend> 
+    <ion-input formControlName="other" type="text" placeholder='{{ "PROJECT_CREATION.OTHER_HINT" | translate }}'></ion-input>
+  </fieldset>
+</ion-item>
+
+<ion-row>
+  <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
+    <ion-label>{{ "PROJECT_CREATION.START_DATE" | translate }} <span class="required-marker">*</span></ion-label>
+  </ion-col>
+  <ion-col size="12" size-lg="8" size-md="12" size-sm="12">
+    <ion-datetime-button datetime="startDate" color="dark"></ion-datetime-button>
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="startDate" 
+      displayFormat="MMM DD, YYYY HH:mm"
+      (ionChange)="startDate($event)"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+  </ion-col>
+</ion-row>
+  
+<ion-row>
+  <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
+  <ion-label>{{ "PROJECT_CREATION.END_DATE" | translate }}<span class="required-marker">*</span></ion-label>
+</ion-col>
+<ion-col size="12" size-lg="8" size-md="12" size-sm="12">
+    <ion-datetime-button datetime="endDate"></ion-datetime-button>
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="endDate" 
+      color="light"
+      displayFormat="MMM DD, YYYY HH:mm"
+      (ionChange)="endDate($event)"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-col>
+</ion-row>
+  <ion-button class="rounded-custom-button" expand="block" (click)="onSubmit()"> {{ "PROJECT_CREATION.SUBMIT" | translate }} </ion-button>
     </form>
   </ion-grid>
 </ion-content>

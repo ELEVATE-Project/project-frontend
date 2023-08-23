@@ -2,8 +2,8 @@
   <ion-card-content >
     <ion-grid>
       <ion-row>
-        <ion-col size="4" size-sm="4" size-md="4" size-lg="4" style="color:black;">
-        <h2>{{ projectName }}</h2>
+        <ion-col size="4" size-sm="4" size-md="4" size-lg="4" class="project" >
+        <label class="project-name ">{{ projectName }}</label>
         </ion-col>
         <ion-col size="4" size-sm="4" size-md="4" size-lg="4" class="center-container">
           <p [ngClass]="projectStatus === 'Started' ? 'in-progress' : 'not-started '">{{ projectStatus }}</p>
@@ -12,7 +12,7 @@
           <p  [ngClass]="{ 'completed': projectStatus === 'Completed', 'in-progress': projectStatus !== 'Completed' }">{{ taskCount }}</p>
         </ion-col>
         <ion-col size="3" size-sm="3" size-md="3" size-lg="3" class="center-container">
-          <ion-button color="light" expand="block"  (click)="viewProject(projectName)">View</ion-button>
+          <ion-button color="primary" expand="block"  (click)="viewProject(projectName)">View</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>     

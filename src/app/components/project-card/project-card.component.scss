@@ -22,5 +22,33 @@
   border-radius: 10px;
   box-shadow: none;
   font-size: 14px;
+  color: black;
+  padding: 0 10 0 10;
 }
 
+
+ion-card{
+  padding: 2px;
+}
+
+ion-grid{
+  padding: 0;
+  margin: 0;
+}
+
+ion-card-content{
+  padding: 0;
+  margin: 0;
+}
+
+.project-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.project {
+  display: flex;
+  align-items: center; /* Center vertically */
+}

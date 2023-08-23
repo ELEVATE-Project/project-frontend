@@ -42,8 +42,14 @@
         "OBJECTIVE": "Objective",
         "ROLE": "Categories",
         "PRJ_TITLE_HINT" : "Name your project",
-        "OBJECTIVE_HINT": "What is the objective of your Project?",
-        "ROLE_HINT": "What does your project aim to improve?"
+        "OBJECTIVE_HINT": "What is the objective of your project?",
+        "ROLE_HINT": "What does your project aim to improve?",
+        "OTHER" : "Other",
+        "OTHER_HINT" : "Enter category",
+        "START_DATE" : "Start Date",
+        "END_DATE" : "End Date",
+        "SUBMIT" : "Submit",
+        "DATE_ERROR" : "End date should be after start date"
     },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",

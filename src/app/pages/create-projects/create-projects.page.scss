@@ -9,9 +9,36 @@
     backdrop-filter: blur(10px); /* Adjust the blur intensity as needed */
     border-radius: 10px;
     padding: 20px;
-    margin: 50px auto;
+    margin: 0px auto;
     width: 80%;
     max-width: 400px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+ 
+  ion-modal {
+    --width: 290px;
+    --height: 382px;
+    --border-radius: 8px;
+  }
+
+  ion-modal ion-datetime {
+    height: 382px;
+  }
+
+  ion-item {
+    padding: 2%;
+  }
+
+  ion-row{
+    padding: 2%;
+  }
+
+  ion-content {
+    font-size: 16px; 
+  }
+
+  .placeholder-wrap {
+    white-space: normal; /* Allow text wrapping */
   }

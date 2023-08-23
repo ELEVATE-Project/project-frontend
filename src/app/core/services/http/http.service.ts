@@ -48,7 +48,7 @@ export class HttpService {
     console.log(this.baseUrl + requestParam.url, body)
     return this.http.post(this.baseUrl + requestParam.url, body, {headers: this.httpHeaders}).pipe(
       map((data:any)=>{
-      if (data.responseCode === "OK") {
+      if (data.status === 200) {
         return data;
       }
     }),
@@ -165,6 +165,7 @@ export class HttpService {
         this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')
         break
       case 401:
+        this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')
         break
       default:
         this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')
