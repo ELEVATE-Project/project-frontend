@@ -12,3 +12,13 @@ ion-searchbar.custom {
   --clear-button-color: dark;
   --border-radius: 4px;
 }
+
+@media (min-width: 768px) {
+  .side-menu-container {
+    display: none;
+  }
+}
+
+.no-collapse {
+  min-width: 50px; /* Adjust the value as needed */
+}

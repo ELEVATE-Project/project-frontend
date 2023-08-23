@@ -1,33 +1,59 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <app-header [configHeaders]="configHeader"
-      (actionEmitter)="handleAction($event)"
-      >  
+      <app-header [configHeaders]="configHeader" (actionEmitter)="handleAction($event)">
       </app-header>
-      <!-- <ion-col size="1" class="ion-text-center">
-        <h1 class="heading">{{ "PROJECT_CREATION.HEADER" | translate }}<br><br></h1>       
-      </ion-col> -->
     </ion-row>
     <ion-row>
-      <ion-col >
-      <app-back-button [pageTitle]="proj_title"> </app-back-button>
-    </ion-col>
+      <ion-col>
+        <app-back-button [pageTitle]="proj_title"></app-back-button>
+      </ion-col>
     </ion-row>
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="glass-effect">
       <ion-list>
         <ion-item *ngFor="let field of formData">
-          <ion-label position="floating">
-            {{ field.labelTranslations | translate }}
+          <ion-label position="stacked">
+            {{ field.label | translate }}
           </ion-label>
           <ng-container [ngSwitch]="field.input">
-            <ion-input *ngSwitchCase="'text'" type="text" [formControlName]="field.field"></ion-input>
-            <ion-textarea *ngSwitchCase="'textarea'" rows="4" [formControlName]="field.field"></ion-textarea>
-            <ion-select *ngSwitchCase="'select'" [formControlName]="field.field" interface="popover">
-              <ion-select-option *ngFor="let option of field.options" [value]="option.value">
-                {{ option.labelTranslations | translate }}
+            <ion-input
+              *ngIf="field.visible && field.input === 'text'"
+              type="text"
+              [formControlName]="field.field"
+              placeholder="{{ field.hint | translate }}"
+            ></ion-input>
+            <ion-textarea
+              *ngIf="field.visible && field.input === 'textarea'"
+              rows="2"
+              [formControlName]="field.field"
+              placeholder="{{ field.hint | translate }}"
+            ></ion-textarea>
+            <ion-select
+              *ngIf="field.visible && field.input === 'select'"
+              [formControlName]="field.field"
+              interface="popover"
+              [multiple]="true"
+              (ionChange)="onCategoryChange($event)"
+            >
+              <ion-select-option
+                *ngFor="let option of field.options"
+                [value]="option.value"
+              >
+                {{ option.label | translate }}
               </ion-select-option>
             </ion-select>
+            <ion-datetime
+            *ngIf="field.visible && field.input === 'date'"
+            [formControlName]="field.field"
+          
+            display-format="MMM DD, YYYY"
+          ></ion-datetime>
+            <!-- <ion-input
+              *ngIf="field.visible && field.input === 'text' && showOtherInput"
+              type="text"
+              [formControlName]="field.field"
+              placeholder="{{ field.hint | translate }}"
+            ></ion-input> -->
           </ng-container>
         </ion-item>
       </ion-list>

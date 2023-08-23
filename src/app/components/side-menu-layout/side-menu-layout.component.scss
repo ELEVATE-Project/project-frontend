@@ -1,20 +1,22 @@
 
 .head-container{
     display: flex;
-    color: white;
+    color: var(--ion-color-dark);
     margin-bottom: 40px;
     justify-content: center;
+    //padding: 10px;
   }
   
-  .btn-container{
-    background-color: black; 
-    border-radius: 20px; 
-    padding: 10px;
+ .btn-container{
+    background-color: var(--ion-color-primary); 
+    border-radius: 10px; 
+    padding: 1%;
     height: 50%;
+    //display: fixed;
   }
   
   ion-icon {
-    color: white;
+    color: var(--ion-color-dark); ;
   }
   
   .icon-button {
@@ -25,7 +27,7 @@
   }
   
   .button-label {
-    color: white;
+    color: var(--ion-color-dark); ;
     margin-top: 5px; 
     font-size: 12px;
   }

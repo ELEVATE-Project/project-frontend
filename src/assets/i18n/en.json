@@ -38,7 +38,12 @@
         "DESC_LBL" : "Project Description",
         "DESC_PLACEHOLDER" : "Enter project description",
         "BTN" : "Create Project",
-        "PRJ_TITLE": "Project Title (mandatory)"
+        "PRJ_TITLE": "Project Title",
+        "OBJECTIVE": "Objective",
+        "ROLE": "Categories",
+        "PRJ_TITLE_HINT" : "Name your project",
+        "OBJECTIVE_HINT": "What is the objective of your Project?",
+        "ROLE_HINT": "What does your project aim to improve?"
     },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",

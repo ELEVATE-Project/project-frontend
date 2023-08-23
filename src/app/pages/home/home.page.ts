@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
   name: any;
   started: any = 0;
   notStarted: any = 0;
+  completed: any = 0;
   chartData: any;
   pieChartHeader = "Project Reports";
 
@@ -28,7 +29,7 @@ export class HomePage implements OnInit {
     {[headerConfigKeys.SHOW_BACK]: false, "action":headerConfigKeys.BACK},
     {[headerConfigKeys.SHOW_MENU]: true, "action": headerConfigKeys.MENU},
     {[headerConfigKeys.SHOW_SEARCH]: true, "action": headerConfigKeys.SEARCH },
-    {[headerConfigKeys.SHOW_NOTIFICATION]: true, "action": headerConfigKeys.NOTIFICATION},
+    {[headerConfigKeys.SHOW_NOTIFICATION]: false, "action": headerConfigKeys.NOTIFICATION},
     {[headerConfigKeys.SHOW_PROFILE]: true, "action": headerConfigKeys.PROFILE},
   ]
 
@@ -135,9 +136,14 @@ export class HomePage implements OnInit {
         if(data){
          this.projects =  data.result.map((item: { title: any; status: string; tasks: string | any[]; }) => {
           if(item.status == 'started') {
+            item.status = "Started";
             this.started+=1;
-          }else{
+          }else if(item.status == 'notStarted'){
+            item.status = "Not Started";
             this.notStarted+=1;
+          }else{  
+            item.status = "Completed";
+            this.completed+=1;
           }
             return {
               name: item.title,
@@ -145,7 +151,7 @@ export class HomePage implements OnInit {
               taskCount: item.tasks.length
             };
           });
-          this.chartData = [{ data: [this.started,this.notStarted] }]
+          this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
           return data;
         }        
       })

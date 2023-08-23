@@ -5,7 +5,7 @@ import { HomeGuard } from './core/gurads/home.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'create-project',
     pathMatch: 'full'
   },
   {
