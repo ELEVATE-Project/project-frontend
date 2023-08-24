@@ -3,31 +3,35 @@ export const menuLabelKeys = {
         headContainer: {
           content: [
             {
-              text: 'SIDE_MENU_LAYOUT.HEADER'
+              text: "Unnati"
             }
           ]
         },
         iconButtons: [
           {
             iconName: 'home',
-            label: 'SIDE_MENU_LAYOUT.HOME',
+            label: 'HOME',
             url: '/home'
           },
           {
-            iconName: 'paper',
-            label: 'SIDE_MENU_LAYOUT.PAPER'
+            iconName: 'document',
+            label: 'Projects',
+            url: '/projects'
           },
           {
             iconName: 'person',
-            label: 'SIDE_MENU_LAYOUT.PERSON'
+            label: 'Person',
+            url: '/person'
           },
           {
             iconName: 'settings',
-            label: 'SIDE_MENU_LAYOUT.SETTINGS'
+            label: 'Settings',
+            url: '/settings'
           },
           {
             iconName: 'log-out',
-            label: 'SIDE_MENU_LAYOUT.LOGOUT'
+            label: 'logout',
+            url: '/log-out'
           }
         ]
 

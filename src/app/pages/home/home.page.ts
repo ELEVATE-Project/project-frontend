@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { headerConfigKeys, localKeys, urlConstants } from 'src/app/core/constants/';
+import { localKeys, urlConstants } from 'src/app/core/constants/';
 import { HttpService, LocalStorageService } from 'src/app/core/services';
 
 
@@ -21,44 +21,9 @@ export class HomePage implements OnInit {
   name: any;
   started: any = 0;
   notStarted: any = 0;
+  completed: any = 0;
   chartData: any;
   pieChartHeader = "Project Reports";
-
-  configHeader = [
-    {[headerConfigKeys.SHOW_BACK]: false, "action":headerConfigKeys.BACK},
-    {[headerConfigKeys.SHOW_MENU]: true, "action": headerConfigKeys.MENU},
-    {[headerConfigKeys.SHOW_SEARCH]: true, "action": headerConfigKeys.SEARCH },
-    {[headerConfigKeys.SHOW_NOTIFICATION]: true, "action": headerConfigKeys.NOTIFICATION},
-    {[headerConfigKeys.SHOW_PROFILE]: true, "action": headerConfigKeys.PROFILE},
-  ]
-
-  handleAction(action: string) {
-    switch (action) {
-      case headerConfigKeys.SEARCH:
-        // Handle search action
-        console.log('Search action triggered');
-        break;
-      case headerConfigKeys.NOTIFICATION:
-        // Handle notification action
-        console.log('Notification action triggered');
-        break;
-      case headerConfigKeys.PROFILE:
-        // Handle profile action
-        console.log('Profile action triggered');
-        break;
-      case headerConfigKeys.MENU:
-        // Handle side menu action
-        console.log('Side menu action triggered');
-        break;
-      default:
-        break;
-    }
-  }
-
-  async ionViewWillEnter(){
-    this.getProjectList();
-    this.getName();
-  }
 
   async getName(){
     let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
@@ -75,9 +40,14 @@ export class HomePage implements OnInit {
         if(data){
          this.projects =  data.result.map((item: { title: any; status: string; tasks: string | any[]; }) => {
           if(item.status == 'started') {
+            item.status = "Started";
             this.started+=1;
-          }else{
+          }else if(item.status == 'notStarted'){
+            item.status = "Not Started";
             this.notStarted+=1;
+          }else{  
+            item.status = "Completed";
+            this.completed+=1;
           }
             return {
               name: item.title,
@@ -85,7 +55,7 @@ export class HomePage implements OnInit {
               taskCount: item.tasks.length
             };
           });
-          this.chartData = [{ data: [this.started,this.notStarted] }]
+          this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
           return data;
         }        
       })
@@ -93,10 +63,11 @@ export class HomePage implements OnInit {
   }
  
   ngOnInit() {
+    this.getProjectList();
+    this.getName();
   }
 
   redirectToProjectCreation(){
-    this.router.navigate(['/create-projects']);
+    this.router.navigateByUrl('/create-project');
   }
-
 }
