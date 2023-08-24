@@ -1,54 +1,26 @@
-#container {
-    text-align: center;
-    background-color: #8c8c8c;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 5%;
-    transform: translateY(-50%);
-  }
-  
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-  
-    color: #8c8c8c;
-  
-    margin: 0;
-  }
-  
-  #container a {
-    text-decoration: none;
-  }
-  
-  // .searchbar-container {
-  //   display: flex;
-  //   justify-content: flex-end;
-  // }
-  
-  .top{
-    margin-top: 2%;
-  }
-  
   .fixed-image {
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 60%;
+    margin-top: -15%;
   }
-  
-  .grid-container {
-   display: grid;
-   gap: 2%;
-  }
-  
+    
   .projects-details{
     width: 100%;
+    color: #F5F5F7;
   }
-  
-  .center-container {
-    margin-top: 10px
+
+  .btn {
+   width: 40%;
+  }
+
+  .pie-chart{
+    width: 60%;
+    height: 50%;
+    margin-left: 20%;
+  }
+
+  .rounded-container {
+    border-radius: 10px; 
+    background-color: #F5F5F7;
+    margin-left: 2%;
   }

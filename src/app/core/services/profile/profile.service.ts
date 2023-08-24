@@ -1,14 +1,9 @@
-import { Injectable, Injector } from '@angular/core';
-import { Router } from '@angular/router';
-import { urlConstants } from 'src/app/core/constants/urlConstants';
-import { localKeys } from '../../constants/localStorage.keys';
+import { Injectable } from '@angular/core';
 import * as _ from 'lodash-es';
 import { Location } from '@angular/common';
-import { UserService } from '../user/user.service';
-import { AuthService } from '../auth/auth.service';
 import { map } from 'rxjs/operators';
-import { LocalStorageService } from '../localStorage/localstorage.service';
-import { HttpService } from '../http/http.service';
+import { localKeys, urlConstants } from 'src/app/core/constants/';
+import { HttpService, UserService, LocalStorageService, ToastService } from 'src/app/core/services/';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +11,9 @@ import { HttpService } from '../http/http.service';
 export class ProfileService {
   constructor(
     private httpService: HttpService,
-    private router: Router,
     private localStorage: LocalStorageService,
     private _location: Location,
     private userService: UserService,
-    private injector: Injector
   ) { }
   async profileUpdate(formData:any, showToast=true) {
     const config = {
@@ -35,7 +28,6 @@ export class ProfileService {
       await this.localStorage.setLocalData(localKeys.USER_DETAILS, JSON.stringify(profileData));
       this.userService.userEvent.next(profileData);
       this._location.back();
-      // (showToast)?this.toast.showToast(data.message, "success"):null;
     }
     catch (error) {
     }
@@ -45,7 +37,6 @@ export class ProfileService {
       url: urlConstants.API_URLS.PROFILE_DETAILS,
       payload: {}
     };
-    // try {
     return this.httpService.get(config).pipe(
       map((data:any)=>{
         data = _.get(data, 'result');
@@ -53,9 +44,6 @@ export class ProfileService {
         return data;
       })
     )
-    // }
-    // catch (error) {
-    // }
   }
 
   async profileDetails(showLoader = true): Promise<any> {
@@ -73,8 +61,6 @@ export class ProfileService {
                 data = _.get(data, 'user');
                 resolve(data);
               })
-              // await this.localStorage.setLocalData(localKeys.USER_DETAILS, res);
-              // data = _.get(data, 'user');
             }
           })
       } catch (error) {
@@ -102,9 +88,10 @@ export class ProfileService {
     };
     try {
       let data: any = await this.httpService.post(config);
-      let authService = this.injector.get(AuthService);
-      let userData = authService.setUserInLocal(data);
-      return userData;
+      // to be used 
+      // let authService = this.injector.get(AuthService);
+      //let userData = authService.setUserInLocal(data);
+      // return userData;
     }
     catch (error) {
     }

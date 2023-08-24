@@ -1,0 +1,53 @@
+<ion-content [fullscreen]="true">
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+        <h1 class="heading">{{ "SIGN_UP_PAGE.CREATE_ACCOUNT" | translate }}<br><br></h1>
+        <p class="para">{{ "SIGN_UP_PAGE.SIGN_UP_HEAD" | translate }}</p>
+        <div class="logo-container">
+          <img src="assets/icon/favicon.png" alt="logo" class="logo-image">
+        </div>          
+      </ion-col>
+      <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+        <form class="form" [formGroup]="formData" class="top">
+          <ion-item lines="none" class="ion-item">
+            <fieldset  class="input-item">
+              <legend>{{ "SIGN_UP_PAGE.FULL_NAME_LABEL" | translate }}</legend> 
+              <ion-input formControlName="name" type="text" placeholder='{{ "SIGN_UP_PAGE.FULL_NAME_PLACEHOLDER" | translate }}'></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item">
+            <fieldset  class="input-item">
+              <legend>{{ "EMAIL" | translate }}</legend> 
+              <ion-input formControlName="email" type="email" placeholder='{{ "EMAIL_PLACEHOLDER" | translate }}'></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item">
+            <fieldset class="input-item">
+              <legend>{{ "PASSWORD" | translate }}</legend> 
+              <ion-input formControlName="password" type="password" placeholder='{{ "PASSWORD_PLACEHOLDER" | translate }}'></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item">
+            <fieldset class="input-item">
+              <legend>{{ "SIGN_UP_PAGE.CONFIRM_PASSWORD" | translate }}</legend> 
+              <ion-input formControlName="cpassword" type="password" placeholder='{{ "SIGN_UP_PAGE.CONFIRM_PASSWORD_PLACEHOLDER" | translate }}'></ion-input>
+            </fieldset>
+          </ion-item>
+          <ion-item lines="none" class="ion-item" *ngIf="isOTPGenerated">
+            <fieldset class="input-item">
+              <legend>{{ "SIGN_UP_PAGE.OTP" | translate }}</legend> 
+              <ion-input formControlName="otp" type="text" placeholder='{{ "SIGN_UP_PAGE.OTP_PLACEHOLDER" | translate }}'></ion-input>
+            </fieldset>
+          </ion-item>
+          
+          <p class="signin-text">{{ "SIGN_UP_PAGE.ALREADY_MEMBER" | translate }}&nbsp;<a (click)="redirectToSignIn()">{{ "SIGN_IN" | translate }}</a></p>
+          <ion-button class="button" (click)="register()" *ngIf="!isOTPGenerated" expand="block">{{ "SIGN_UP_PAGE.SIGN_UP_BTN" | translate }}</ion-button>
+          <ion-button class="button" (click)="createUser()" *ngIf="isOTPGenerated"  expand="block">S{{ "SIGN_UP_PAGE.SUBMIT_OTP_BTN" | translate }}</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+</ion-content>

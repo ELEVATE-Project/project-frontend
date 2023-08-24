@@ -7,16 +7,27 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { ProjectDetailsComponent } from 'src/app/components/project-details/project-details.component';
-import { ProjectStatusCountComponent } from 'src/app/components/project-status-count/project-status-count.component';
+import { ProjectCardComponent, PieChartComponent, SideMenuComponent, HeaderComponent } from 'src/app/components/index' ;
+import { NgChartsModule } from 'ng2-charts';
+import { TranslateModule } from '@ngx-translate/core';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    NgChartsModule,
+    TranslateModule,
   ],
-  declarations: [HomePage, ProjectStatusCountComponent, ProjectDetailsComponent,]
+  declarations: [
+    HomePage,
+    ProjectCardComponent,
+    PieChartComponent,
+    SideMenuComponent,
+    HeaderComponent
+  ]
 })
 export class HomePageModule {}
