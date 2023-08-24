@@ -6,7 +6,7 @@ import {
     SideMenuComponent,
     SideNavLayoutComponent,
     ProjectCardComponent,
-    BackButtonComponent } from './index';
+    } from './index';
 import { IonicModule } from '@ionic/angular';
 
 
@@ -15,7 +15,6 @@ import { IonicModule } from '@ionic/angular';
     HeaderComponent, 
     FooterComponent, 
     ProjectCardComponent,
-    BackButtonComponent,
     SideMenuComponent,
     SideNavLayoutComponent, 
 ],
@@ -26,7 +25,6 @@ import { IonicModule } from '@ionic/angular';
     SideMenuComponent,
     SideNavLayoutComponent, 
     ProjectCardComponent,
-    BackButtonComponent
 ],
 })
 export class LayoutModule {}
