@@ -5,7 +5,7 @@ import { HomeGuard } from './core/gurads/home.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'global-search',
     pathMatch: 'full'
   },
   {
@@ -17,6 +17,11 @@ const routes: Routes = [
     canActivate: [HomeGuard],
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'global-search',
+    loadChildren: () => import('./pages/global-search/global-search.module').then( m => m.GlobalSearchPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

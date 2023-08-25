@@ -20,6 +20,8 @@ export const urlConstants = {
         SHARE_MENTOR_PROFILE:"/mentoring/v1/mentors/share/",
         REPORT_ISSUE:"/mentoring/v1/issues/create",
         GET_PROJECT: "/c4gt-unnati/v1/userProjects/list",
+        GLOBAL_SEARCH: (page: number, limit: number, search: string) =>
+        `/c4gt-unnati/v1/project/templates/list?page=${page}&limit=${limit}&search=${search}`,
         // FORMS
         FORM_READ:'/mentoring/v1/form/read',
         GENERATE_OTP:"/user/v1/account/generateOtp",
