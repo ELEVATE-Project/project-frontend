@@ -39,6 +39,14 @@
         "DESC_PLACEHOLDER" : "Enter project description",
         "BTN" : "Create Project"
     },
+    "SIDE_MENU_LAYOUT" :{
+        "HEADER" : "UNNATI",
+        "HOME" : "Home",
+        "PROJECTS" : "Projects",
+        "PROFILE" : "Profile",
+        "SETTINGS" : "Settings",
+        "LOGOUT" : "Logout"
+    },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",

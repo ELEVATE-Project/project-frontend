@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SideMenuComponent } from 'src/app/components/index';
+// import { SideMenuComponent } from 'src/app/components/index';
 
 
 @Component({
