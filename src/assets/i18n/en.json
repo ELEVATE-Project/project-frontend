@@ -40,10 +40,10 @@
         "BTN" : "Create Project"
     },
     "SIDE_MENU_LAYOUT" :{
-        "HEADER" : "Unnati",
+        "HEADER" : "UNNATI",
         "HOME" : "Home",
-        "PAPER" : "Paper",
-        "PERSON" : "Persons",
+        "PROJECTS" : "Projects",
+        "PROFILE" : "Profile",
         "SETTINGS" : "Settings",
         "LOGOUT" : "Logout"
     },

@@ -10,27 +10,27 @@ export const menuLabelKeys = {
         iconButtons: [
           {
             iconName: 'home',
-            label: 'HOME',
+            label: 'SIDE_MENU_LAYOUT.HOME',
             url: '/home'
           },
           {
             iconName: 'document',
-            label: 'Projects',
+            label: 'SIDE_MENU_LAYOUT.PROJECTS',
             url: '/projects'
           },
           {
             iconName: 'person',
-            label: 'Person',
+            label: 'SIDE_MENU_LAYOUT.PROFILE',
             url: '/person'
           },
           {
             iconName: 'settings',
-            label: 'Settings',
+            label: 'SIDE_MENU_LAYOUT.SETTINGS',
             url: '/settings'
           },
           {
             iconName: 'log-out',
-            label: 'logout',
+            label: 'SIDE_MENU_LAYOUT.LOGOUT',
             url: '/log-out'
           }
         ]

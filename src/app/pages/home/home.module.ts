@@ -7,10 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { PieChartComponent } from 'src/app/components/index' ;
+import { PieChartComponent, ProjectCardComponent } from 'src/app/components/index' ;
 import { NgChartsModule } from 'ng2-charts';
 import { TranslateModule } from '@ngx-translate/core';
-import { LayoutModule } from 'src/app/components/sharedlayout.module';
+import { SharedModule } from 'src/app/shared/sharedModule.module';
 
 
 
@@ -21,8 +21,8 @@ import { LayoutModule } from 'src/app/components/sharedlayout.module';
     IonicModule,
     HomePageRoutingModule,
     NgChartsModule,
-    LayoutModule,
     TranslateModule,
+    SharedModule
   ],
   declarations: [
     HomePage,

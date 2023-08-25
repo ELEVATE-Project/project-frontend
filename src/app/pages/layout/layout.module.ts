@@ -7,16 +7,34 @@ import { IonicModule } from '@ionic/angular';
 import { LayoutPageRoutingModule } from './layout-routing.module';
 
 import { LayoutPage } from './layout.page';
-import { LayoutModule } from 'src/app/components/sharedlayout.module';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { SideNavLayoutComponent } from './side-nav-layout/side-nav-layout.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @NgModule({
+  declarations: [
+    LayoutPage,
+    HeaderComponent, 
+    FooterComponent, 
+    SideMenuComponent,
+    SideNavLayoutComponent, 
+  ],
   imports: [
     CommonModule,
+    TranslateModule,
     FormsModule,
     IonicModule,
-    LayoutModule,
-    LayoutPageRoutingModule
+    LayoutPageRoutingModule,
   ],
-  declarations: [LayoutPage]
+  
+  exports: [
+      HeaderComponent, 
+      FooterComponent, 
+      SideMenuComponent,
+      SideNavLayoutComponent, 
+      // ProjectCardComponent,
+  ],
 })
 export class LayoutPageModule {}

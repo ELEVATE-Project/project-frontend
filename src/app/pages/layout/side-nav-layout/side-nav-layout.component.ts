@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { TranslateModule } from '@ngx-translate/core';
-
 
 @Component({
   selector: 'app-side-nav-layout',
