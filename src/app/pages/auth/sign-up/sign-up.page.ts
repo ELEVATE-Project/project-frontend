@@ -95,7 +95,7 @@ export class SignUpPage implements OnInit {
           this.userService.setUserInLocal(data);
           this.menuCtrl.enable(true);
           this.toast.showToast(data.message, "success")
-          this.router.navigate(['/home'], { replaceUrl: true });
+          this.router.navigate(['/layouts'], { replaceUrl: true });
       }
       this.menuCtrl.enable(true);
       });
