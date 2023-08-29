@@ -1,24 +1,31 @@
 
 <ion-grid class="glass-effect">
   <form [formGroup]="projectForm" >
-    <ion-item *ngFor="let field of createProjectForm" lines="none" class="ion-item">
-      <fieldset  class="inputs">
-      <ion-label position="stacked">{{ field.label | translate }}</ion-label>
-      <ion-input
-        *ngIf="field.input === 'text'"
-        formControlName="{{ field.field }}"
-        type="text"
-        maxlength="{{ field.max }}"
-        value="field.value"
-      ></ion-input>
-      <ion-textarea
-        *ngIf="field.input === 'textarea'"
+    <div *ngFor="let field of createProjectForm" lines="none" >
+      <!-- <fieldset  class=""> -->
+         
+        <ion-item  *ngIf="field.input === 'text'" class="ion-items inputs">
+          <ion-label position="stacked" >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+          <ion-input 
+            formControlName="{{ field.field }}"
+            type="text"
+            maxlength="{{ field.max }}"
+            value="field.value"
+          ></ion-input>
+        </ion-item>
+     
+      <ion-item  *ngIf="field.input === 'textarea'" class="inputs">
+        <ion-label position="stacked" >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+        <ion-textarea
         formControlName="{{ field.field }}"
         rows="2"
         maxlength="{{ field.max }}"
       ></ion-textarea>
+      </ion-item>
+
+      <ion-item  *ngIf="field.input === 'select'" class="inputs">
+      <ion-label position="stacked" >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
       <ion-select
-        *ngIf="field.input === 'select'"
         formControlName="{{ field.field }}"
         interface="popover"
         [multiple]="true"
@@ -30,21 +37,24 @@
           {{ option.label | translate }}
         </ion-select-option>
       </ion-select>
+      </ion-item>
       
       <!-- Add 'Other' input for select -->
-      <div *ngIf="field.input === 'other' && showOthers">
+
+      <ion-item *ngIf="showOthers && field.input == 'other' ">
+        <ion-label position="stacked">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
         <ion-input
-        
         formControlName="otherCategory"
         type="text"
       ></ion-input>
-      </div>
+      </ion-item>
+    
       
-      
-    <ion-label
-      *ngIf="field.input === 'date'"
+    <ion-item *ngIf="field.input === 'date'">
+      <ion-label
+    
       readonly
-    >{{ field.value }}</ion-label>
+    >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
     <ion-datetime-button *ngIf="field.input === 'date'" datetime="{{ field.field }}" ></ion-datetime-button>
     <ion-modal [keepContentsMounted]="true">
   <ng-template>
@@ -53,9 +63,10 @@
     (ionChange)="setDate($event, field)"></ion-datetime>
   </ng-template>
 </ion-modal>
-</fieldset>
-    </ion-item>
-
+    </ion-item>  
+    
+<!-- </fieldset> -->
+</div>
     <ion-button 
     fill="outline"
     (click)="onReset()" 

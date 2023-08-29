@@ -10,7 +10,6 @@ import { Subject } from 'rxjs';
     constructor(){ }
 
     setHeaders(setHeaderVal: any){
-      console.log(setHeaderVal);
        this.configHeader.next(setHeaderVal);
     } 
       

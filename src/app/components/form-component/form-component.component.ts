@@ -10,7 +10,7 @@ import { HttpService, ToastService } from 'src/app/core/services';
 })
 export class FormComponent  implements OnInit {
 
-  public showOthers = false;   
+  public showOthers: boolean = false;   
   public projectForm: FormGroup = this.fb.group({});
   @Input()createProjectForm: any = [];  // form json to display
   constructor(
@@ -38,6 +38,7 @@ export class FormComponent  implements OnInit {
             value.forEach((cat: any) => {
               if (cat.value === 'others') {
                 cat.isSelected = true;
+                otherSelected = true;
               }
             });
       
@@ -73,8 +74,7 @@ export class FormComponent  implements OnInit {
   // submit the form
   async onSubmit(){
 
-    console.log(this.projectForm.value);
-
+    if(!this.projectForm.valid) return;
     const selectedEndDate = this.projectForm.get('endDate')?.value!;
     const selectedStartDate = this.projectForm.get('startDate')?.value!;
     // validation to check endDate > startDate
@@ -87,13 +87,11 @@ export class FormComponent  implements OnInit {
       // Check if 'other' is selected
     selectedCategories!.forEach((cat: any) => {
         if(cat.value == 'others'){
-          cat['name']  = this.projectForm.get('other')?.value;
+          cat['name']  = this.projectForm.get('otherCategory')?.value;
         }          
     })
-    console.log(this.projectForm?.value);
-    // makke api call
-    if(this.projectForm.valid){
-  
+
+    // makke api call  
       const payload = {
         ...this.projectForm.value,
         isDeleted: false,
@@ -113,7 +111,7 @@ export class FormComponent  implements OnInit {
           this.toast.showToast(userDetails.message, "success")
       }
       });
-    }
+    
   }
 
   // set the dates into their respective controls
@@ -126,5 +124,6 @@ export class FormComponent  implements OnInit {
   onReset(){
     this.projectForm.reset();
   }
+
 
 }
