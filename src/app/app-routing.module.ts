@@ -11,7 +11,7 @@ import { CreateProjectPage } from './pages/create-project/create-project.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'layout/create-project',
+    redirectTo: 'layout/home',
     pathMatch: 'full'
   },
   {
