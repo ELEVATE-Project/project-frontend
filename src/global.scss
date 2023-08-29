@@ -25,11 +25,13 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+// css for container of image
 .logo-container {
     display: flex;
     justify-content: center;
   }
   
+// css of image 
   .logo-image {
     width: 80%;
     height: 80%;
@@ -48,6 +50,7 @@
     }
   }
 
+  // button with round border and primary bg-color
   .rounded-custom-button{
     color: primary;
     padding-left: 20px;
@@ -58,8 +61,32 @@
     --box-shadow: none;
   }
 
+  // to center the content inside a container
   .center-container {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
+  }
+
+  // centers the content of a container vertically 
+  .center-container-vertical {
+    display: flex;
+    align-items: center; /* Center vertically */
+  }
+
+  // centers the content of a container horizontally 
+  .center-container-horizontal {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px); 
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }

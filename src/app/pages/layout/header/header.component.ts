@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-// import { SideMenuComponent } from 'src/app/components/index';
+import { headerConfigKeys } from 'src/app/core/constants/';
 
 
 @Component({
@@ -8,16 +8,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent  implements OnInit {
-   @Input()configHeaders: any = [];
-   @Output() actionEmitter: EventEmitter<string> = new EventEmitter<string>();
+  headerConfigKeys = headerConfigKeys;
+  @Input()configHeader: any = {};
+  @Output() actionEmitter: EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 
   private title: any;
   
-  performAction(action: string) {
+  performAction(action: any) {
     this.actionEmitter.emit(action);
   }
-  
+
   ngOnInit() {}
 
 }

@@ -29,7 +29,8 @@
     "HOME" : {
         "HELLO": "Hello {{name}}!",
         "WELCOME_LBL" : "Welcome back",
-        "CREATE_PROJECT_BTN" : "Create Project"
+        "CREATE_PROJECT_BTN" : "Create Project",
+        "EMPTY_LBL" : "No data available for your user id"
     },
     "PROJECT_CREATION" :{
         "HEADER" : "PROJECT CREATION",
@@ -37,7 +38,20 @@
         "NAME_PLACEHOLDER" : "Enter your project name",
         "DESC_LBL" : "Project Description",
         "DESC_PLACEHOLDER" : "Enter project description",
-        "BTN" : "Create Project"
+        "BTN" : "Create Project",
+        "FORM" : {
+            "PRJ_TITLE": "Project Title",
+            "PRJ_TITLE_HINT" : "Enter your project title",
+            "OBJECTIVE" : "Objective",
+            "OBJECTIVE_HINT" : "Enter objective of your  project",
+            "CATEGORY" : "Category",
+            "CATEGORY_HINT" : "Select your Category",
+            "STARTDATE": "Start Date",
+            "ENDDATE": "End Date",
+            "OTHER": "Other",
+            "OTHER_HINT": "Enter name of other category"
+
+        }
     },
     "SIDE_MENU_LAYOUT" :{
         "HEADER" : "UNNATI",
@@ -51,5 +65,7 @@
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
     "PASSWORD_PLACEHOLDER" : "Enter your password",
-    "SIGN_IN" : "Sign in?"
+    "SIGN_IN" : "Sign in?",
+    "SUBMIT" : "Submit",
+    "RESET_FORM" : "Reset Form"
     }

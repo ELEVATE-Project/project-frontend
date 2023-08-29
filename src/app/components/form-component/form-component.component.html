@@ -1,0 +1,77 @@
+
+<ion-grid class="glass-effect">
+  <form [formGroup]="projectForm" >
+    <ion-item *ngFor="let field of createProjectForm" lines="none" class="ion-item">
+      <fieldset  class="inputs">
+      <ion-label position="stacked">{{ field.label | translate }}</ion-label>
+      <ion-input
+        *ngIf="field.input === 'text'"
+        formControlName="{{ field.field }}"
+        type="text"
+        maxlength="{{ field.max }}"
+        value="field.value"
+      ></ion-input>
+      <ion-textarea
+        *ngIf="field.input === 'textarea'"
+        formControlName="{{ field.field }}"
+        rows="2"
+        maxlength="{{ field.max }}"
+      ></ion-textarea>
+      <ion-select
+        *ngIf="field.input === 'select'"
+        formControlName="{{ field.field }}"
+        interface="popover"
+        [multiple]="true"
+      >
+        <ion-select-option
+          *ngFor="let option of field.options"
+          [value]=option
+        >
+          {{ option.label | translate }}
+        </ion-select-option>
+      </ion-select>
+      
+      <!-- Add 'Other' input for select -->
+      <div *ngIf="field.input === 'other' && showOthers">
+        <ion-input
+        
+        formControlName="otherCategory"
+        type="text"
+      ></ion-input>
+      </div>
+      
+      
+    <ion-label
+      *ngIf="field.input === 'date'"
+      readonly
+    >{{ field.value }}</ion-label>
+    <ion-datetime-button *ngIf="field.input === 'date'" datetime="{{ field.field }}" ></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="{{ field.field }}" 
+    displayFormat="MMM DD, YYYY"
+    (ionChange)="setDate($event, field)"></ion-datetime>
+  </ng-template>
+</ion-modal>
+</fieldset>
+    </ion-item>
+
+    <ion-button 
+    fill="outline"
+    (click)="onReset()" 
+    class="form-btn" 
+    >
+    {{ "RESET_FORM" | translate }}
+    </ion-button>
+
+  <ion-button 
+
+  (click)="onSubmit()" 
+  class="form-btn" 
+  >
+  {{ "SUBMIT" | translate }}
+  </ion-button>
+
+</form>
+</ion-grid>
+  

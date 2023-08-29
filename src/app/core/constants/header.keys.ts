@@ -3,6 +3,7 @@ export const headerConfigKeys = {
     PROFILE: 'profile',
     NOTIFICATION:'notification',
     MENU:'menu',
+    SHOW_ICON : 'showIcon',
     SHOW_SEARCH : 'showSearch',
     SHOW_PROFILE: 'showProfile',
     SHOW_NOTIFICATION:'showNotification',
