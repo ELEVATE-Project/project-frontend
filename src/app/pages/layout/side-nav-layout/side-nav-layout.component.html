@@ -1,0 +1,9 @@
+  <div class="btn-container">
+    <div class="head-container">
+      <p>{{ configMenu.headContainer.content[0].text | translate }}</p>
+    </div>
+    <div *ngFor="let button of configMenu.iconButtons" class="icon-button"  (click)="performAction(button.url)">
+      <ion-icon [name]="button.iconName"></ion-icon>
+      <div class="button-label">{{ button.label | translate}}</div>
+    </div>
+  </div>

@@ -1,5 +1,3 @@
-export * from './layout/footer/footer.component';
-export * from './layout/header/header.component';
-export * from './layout/side-menu/side-menu.component';
+export * from '../pages/layout/footer/footer.component';
 export * from './pie-chart/pie-chart.component';
 export * from './project-card/project-card.component';
