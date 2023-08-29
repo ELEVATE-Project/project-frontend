@@ -2,7 +2,6 @@
 <ion-grid class="glass-effect">
   <form [formGroup]="projectForm" >
     <div *ngFor="let field of createProjectForm" lines="none" >
-      <!-- <fieldset  class=""> -->
          
         <ion-item  *ngIf="field.input === 'text'" class="ion-items inputs">
           <ion-label position="stacked" >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
@@ -49,39 +48,42 @@
       ></ion-input>
       </ion-item>
     
-      
-    <ion-item *ngIf="field.input === 'date'">
-      <ion-label
     
-      readonly
-    >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
-    <ion-datetime-button *ngIf="field.input === 'date'" datetime="{{ field.field }}" ></ion-datetime-button>
-    <ion-modal [keepContentsMounted]="true">
-  <ng-template>
-    <ion-datetime id="{{ field.field }}" 
-    displayFormat="MMM DD, YYYY"
-    (ionChange)="setDate($event, field)"></ion-datetime>
-  </ng-template>
-</ion-modal>
-    </ion-item>  
+        
+          <ion-item *ngIf="field.input === 'date'">
+            <ion-row>
+          <ion-col size="6" size-md="6" size-sm="12">
+            <ion-label
+            readonly
+          >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+          </ion-col>
+          <ion-col size="6" size-md="6" size-sm="12">
+            <ion-datetime-button color="white" *ngIf="field.input === 'date'" datetime="{{ field.field }}" ></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="{{ field.field }}" 
+      displayFormat="MMM DD, YYYY"
+      (ionChange)="setDate($event, field)"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+          </ion-col>
+        </ion-row>
+        </ion-item>  
+
     
-<!-- </fieldset> -->
+  
+    
 </div>
-    <ion-button 
-    fill="outline"
-    (click)="onReset()" 
-    class="form-btn" 
-    >
-    {{ "RESET_FORM" | translate }}
+<ion-row>
+  <ion-col size="12" class="ion-text-right">
+    <ion-button fill="outline" (click)="onReset()" class="form-btn">
+      {{ "RESET_FORM" | translate }}
     </ion-button>
-
-  <ion-button 
-
-  (click)="onSubmit()" 
-  class="form-btn" 
-  >
-  {{ "SUBMIT" | translate }}
-  </ion-button>
+    <ion-button (click)="onSubmit()" class="form-btn">
+      {{ "SUBMIT" | translate }}
+    </ion-button>
+  </ion-col>
+</ion-row>
 
 </form>
 </ion-grid>
