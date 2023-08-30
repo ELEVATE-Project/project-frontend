@@ -41,3 +41,8 @@
   align-items: center; /* Center vertically */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.scroll-content {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

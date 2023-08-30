@@ -61,6 +61,9 @@
         "SETTINGS" : "Settings",
         "LOGOUT" : "Logout"
     },
+    "GLOBAL_SEARCH" :{
+        "TITLE" : "Global Search"
+    },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",

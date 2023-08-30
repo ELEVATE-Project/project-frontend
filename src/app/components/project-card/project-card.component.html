@@ -6,7 +6,7 @@
         <label class="project-name ">{{ projectName }}</label>
         </ion-col>
         <ion-col size="4" size-sm="4" size-md="4" size-lg="4" class="center-container">
-          <ion-label [ngClass]="projectStatus === 'Started' ? 'in-progress' : 'not-started '">{{ projectStatus }}</ion-label>
+          <ion-label text-wrap [ngClass]="projectStatus === 'Started' ? 'in-progress' : 'not-started '">{{ projectStatus }}</ion-label>
         </ion-col>
         <ion-col size="1" size-sm="1" size-md="1" size-lg="1" class="center-container">
           <ion-label  [ngClass]="{ 'completed': projectStatus === 'Completed', 'in-progress': projectStatus != 'Completed' }">{{ taskCount }}</ion-label>
