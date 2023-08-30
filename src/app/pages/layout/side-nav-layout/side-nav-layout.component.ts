@@ -20,7 +20,6 @@ export class SideNavLayoutComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.configMenu);
   }
 
 }

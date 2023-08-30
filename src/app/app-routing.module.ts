@@ -27,8 +27,10 @@ const routes: Routes = [
   {
     path: 'global-search',
     loadChildren: () => import('./pages/global-search/global-search.module').then( m => m.GlobalSearchPageModule)
-  },{
+  },
+  {
     path: 'layout',
+    canActivate: [HomeGuard],
     component: LayoutPage,
     children: [
       {path:'', component: HomePage, pathMatch: 'full'},

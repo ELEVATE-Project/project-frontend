@@ -1,20 +1,31 @@
 
 <ion-grid>
   <ion-row>
-    <ng-container *ngFor="let configHeader of configHeaders">
-      <ion-col class="ion-hide-md-up" size="4" size-sm="2" size-md="6" size-lg="6" *ngIf="configHeader.showSideMenu">
-        <app-side-menu>
-        </app-side-menu>
+      <ion-col size="2" size-sm="1" size-md="3" size-lg="3" class="center-container-vertical">
+        <div *ngIf="configHeader[headerConfigKeys.SHOW_ICON]">
+          <ion-img src="assets/icon/favicon.png" alt="logo" class="logo-image"></ion-img>
+        </div>  
       </ion-col>
-      <ion-col offset-lg="7" offset-md="7" size="6" size-sm="4" size-md="4" size-lg="4" *ngIf="configHeader.showSearch">
-        <ion-searchbar class="custom"></ion-searchbar>
+      <ion-col class="center-container-vertical" size="2" size-sm="1" size-md="3" size-lg="3">
+        <div *ngIf="configHeader[headerConfigKeys.SHOW_MENU]" class="ion-hide-md-up">
+          <app-side-menu>
+          </app-side-menu>
+        </div>
       </ion-col>
-      <ion-col size="1" size-sm="2" size-md="1" size-lg="1" class="ion-text-end ion-col" (click)="performAction(configHeader.action)" *ngIf="configHeader.showNotification">
-        <ion-icon size="large" name="notifications"></ion-icon>
+      <ion-col  size="6" size-sm="4" size-md="4" size-lg="4"  class="center-container-vertical">
+        <div *ngIf="configHeader[headerConfigKeys.SHOW_SEARCH]">
+          <ion-searchbar class="custom"></ion-searchbar>
+        </div>
       </ion-col>
-      <ion-col size="1" size-sm="2" size-md="1" size-lg="1" class="ion-text-end center-container-vertical" *ngIf="configHeader.showProfile" (click)="performAction(configHeader.action)">
-        <ion-icon size="large" name="person-circle"></ion-icon>
+      <ion-col size="1" size-sm="2" size-md="1" size-lg="1" class="center-container-vertical" (click)="performAction(headerConfigKeys.SHOW_NOTIFICATION)" >
+        <div *ngIf="configHeader[headerConfigKeys.SHOW_NOTIFICATION]">
+          <ion-icon size="large" name="notifications"></ion-icon>
+        </div>
       </ion-col>
-    </ng-container>
+      <ion-col size="1" size-sm="2" size-md="1" size-lg="1" class="center-container-vertical"  (click)="performAction(headerConfigKeys.SHOW_PROFILE)">
+        <div *ngIf="configHeader[headerConfigKeys.SHOW_PROFILE]">
+          <ion-icon size="large" name="person-circle"></ion-icon>
+        </div>
+      </ion-col>
   </ion-row>
 </ion-grid>

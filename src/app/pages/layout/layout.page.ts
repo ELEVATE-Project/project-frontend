@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { headerConfigKeys } from 'src/app/core/constants';
 import { menuLabelKeys } from 'src/app/core/constants/menu.keys';
+import { UtilService } from 'src/app/shared/util.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,34 +9,42 @@ import { menuLabelKeys } from 'src/app/core/constants/menu.keys';
   styleUrls: ['./layout.page.scss'],
 })
 export class LayoutPage implements OnInit {
-
-  constructor() { }
+  // default 
+  configHeader: any = {
+    [headerConfigKeys.SHOW_ICON]: true,
+    [headerConfigKeys.SHOW_MENU]: true,
+    [headerConfigKeys.SHOW_SEARCH]: true,
+    [headerConfigKeys.SHOW_NOTIFICATION]: true,
+    [headerConfigKeys.SHOW_PROFILE]: true,
+    };
+  constructor(
+    private utlService: UtilService
+  ) {
+    this.utlService.setHeaders(this.configHeader);
+    this.utlService.configHeader.subscribe((header: any)=>{
+      this.configHeader = header;
+    })
+  }
 
   ngOnInit() {
   }
 
-  configHeader = [
-    {[headerConfigKeys.SHOW_MENU]: true, "action": headerConfigKeys.MENU},
-    {[headerConfigKeys.SHOW_SEARCH]: true, "action": headerConfigKeys.SEARCH },
-    {[headerConfigKeys.SHOW_NOTIFICATION]: false, "action": headerConfigKeys.NOTIFICATION},
-    {[headerConfigKeys.SHOW_PROFILE]: true, "action": headerConfigKeys.PROFILE},
-  ]
 
   handleAction(action: string) {
     switch (action) {
-      case headerConfigKeys.SEARCH:
+      case headerConfigKeys.SHOW_SEARCH:
         // Handle search action
         console.log('Search action triggered');
         break;
-      case headerConfigKeys.NOTIFICATION:
+      case headerConfigKeys.SHOW_NOTIFICATION:
         // Handle notification action
         console.log('Notification action triggered');
         break;
-      case headerConfigKeys.PROFILE:
+      case headerConfigKeys.SHOW_PROFILE:
         // Handle profile action
         console.log('Profile action triggered');
         break;
-      case headerConfigKeys.MENU:
+      case headerConfigKeys.SHOW_MENU:
         // Handle side menu action
         console.log('Side menu action triggered');
         break;

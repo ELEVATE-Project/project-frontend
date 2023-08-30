@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { CreateProjectPageRoutingModule } from './create-project-routing.module';
 
 import { CreateProjectPage } from './create-project.page';
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/sharedModule.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateProjectPageRoutingModule
+    CreateProjectPageRoutingModule,
+    TranslateModule,
+    SharedModule
   ],
   declarations: [CreateProjectPage]
 })
