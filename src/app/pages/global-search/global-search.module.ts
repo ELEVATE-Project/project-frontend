@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { GlobalSearchPageRoutingModule } from './global-search-routing.module';
 
 import { GlobalSearchPage } from './global-search.page';
+import { SharedModule } from 'src/app/shared/sharedModule.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GlobalSearchPageRoutingModule
+    GlobalSearchPageRoutingModule,
+    SharedModule
   ],
   declarations: [GlobalSearchPage]
 })

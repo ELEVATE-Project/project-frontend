@@ -19,7 +19,7 @@ export class GlobalSearchPage implements OnInit {
     private toast: ToastService,
     ) {}
   ngOnInit(): void {
-   
+    this.loadSearchResults("");
   }
 
   onSearch(event: any) {
@@ -49,7 +49,8 @@ export class GlobalSearchPage implements OnInit {
           return;
         }
         // Append new results to the existing list
-        this.searchResults = this.searchResults.concat(data);
+        this.searchResults = data.result;
+        
       }
     });
   }

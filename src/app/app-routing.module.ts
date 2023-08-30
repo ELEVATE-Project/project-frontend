@@ -7,11 +7,12 @@ import { CreateProjectPageModule } from './pages/create-project/create-project.m
 import { LayoutPage } from './pages/layout/layout.page';
 import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
+import { GlobalSearchPage } from './pages/global-search/global-search.page';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'global-search',
+    redirectTo: 'layout/global-search',
     pathMatch: 'full'
   },
   {
@@ -27,13 +28,13 @@ const routes: Routes = [
     path: 'global-search',
     loadChildren: () => import('./pages/global-search/global-search.module').then( m => m.GlobalSearchPageModule)
   },{
-
-    path: '',
+    path: 'layout',
     component: LayoutPage,
     children: [
       {path:'', component: HomePage, pathMatch: 'full'},
       { path: 'home', component: HomePage },
       { path: 'create-project', component: CreateProjectPage },
+      { path: 'global-search', component: GlobalSearchPage   }
     ],
   },
   {
