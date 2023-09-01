@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
           this.userService.setUserInLocal(userDetails);
           this.toast.showToast(userDetails.message, "success")
           this.menuCtrl.enable(true);
-          this.router.navigate(['/home'], { replaceUrl: true });
+          this.router.navigate(['/layout'], { replaceUrl: true });
       }
       })
        this.menuCtrl.enable(true);

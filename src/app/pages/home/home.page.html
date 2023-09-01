@@ -18,7 +18,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row *ngIf="!showEmptyMessage">
         <ion-col size="12" size-sm="12" size-md="7" size-lg="7" >
           <div>
             <ion-list *ngFor="let project of projects">
@@ -31,10 +31,20 @@
             </ion-list>
           </div>
         </ion-col>
-        <ion-col size="12" size-sm="12" size-md="5" size-lg="5" >
+        <ion-col size="12" size-sm="12" size-md="5" size-lg="5" *ngIf="!showEmptyMessage">
           <div class="pie-chart">
             <app-pie-chart  [chartData]=" chartData" [title]="pieChartHeader">
             </app-pie-chart>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="showEmptyMessage" class="empty-box ">
+        <ion-col size="12" size-sm="12" size-md="7" size-lg="7" >
+          <div>
+            <ion-label>
+              {{ "HOME.EMPTY_LBL" | translate  }}
+            </ion-label>
           </div>
         </ion-col>
       </ion-row>
