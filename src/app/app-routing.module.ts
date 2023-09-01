@@ -12,7 +12,7 @@ import { GlobalSearchPage } from './pages/global-search/global-search.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'layout/global-search',
+    redirectTo: 'layout/home',
     pathMatch: 'full'
   },
   {
