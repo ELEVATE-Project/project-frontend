@@ -64,6 +64,9 @@
     "GLOBAL_SEARCH" :{
         "TITLE" : "Global Search"
     },
+    "PROJECT_DETAILS" :{
+        "TITLE" : "Project Details"
+    },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",

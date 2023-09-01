@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { headerConfigKeys } from 'src/app/core/constants';
 import { menuLabelKeys } from 'src/app/core/constants/menu.keys';
+import { LocalStorageService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class LayoutPage implements OnInit {
     };
   constructor(
     private utlService: UtilService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {
     this.utlService.setHeaders(this.configHeader);
     this.utlService.configHeader.subscribe((header: any)=>{
@@ -58,11 +60,11 @@ export class LayoutPage implements OnInit {
   configMenu = menuLabelKeys;
 
   handleMenuClicks(action: string){
-      console.log('routing', action);
+      if(action == 'SIDE_MENU_LAYOUT.LOGOUT'){
+        this.localStorageService.deleteAll();
+        this.router.navigate(['/auth/login'], { replaceUrl: true });
+      }
   }
   
-  logout(){
-
-  }
 
 }

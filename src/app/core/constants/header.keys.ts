@@ -8,5 +8,7 @@ export const headerConfigKeys = {
     SHOW_PROFILE: 'showProfile',
     SHOW_NOTIFICATION:'showNotification',
     SHOW_MENU:'showSideMenu',
-    SHOW_BACK:'backButton'
+    SHOW_BACK:'backButton',
+    SHOW_EDIT: 'showEdit',
+    SHOW_SYNC: 'showEdit',
 }

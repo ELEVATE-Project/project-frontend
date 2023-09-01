@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { headerConfigKeys, urlConstants } from 'src/app/core/constants';
+import { utilKeys } from 'src/app/core/constants/util.key';
 import { HttpService, ToastService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
 
@@ -17,6 +18,7 @@ export class GlobalSearchPage implements OnInit {
   limit = 2;
   public title: string = 'GLOBAL_SEARCH.TITLE'
   searchTerm: any = "";
+  type = utilKeys.PROJECT_TYPE.PROJECT
 
   constructor(
     private http: HttpService,

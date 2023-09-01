@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { utilKeys } from 'src/app/core/constants/util.key';
 
 @Component({
   selector: 'app-project-card',
@@ -9,13 +12,29 @@ export class ProjectCardComponent  implements OnInit {
   @Input() projectName: string = "Project Name";
   @Input() projectStatus: string | undefined;
   @Input() taskCount: any = 1;
+  @Input() id: any = "";
+  @Input() type: string = "";
 
-  viewProject(projectName: any) {
-    console.log(projectName);
+  utilKeys = utilKeys;
+  
+  constructor(
+    private router: Router,
+    private popoverController: PopoverController
+  ) { }
+
+  viewProject(id: any) {
+    console.log(id);
+    this.router.navigateByUrl(`/layout/project-details/${id}`);
   }
-  constructor() { }
 
-  ngOnInit() {}
+  updateStatus(){
+    console.log('updateStatus')
+  }
+
+  ngOnInit() {
+    
+  }
+
 
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { headerConfigKeys, localKeys, urlConstants } from 'src/app/core/constants/';
+import { utilKeys } from 'src/app/core/constants/util.key';
 import { HttpService, LocalStorageService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
 
@@ -27,6 +28,7 @@ export class HomePage implements OnInit {
   chartData: any;
   pieChartHeader = "Project Reports";
   showEmptyMessage = false;
+  type = utilKeys.PROJECT_TYPE.PROJECT
 
   async getName(){
     let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
@@ -45,7 +47,7 @@ export class HomePage implements OnInit {
             this.showEmptyMessage = true;
             return;
           }
-         this.projects =  data.result.map((item: { title: any; status: string; tasks: string | any[]; }) => {
+         this.projects =  data.result.map((item: any) => {
           if(item.status == 'started') {
             item.status = "Started";
             this.started+=1;
@@ -59,7 +61,8 @@ export class HomePage implements OnInit {
             return {
               name: item.title,
               status: item.status,
-              taskCount: item.tasks.length
+              taskCount: item.tasks.length,
+              id: item._id
             };
           });
           this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
@@ -78,9 +81,7 @@ export class HomePage implements OnInit {
       [headerConfigKeys.SHOW_SEARCH]: true,
       [headerConfigKeys.SHOW_NOTIFICATION]: false,
       [headerConfigKeys.SHOW_PROFILE]: true,
-      })
-
-  
+      })  
   }
 
   redirectToProjectCreation(){

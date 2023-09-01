@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { headerConfigKeys } from 'src/app/core/constants/';
 
 @Component({
   selector: 'app-back-button',
@@ -7,14 +9,23 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./back-button.component.scss'],
 })
 export class BackButtonComponent  implements OnInit {
-
+  headerConfigKeys = headerConfigKeys;
   @Input() pageTitle: string = ""; 
-
-  constructor(private navCtrl: NavController) {}
+  @Input()configBackButton: any = {};
+  constructor(
+    private navCtrl: NavController,
+    private router: Router
+    ) {}
 
   goBack() {
     this.navCtrl.back();
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.configBackButton);
+  }
+
+  edit(){
+    this.router.navigateByUrl('/layout/create-project');
+  }
 
 }

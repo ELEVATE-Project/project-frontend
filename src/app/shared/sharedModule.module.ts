@@ -4,6 +4,7 @@ import {
   BackButtonComponent,
     FormComponent,
     ProjectCardComponent,
+    TaskFormsComponent,
     } from '../components';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
@@ -14,13 +15,15 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ProjectCardComponent,
     BackButtonComponent,
-    FormComponent
+    FormComponent,
+    TaskFormsComponent
 ],
   imports: [CommonModule, IonicModule, TranslateModule, ReactiveFormsModule, TranslateModule],
   exports: [
     ProjectCardComponent,
     BackButtonComponent,
-    FormComponent
+    FormComponent,
+    TaskFormsComponent
   ]
 })
 export class SharedModule {}

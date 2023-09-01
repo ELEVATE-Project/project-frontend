@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+//import { Router } from '@angular/router';
 import { urlConstants } from 'src/app/core/constants';
 import { HttpService, ToastService } from 'src/app/core/services';
 
@@ -16,7 +17,8 @@ export class FormComponent  implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
-    private toast: ToastService
+    private toast: ToastService,
+    // private router: Router
     ) { }
   
  ngOnInit() {
@@ -109,9 +111,11 @@ export class FormComponent  implements OnInit {
       this.http.post(config).subscribe(async (userDetails : any)=>{
         if (userDetails !== null) {
           this.toast.showToast(userDetails.message, "success")
+          //this.router.navigate(['/auth/login'], { replaceUrl: true });
       }
       });
     
+      
   }
 
   // set the dates into their respective controls
