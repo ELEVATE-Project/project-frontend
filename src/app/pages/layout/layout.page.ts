@@ -36,7 +36,7 @@ export class LayoutPage implements OnInit {
     switch (action) {
       case headerConfigKeys.SHOW_SEARCH:
         // Handle search action
-        this.router.navigateByUrl('/layout/global-search');
+        this.router.navigateByUrl('/layout/search');
         break;
       case headerConfigKeys.SHOW_NOTIFICATION:
         // Handle notification action

@@ -62,7 +62,12 @@
         "LOGOUT" : "Logout"
     },
     "GLOBAL_SEARCH" :{
-        "TITLE" : "Global Search"
+        "TITLE" : "Search project"
+    },
+    "PROJECT_STATUS" : {
+        "STARTED" : "Started",
+        "NOT_STARTED" : "Not Started",
+        "COMPLETED" : "Completed"
     },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
@@ -70,5 +75,6 @@
     "PASSWORD_PLACEHOLDER" : "Enter your password",
     "SIGN_IN" : "Sign in?",
     "SUBMIT" : "Submit",
-    "RESET_FORM" : "Reset Form"
+    "RESET_FORM" : "Reset Form",
+    "NO_DATA" : "No Data Found"
     }
