@@ -7,6 +7,7 @@ import { CreateProjectPageModule } from './pages/create-project/create-project.m
 import { LayoutPage } from './pages/layout/layout.page';
 import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
+import { ProjectListingComponent } from './components/project-listing/project-listing.component';
 
 const routes: Routes = [
   {
@@ -31,11 +32,16 @@ const routes: Routes = [
       {path:'', component: HomePage, pathMatch: 'full'},
       { path: 'home', component: HomePage },
       { path: 'create-project', component: CreateProjectPage },
+      { path: 'project-listing', component: ProjectListingComponent },
     ],
   },
   {
     path: 'create-project',
     loadChildren: () => import('./pages/create-project/create-project.module').then( m => m.CreateProjectPageModule)
+  },
+  {
+    path: 'project-listing',
+    component : ProjectListingComponent
   },
 ];
 @NgModule({
