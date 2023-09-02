@@ -17,7 +17,7 @@ export class ProjectSearchComponent  implements OnInit {
   limit = 2;
   public title: string = 'GLOBAL_SEARCH.TITLE'
   searchTerm: any = "";
-
+  emptyLbl = 'NO_DATA';
   constructor(
     private http: HttpService,
     private toast: ToastService,
@@ -36,7 +36,7 @@ export class ProjectSearchComponent  implements OnInit {
 
   onSearch(event: any) {
     this.searchTerm = event.target.value.trim();
-    
+    this.searchResults = [];
     if (this.searchTerm.length >= 3) {
       this.currentPage = 1;
 
@@ -49,7 +49,7 @@ export class ProjectSearchComponent  implements OnInit {
   }
 
   async getProjects() {
-    const dynamicUrl = urlConstants.API_URLS.GLOBAL_SEARCH(this.currentPage, this.limit, this.searchTerm);
+    const dynamicUrl = urlConstants.API_URLS.TEMPLATE_SEARCH(this.currentPage, this.limit, this.searchTerm);
     const config = {
       url: dynamicUrl,
     };

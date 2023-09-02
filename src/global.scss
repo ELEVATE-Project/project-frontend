@@ -96,3 +96,11 @@
     color: red;
     margin-left: 5px;
   }
+  
+
+  // make segment label responsive
+  ion-segment-button ion-label {
+    max-width: 100%; 
+    white-space: normal; 
+  }
+

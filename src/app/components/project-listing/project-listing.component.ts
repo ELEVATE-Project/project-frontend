@@ -19,6 +19,9 @@ export class ProjectListingComponent  implements OnInit {
   selectedTab: any = 'createdByMe';
   searchTerm: any = "";
   type='project'
+  lblCreated = 'CREATED_BY_ME';
+  lblDiscovered = 'DISCOVERED_BY_ME';
+  emptyLbl = 'NO_DATA';
 
   constructor(
     private http: HttpService,
@@ -51,8 +54,7 @@ export class ProjectListingComponent  implements OnInit {
   }
 
   async getProjects() {
-    const dynamicUrl = urlConstants.API_URLS.HOME_PROJECTS('createdByMe');
-    //const dynamicUrl = urlConstants.API_URLS.GLOBAL_SEARCH(this.currentPage, this.limit, this.searchTerm);
+    const dynamicUrl = urlConstants.API_URLS.PROJECTS(this.selectedTab, this.searchTerm, this.currentPage);
     const config = {
       url: dynamicUrl,
     };
@@ -66,7 +68,7 @@ export class ProjectListingComponent  implements OnInit {
           return;
         }
         // Append new results to the existing list
-         this.searchResults = this.searchResults.concat(data.result);
+        this.searchResults = this.searchResults.concat(data.result);
         this.currentPage++;
         
       }
@@ -86,7 +88,10 @@ export class ProjectListingComponent  implements OnInit {
   }
  
 
-  selectTab(tab: string) {
-    this.selectedTab = tab;
+  selectTab(event: any) {
+    this.selectedTab = event.target.value;
+    this.searchResults = [];
+    this.currentPage = 1;
+    this.getProjects()
   }
 }

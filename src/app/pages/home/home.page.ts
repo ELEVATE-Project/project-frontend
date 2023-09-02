@@ -30,7 +30,9 @@ export class HomePage implements OnInit {
   pieChartHeader = "Project Reports";
   showEmptyMessage = false;
   selectedTab: string = 'createdByMe';
-  apiCall = ['createdByMe', 'discoveredByMe'];
+  lblCreated = 'CREATED_BY_ME';
+  lblDiscovered = 'DISCOVERED_BY_ME';
+  emptyLbl = 'HOME.EMPTY_LBL'
 
   async getName(){
     let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
@@ -39,12 +41,12 @@ export class HomePage implements OnInit {
   
 
   
-  async getCreatedProjects(){
-    const dynamicUrl = urlConstants.API_URLS.HOME_PROJECTS(this.apiCall[0]);
+  async getProjects(){
+    const dynamicUrl = urlConstants.API_URLS.PROJECTS(this.selectedTab, '', 1);
     const config = {
       url: dynamicUrl,
     };
-
+    this.started = this.notStarted = this.completed = 0;
     await this.http.setHeader();
     this.http.get(config).subscribe((data) => {
       if (data) {
@@ -72,46 +74,9 @@ export class HomePage implements OnInit {
       })
   }
 
-  async getDiscoveredProjects(){
-    const dynamicUrl = urlConstants.API_URLS.HOME_PROJECTS(this.apiCall[1]);
-    const config = {
-      url: dynamicUrl,
-    };
-
-    await this.http.setHeader();
-    this.http.get(config).subscribe((data) => {
-      if (data) {
-        if(data.result == 0){
-          this.toast.showToast('No Data found', 'success');
-          return;
-        }
-        this.discoveredProjects =  data.result.map((item: { title: any; status: string; tasks: string | any[]; }) => {
-          if(item.status == 'started') {
-            item.status = "Started";
-            this.started+=1;
-          }else if(item.status == 'notStarted'){
-            item.status = "Not Started";
-            this.notStarted+=1;
-          }else{  
-            item.status = "Completed";
-            this.completed+=1;
-          }
-            return {
-              name: item.title,
-              status: item.status,
-              taskCount: item.tasks.length
-            };
-          });
-          this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
-          return data;
-        }        
-      })
-  }
 
   ngOnInit() {
-    this.getCreatedProjects();
-    this.getDiscoveredProjects();
-    //this.getProjectList();
+    this.getProjects();
     this.getName();
     this.utilsService.setHeaders({
       [headerConfigKeys.SHOW_ICON]: true,
@@ -128,8 +93,9 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/layout/create-project');
   }
 
-  selectTab(tab: string) {
-    this.selectedTab = tab;
+  selectTab(event: any) {
+    this.selectedTab = event.target.value;
+    this.getProjects();
   }
 
   viewAll(){
