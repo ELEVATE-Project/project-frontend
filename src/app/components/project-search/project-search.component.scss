@@ -3,6 +3,7 @@
     --color: var(--ion-color-primary); /* Primary color for text color */
   }
 
+  /* Scoped components require higher specificity to customize */
 ion-searchbar.custom {
   --background: #F5F5F7;
   --color: var(--ion-color-primary);
@@ -12,14 +13,7 @@ ion-searchbar.custom {
   --border-radius: 4px;
 }
 
-.logo-image{
-  width: 60px;
-  height: 50px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.custom-col {
-  min-width: 50px; /* Adjust the value according to your needs */
-}
-
+.projects-details{
+    width: 100%;
+    color: #F5F5F7;
+  }

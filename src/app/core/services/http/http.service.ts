@@ -89,8 +89,12 @@ export class HttpService {
         if (data.status === 200) {
           return data;
         }
+      }),
+      catchError((err) => {
+        this.handleError(err);    //Rethrow it back to component
+        throw Error(err);
       })
-      )
+    )  
   }
 
   delete(requestParam: RequestParams) {
@@ -169,5 +173,11 @@ export class HttpService {
       default:
         this.toast.showToast(msg ? msg.message : 'SOMETHING_WENT_WRONG', 'danger')
     }
+  }
+
+  async search(query: string, page: number, limit: number) {
+    await this.setHeader();
+    const apiUrl = `https://dev.elevate-apis.shikshalokam.org/c4gt-unnati/v1/project/templates/list?page=${page}&limit=${limit}&search=${query}`;
+    return this.http.get(apiUrl, {headers: this.httpHeaders});
   }
 }

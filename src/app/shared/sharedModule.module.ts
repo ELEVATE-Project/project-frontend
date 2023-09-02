@@ -5,6 +5,7 @@ import {
     FormComponent,
     ProjectCardComponent,
     ProjectListingComponent,
+    ProjectSearchComponent,
     } from '../components';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,14 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProjectCardComponent,
     BackButtonComponent,
     FormComponent,
-    ProjectListingComponent
+    ProjectListingComponent,
+    ProjectSearchComponent
 ],
   imports: [CommonModule, IonicModule, TranslateModule, ReactiveFormsModule, TranslateModule],
   exports: [
     ProjectCardComponent,
     BackButtonComponent,
     FormComponent,
-    ProjectListingComponent
+    ProjectListingComponent,
+    ProjectSearchComponent
   ]
 })
 export class SharedModule {}

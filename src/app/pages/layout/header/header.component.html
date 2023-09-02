@@ -12,7 +12,7 @@
           </app-side-menu>
         </div>
       </ion-col>
-      <ion-col  size="6" size-sm="4" size-md="4" size-lg="4"  class="center-container-vertical">
+      <ion-col  size="6" size-sm="4" size-md="4" size-lg="4"  class="center-container-vertical" (click)="performAction(headerConfigKeys.SHOW_SEARCH)" >
         <div *ngIf="configHeader[headerConfigKeys.SHOW_SEARCH]">
           <ion-searchbar class="custom"></ion-searchbar>
         </div>

@@ -22,6 +22,8 @@ export const urlConstants = {
         GET_PROJECT: "/c4gt-unnati/v1/userProjects/list",
         CREATE_PROJECT: "/c4gt-unnati/v1/userProjects/add",
         HOME_PROJECTS: (cat: any) => `/c4gt-unnati/v1/userProjects/list?page=1&limit=5&search=&filter=${cat}`,
+        GLOBAL_SEARCH: (page: number, limit: number, search: string) =>
+        `/c4gt-unnati/v1/project/templates/list?page=${page}&limit=${limit}&search=${search}`,
         // FORMS
         FORM_READ:'/mentoring/v1/form/read',
         GENERATE_OTP:"/user/v1/account/generateOtp",
