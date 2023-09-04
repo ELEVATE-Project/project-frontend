@@ -14,7 +14,7 @@ export class ProjectSearchComponent  implements OnInit {
   currentPage = 1;
   isLoading = false;
   debounceTimer: any;
-  limit = 2;
+  limit = 25;
   public title: string = 'GLOBAL_SEARCH.TITLE'
   searchTerm: any = "";
 
