@@ -1,18 +1,21 @@
-.in-progress {
-  padding: 10px;
-  color: var(--ion-color-success); 
-  border-radius: 20px;
+.status{
   box-shadow: none;
+  width: 20%;
+  height: 50%;
+  width: 100%;
+  padding: 1px;
   }
   
   .not-started {
-    padding: 10px;
-    color: var(--ion-color-danger);
-    border-radius: 10px;
-    box-shadow: none;
-    width: 20%;
-    height: 50%;
+  color: #4f4b48
+  }
   
+  .in-progress {
+  color : #ffa500
+  }
+
+  .completed {
+    color : #1f9304
   }
 
 .custom-card {
@@ -51,8 +54,4 @@ ion-card-content{
 .project {
   display: flex;
   align-items: center; /* Center vertically */
-}
-
-ion-icon{
-  font-size: 3rem;
 }

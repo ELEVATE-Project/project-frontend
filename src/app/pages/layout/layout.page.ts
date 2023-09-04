@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { headerConfigKeys } from 'src/app/core/constants';
 import { menuLabelKeys } from 'src/app/core/constants/menu.keys';
 import { UtilService } from 'src/app/shared/util.service';
@@ -18,7 +19,8 @@ export class LayoutPage implements OnInit {
     [headerConfigKeys.SHOW_PROFILE]: true,
     };
   constructor(
-    private utlService: UtilService
+    private utlService: UtilService,
+    private router: Router
   ) {
     this.utlService.setHeaders(this.configHeader);
     this.utlService.configHeader.subscribe((header: any)=>{
@@ -34,7 +36,7 @@ export class LayoutPage implements OnInit {
     switch (action) {
       case headerConfigKeys.SHOW_SEARCH:
         // Handle search action
-        console.log('Search action triggered');
+        this.router.navigateByUrl('/layout/search');
         break;
       case headerConfigKeys.SHOW_NOTIFICATION:
         // Handle notification action

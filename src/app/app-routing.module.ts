@@ -7,6 +7,7 @@ import { CreateProjectPageModule } from './pages/create-project/create-project.m
 import { LayoutPage } from './pages/layout/layout.page';
 import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
+import { ProjectSearchComponent } from './components';
 
 const routes: Routes = [
   {
@@ -24,13 +25,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'search', 
+    component: ProjectSearchComponent, 
+  },
+  {
     path: 'layout',
     canActivate: [HomeGuard],
     component: LayoutPage,
     children: [
-      {path:'', component: HomePage, pathMatch: 'full'},
+      { path:'', component: HomePage, pathMatch: 'full'},
       { path: 'home', component: HomePage },
       { path: 'create-project', component: CreateProjectPage },
+      { path: 'search', component: ProjectSearchComponent   }
     ],
   },
   {

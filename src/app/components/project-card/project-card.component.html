@@ -6,13 +6,25 @@
         <label class="project-name ">{{ projectName }}</label>
         </ion-col>
         <ion-col size="4" size-sm="4" size-md="4" size-lg="4" class="center-container">
-          <p [ngClass]="projectStatus === 'Started' ? 'in-progress' : 'not-started '">{{ projectStatus }}</p>
+          <ion-label text-wrap class="status" [ngClass]="{
+            'in-progress': projectStatus == 'started',
+            'not-started': projectStatus == 'notStarted',
+            'completed': projectStatus == 'completed'
+          }">
+          {{ utilKeys.STATUS_KEYS[projectStatus] | translate }}
+          </ion-label>
         </ion-col>
         <ion-col size="1" size-sm="1" size-md="1" size-lg="1" class="center-container">
-          <p  [ngClass]="{ 'completed': projectStatus === 'Completed', 'in-progress': projectStatus != 'Completed' }">{{ taskCount }}</p>
+          <ion-label text-wrap [ngClass]="{
+            'in-progress': projectStatus == 'started',
+            'not-started': projectStatus == 'notStarted',
+            'completed': projectStatus == 'completed'
+        }">
+          {{ taskCount }}
+        </ion-label>
         </ion-col>
         <ion-col size="1" size-sm="1" size-md="1" size-lg="1" class="center-container">
-          <ion-icon color="primary" name="arrow-forward" (click)="viewProject(projectName)"></ion-icon>
+          <ion-icon size="large" color="primary" name="arrow-forward" (click)="viewProject(projectName)"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>     
