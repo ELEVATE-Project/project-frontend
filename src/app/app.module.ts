@@ -15,6 +15,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
   new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -29,6 +30,7 @@ export const translateHttpLoaderFactory = (httpClient: HttpClient) =>
           deps: [HttpClient]
       }
     }),
+    IonicStorageModule.forRoot(),
      AppRoutingModule, BrowserModule, HttpClientModule,FormsModule,
 ReactiveFormsModule, IonicModule.forRoot(),  NgChartsModule,
 ServiceWorkerModule.register('ngsw-worker.js', {

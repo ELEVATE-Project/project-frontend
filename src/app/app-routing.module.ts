@@ -9,6 +9,7 @@ import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
 import { GlobalSearchPage } from './pages/global-search/global-search.page';
 import { ProjectDetailsPage } from './pages/project-details/project-details.page';
+import { TaskFormsComponent } from './components';
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
       { path: 'home', component: HomePage },
       { path: 'create-project', component: CreateProjectPage },
       { path: 'global-search', component: GlobalSearchPage   },
-      { path: 'project-details/:id', component: ProjectDetailsPage }
+      { path: 'project-details/:id', component: ProjectDetailsPage },
+      { path: 'create-task', component: TaskFormsComponent },
     ],
   },
   {
@@ -49,7 +51,10 @@ const routes: Routes = [
     path: 'project-details/:id',
     loadChildren: () => import('./pages/project-details/project-details.module').then( m => m.ProjectDetailsPageModule)
   },
-
+  {
+    path: 'create-task',
+    component: TaskFormsComponent,
+  },
 ];
 @NgModule({
   imports: [

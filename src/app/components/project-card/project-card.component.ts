@@ -16,7 +16,13 @@ export class ProjectCardComponent  implements OnInit {
   @Input() type: string = "";
 
   utilKeys = utilKeys;
-  
+  isOpen: boolean = false;
+
+  popoverbtn = [
+    {icon : 'create' , lbl : 'EDIT'},
+    {icon : 'trash' , lbl : 'DELETE'},
+    {icon : 'share' , lbl : 'SHARE'},
+  ]
   constructor(
     private router: Router,
     private popoverController: PopoverController
@@ -35,6 +41,21 @@ export class ProjectCardComponent  implements OnInit {
     
   }
 
+  popover(val : boolean){
+    this.isOpen = val;
+  }
 
+  performAction(ev: any){
+    switch(ev){
+      case 'EDIT':
+        this.router.navigateByUrl('/layout/create-task');
+        break;
+      case 'DELETE':
+        break;
+      case 'SHARE':
+        break;
+    }
+    this.popover(false);
+  }
 
 }

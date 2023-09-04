@@ -16,8 +16,18 @@
             <ion-icon color="primary" name="arrow-forward" (click)="viewProject(id)"></ion-icon>
           </div>
           <div *ngIf="type == utilKeys.PROJECT_TYPE.TASKS">
-            <ion-icon color="primary" name="ellipsis-vertical" (click)="updateStatus()"></ion-icon>
+            <ion-icon color="primary" name="ellipsis-vertical" id="click-trigger" (click)="popover(true)"></ion-icon>
           </div>
+          <ion-popover  [isOpen]="isOpen" (didDismiss)="popover(false)">
+            <ng-template>
+              <div *ngFor="let btn of popoverbtn">
+                <ion-item (click)="performAction(btn.lbl)">
+                  <ion-icon [name]="btn.icon" slot="end" color="light"></ion-icon>
+                  <div>{{ btn.lbl | translate}}</div>
+                </ion-item>
+              </div>
+            </ng-template>
+          </ion-popover>
         </ion-col>
       </ion-row>
     </ion-grid>     

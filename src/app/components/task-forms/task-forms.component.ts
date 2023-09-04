@@ -10,10 +10,11 @@ import { UtilService } from 'src/app/shared/util.service';
 export class TaskFormsComponent  implements OnInit {
 
   projectForm!: FormGroup;
-
+  showOthers: any;
   constructor(
     private fb: FormBuilder,
     private utilService: UtilService) { }
+
 
   ngOnInit() {
     this.projectForm = this.fb.group({
@@ -21,11 +22,23 @@ export class TaskFormsComponent  implements OnInit {
       name: [''],        
       endDate: [''],    
       assignee: [''],    
-      startDate: [''],   
+      startDate : [''],   
     });
 
     this.newTask = this.utilService.getMetaData('task');
     console.log(this.newTask)
+  }
+
+  onSubmit(){
+
+  }
+
+  startDate(ev: any){
+    
+  }
+
+  endDate(ev: any){
+    
   }
 
 newTask: any

@@ -50,7 +50,6 @@
             "ENDDATE": "End Date",
             "OTHER": "Other",
             "OTHER_HINT": "Enter name of other category"
-
         }
     },
     "SIDE_MENU_LAYOUT" :{
@@ -67,11 +66,23 @@
     "PROJECT_DETAILS" :{
         "TITLE" : "Project Details"
     },
+    "TASK_CREATION" :{
+        "FORM" : {
+            "TITLE": "Task Title",
+            "STATUS" : "Objective",
+            "ASSIGNEE" : "Enter objective of your  project",
+            "START_DATE": "Start Date",
+            "END_DATE": "End Date"
+        }
+    },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
     "PASSWORD_PLACEHOLDER" : "Enter your password",
     "SIGN_IN" : "Sign in?",
     "SUBMIT" : "Submit",
-    "RESET_FORM" : "Reset Form"
+    "RESET_FORM" : "Reset Form",
+    "EDIT": "Edit",
+    "SHARE" : "Share",
+    "DELETE": "Delete"
     }

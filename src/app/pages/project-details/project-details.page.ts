@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { headerConfigKeys, urlConstants } from 'src/app/core/constants';
 import { utilKeys } from 'src/app/core/constants/util.key';
 import { HttpService } from 'src/app/core/services';
+import { LoaderService } from 'src/app/core/services/loader/loader.service';
 import { UtilService } from 'src/app/shared/util.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class ProjectDetailsPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpService,
-    private utilsService : UtilService
+    private utilsService : UtilService,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class ProjectDetailsPage implements OnInit {
     this.route.paramMap.subscribe(async (params: any) => {
       const id = params.get('id');
       console.log('Received id:', id);
+      this.loaderService.showLoader();
       const dynamicUrl = urlConstants.API_URLS.GET_PROJECT_DETAIL(id);
       const config = {
       url: dynamicUrl,
@@ -50,6 +53,7 @@ export class ProjectDetailsPage implements OnInit {
         this.project = data.result;
         this.tasksCompleted = data.result.tasks.filter((task: any) => task.status === 'completed').length;
       }
+      this.loaderService.hideLoader();
     });
     });
   }

@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
 import { urlConstants } from 'src/app/core/constants/';
 import { HttpService, UserService, ToastService } from 'src/app/core/services';
+import { LoaderService } from 'src/app/core/services/loader/loader.service';
 
 
 
@@ -25,6 +26,7 @@ export class LoginPage implements OnInit {
     private toast: ToastService,
     private http: HttpService,
     private userService: UserService,
+    private loaderService: LoaderService
   ) {
     this.menuCtrl.enable(false);
     this.formData = this.fb.group({
@@ -57,6 +59,7 @@ export class LoginPage implements OnInit {
   async login(){
     var form: any = this.formData;
     if (form.status=="VALID") {
+      this.loaderService.showLoader();
       const config = {
         url: urlConstants.API_URLS.ACCOUNT_LOGIN,
         payload: form.value,
@@ -67,9 +70,11 @@ export class LoginPage implements OnInit {
           this.toast.showToast(userDetails.message, "success")
           this.menuCtrl.enable(true);
           this.router.navigate(['/layout'], { replaceUrl: true });
+          this.loaderService.hideLoader();
       }
       })
-       this.menuCtrl.enable(true);
+      this.loaderService.hideLoader();
+      this.menuCtrl.enable(true);
     }else{
        // show pop to complete the required details
        this.toast.showToast('Please enter the required details', 'danger');

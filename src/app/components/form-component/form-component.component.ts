@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { urlConstants } from 'src/app/core/constants';
 import { HttpService, ToastService } from 'src/app/core/services';
+import { LoaderService } from 'src/app/core/services/loader/loader.service';
 
 @Component({
   selector: 'app-form-component',
@@ -18,7 +19,8 @@ export class FormComponent  implements OnInit {
     private fb: FormBuilder,
     private http: HttpService,
     private toast: ToastService,
-    // private router: Router
+    private router: Router,
+    private loaderService: LoaderService
     ) { }
   
  ngOnInit() {
@@ -94,6 +96,7 @@ export class FormComponent  implements OnInit {
     })
 
     // makke api call  
+    this.loaderService.showLoader();
       const payload = {
         ...this.projectForm.value,
         isDeleted: false,
@@ -111,8 +114,10 @@ export class FormComponent  implements OnInit {
       this.http.post(config).subscribe(async (userDetails : any)=>{
         if (userDetails !== null) {
           this.toast.showToast(userDetails.message, "success")
-          //this.router.navigate(['/auth/login'], { replaceUrl: true });
+          this.router.navigate(['/layout/home'], { replaceUrl: true });this.loaderService.hideLoader();
+
       }
+      this.loaderService.hideLoader();
       });
     
       

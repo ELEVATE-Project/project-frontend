@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { headerConfigKeys, localKeys, urlConstants } from 'src/app/core/constants/';
 import { utilKeys } from 'src/app/core/constants/util.key';
 import { HttpService, LocalStorageService } from 'src/app/core/services';
+import { LoaderService } from 'src/app/core/services/loader/loader.service';
 import { UtilService } from 'src/app/shared/util.service';
+import { StorageService } from 'src/app/storage.service';
 
 
 @Component({
@@ -17,7 +19,9 @@ export class HomePage implements OnInit {
     private localStorage: LocalStorageService,
     private http: HttpService,
     private router: Router,
-    private utilsService: UtilService
+    private utilsService: UtilService,
+    private loaderService: LoaderService,
+    private storage: StorageService
     ) { }
 
   projects: any;
@@ -35,14 +39,16 @@ export class HomePage implements OnInit {
     this.name = JSON.parse(data).user.name;
   }
   
-  async getProjectList() {   
+  async getProjectList() {
+    this.loaderService.showLoader();   
     const config = {
       url: urlConstants.API_URLS.GET_PROJECT,
     };
     await this.http.setHeader();
     this.http.get(config).subscribe(
-      ((data:any)=>{
+      (async (data:any)=>{
         if(data){
+          this.loaderService.hideLoader();
           if(data.result == 0){
             this.showEmptyMessage = true;
             return;
@@ -65,11 +71,15 @@ export class HomePage implements OnInit {
               id: item._id
             };
           });
+          await this.storage.init();
+          await this.storage.set('proj', this.projects);
+          await this.storage.get('proj');
+
           this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
           return data;
-        }        
+        }      
       })
-    )
+    )  
   }
  
   ngOnInit() {
