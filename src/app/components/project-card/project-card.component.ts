@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { utilKeys } from 'src/app/core/constants/util.key';
 
+
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
@@ -10,7 +11,7 @@ import { utilKeys } from 'src/app/core/constants/util.key';
 })
 export class ProjectCardComponent  implements OnInit {
   @Input() projectName: string = "Project Name";
-  @Input() projectStatus: string | undefined;
+  @Input() projectStatus = ''  ;
   @Input() taskCount: any = 1;
   @Input() id: any = "";
   @Input() type: string = "";
@@ -29,8 +30,9 @@ export class ProjectCardComponent  implements OnInit {
   ) { }
 
   viewProject(id: any) {
-    console.log(id);
+    console.log(id);  
     this.router.navigateByUrl(`/layout/project-details/${id}`);
+
   }
 
   updateStatus(){
@@ -38,7 +40,7 @@ export class ProjectCardComponent  implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.projectName =  this.projectName.charAt(0).toUpperCase() + this.projectName.slice(1); // makes first letter capital
   }
 
   popover(val : boolean){

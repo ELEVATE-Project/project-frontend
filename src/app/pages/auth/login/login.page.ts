@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import * as _ from 'lodash';
 import { urlConstants } from 'src/app/core/constants/';
 import { HttpService, UserService, ToastService } from 'src/app/core/services';
 import { LoaderService } from 'src/app/core/services/loader/loader.service';
@@ -44,6 +43,7 @@ export class LoginPage implements OnInit {
   }
 
   async translateText() {
+    // function to translate text
     this.translateService.setDefaultLang('en');
     this.translateService.get(this.labels).subscribe((translatedLabel:any) => {
       let labelKeys = Object.keys(translatedLabel);

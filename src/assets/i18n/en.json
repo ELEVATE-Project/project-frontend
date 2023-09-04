@@ -61,7 +61,12 @@
         "LOGOUT" : "Logout"
     },
     "GLOBAL_SEARCH" :{
-        "TITLE" : "Global Search"
+        "TITLE" : "Search project"
+    },
+    "PROJECT_STATUS" : {
+        "STARTED" : "Started",
+        "NOT_STARTED" : "Not Started",
+        "COMPLETED" : "Completed"
     },
     "PROJECT_DETAILS" :{
         "TITLE" : "Project Details"
@@ -84,5 +89,6 @@
     "RESET_FORM" : "Reset Form",
     "EDIT": "Edit",
     "SHARE" : "Share",
-    "DELETE": "Delete"
+    "DELETE": "Delete",
+    "NO_DATA" : "No Data Found"
     }

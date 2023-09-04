@@ -34,8 +34,12 @@ export const taskData = {
       PROJECT : 'PROJECT',
       TASKS : 'TASKS' ,
       SUB_TASKS : 'SUB-TASKS'
-    }
-   
+    },
+    STATUS_KEYS : {
+      "started" : 'PROJECT_STATUS.STARTED',
+      "notStarted" : 'PROJECT_STATUS.NOT_STARTED',
+      "completed" : 'PROJECT_STATUS.COMPLETED'
+    } as Record<string, string>  
   }
 
 

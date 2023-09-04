@@ -55,13 +55,10 @@ export class HomePage implements OnInit {
           }
          this.projects =  data.result.map((item: any) => {
           if(item.status == 'started') {
-            item.status = "Started";
             this.started+=1;
           }else if(item.status == 'notStarted'){
-            item.status = "Not Started";
             this.notStarted+=1;
           }else{  
-            item.status = "Completed";
             this.completed+=1;
           }
             return {

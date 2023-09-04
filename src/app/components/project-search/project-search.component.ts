@@ -5,17 +5,17 @@ import { HttpService, ToastService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
 
 @Component({
-  selector: 'app-global-search',
-  templateUrl: './global-search.page.html',
-  styleUrls: ['./global-search.page.scss'],
+  selector: 'app-project-search',
+  templateUrl: './project-search.component.html',
+  styleUrls: ['./project-search.component.scss'],
 })
-export class GlobalSearchPage implements OnInit {
+export class ProjectSearchComponent  implements OnInit {
 
   searchResults: any[] = [];
   currentPage = 1;
   isLoading = false;
   debounceTimer: any;
-  limit = 2;
+  limit = 25;
   public title: string = 'GLOBAL_SEARCH.TITLE'
   searchTerm: any = "";
   type = utilKeys.PROJECT_TYPE.PROJECT
@@ -61,7 +61,7 @@ export class GlobalSearchPage implements OnInit {
       this.isLoading = false;
       if (data) {
         if(data.result == 0){
-          this.toast.showToast('No Data found', 'success');
+          this.toast.showToast('NO_DATA', 'success');
           return;
         }
         // Append new results to the existing list
@@ -83,5 +83,6 @@ export class GlobalSearchPage implements OnInit {
       event.target.complete();
     }
   }
+
 
 }
