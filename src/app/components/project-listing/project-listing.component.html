@@ -1,10 +1,15 @@
 
-
   <app-back-button [pageTitle]="title">
   </app-back-button> 
-
   <ion-searchbar class="custom-searchbar" (ionChange)="onSearch($event)"></ion-searchbar>
-
+  <ion-segment value="createdByMe"> 
+    <ion-segment-button value="createdByMe" (click)="selectTab($event)">
+      <ion-label>{{ lblCreated | translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="discoveredByMe" (click)="selectTab($event)">
+      <ion-label>{{ lblDiscovered | translate }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
   <ion-list>
     <ion-item *ngFor="let project of searchResults" lines="none">
       <app-project-card
@@ -13,16 +18,16 @@
         [projectStatus]="project.status"
         [taskCount]="project.tasks.length"
         [id]="project._id"
-        [type]="type"
       ></app-project-card>
     </ion-item>
   </ion-list>
 
   <div *ngIf="!searchResults.length">
-      <app-no-data-component [message]="emptyLbl"></app-no-data-component>
+    <app-no-data-component [message]="emptyLbl"></app-no-data-component>
   </div>
 
   <ion-infinite-scroll (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content ></ion-infinite-scroll-content>
   </ion-infinite-scroll>
+
 

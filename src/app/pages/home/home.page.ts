@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { headerConfigKeys, localKeys, urlConstants } from 'src/app/core/constants/';
 import { utilKeys } from 'src/app/core/constants/util.key';
-import { HttpService, LocalStorageService } from 'src/app/core/services';
+import { HttpService, LocalStorageService, ToastService } from 'src/app/core/services';
 import { LoaderService } from 'src/app/core/services/loader/loader.service';
 import { UtilService } from 'src/app/shared/util.service';
 import { StorageService } from 'src/app/storage.service';
@@ -21,10 +21,12 @@ export class HomePage implements OnInit {
     private router: Router,
     private utilsService: UtilService,
     private loaderService: LoaderService,
-    private storage: StorageService
+    private storage: StorageService,
+    private toast: ToastService
     ) { }
 
   projects: any;
+  discoveredProjects: any
   name: any;
   started: any = 0;
   notStarted: any = 0;
@@ -33,20 +35,24 @@ export class HomePage implements OnInit {
   pieChartHeader = "Project Reports";
   showEmptyMessage = false;
   type = utilKeys.PROJECT_TYPE.PROJECT
+  selectedTab: string = 'createdByMe';
+  lblCreated = 'CREATED_BY_ME';
+  lblDiscovered = 'DISCOVERED_BY_ME';
+  emptyLbl = 'HOME.EMPTY_LBL'
 
   async getName(){
     let data =  await this.localStorage.getLocalData(localKeys.USER_DETAILS)
     this.name = JSON.parse(data).user.name;
   }
-  
-  async getProjectList() {
-    this.loaderService.showLoader();   
+    
+  async getProjects(){
+    const dynamicUrl = urlConstants.API_URLS.PROJECTS(this.selectedTab, '', 1);
     const config = {
-      url: urlConstants.API_URLS.GET_PROJECT,
+      url: dynamicUrl,
     };
+    this.started = this.notStarted = this.completed = 0;
     await this.http.setHeader();
-    this.http.get(config).subscribe(
-      (async (data:any)=>{
+    this.http.get(config).subscribe(async (data:any)=>{
         if(data){
           this.loaderService.hideLoader();
           if(data.result == 0){
@@ -75,12 +81,12 @@ export class HomePage implements OnInit {
           this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
           return data;
         }      
-      })
-    )  
+      }) 
   }
- 
+
+
   ngOnInit() {
-    this.getProjectList();
+    this.getProjects();
     this.getName();
     this.utilsService.setHeaders({
       [headerConfigKeys.SHOW_ICON]: true,
@@ -93,5 +99,14 @@ export class HomePage implements OnInit {
 
   redirectToProjectCreation(){
     this.router.navigateByUrl('/layout/create-project');
+  }
+
+  selectTab(event: any) {
+    this.selectedTab = event.target.value;
+    this.getProjects();
+  }
+
+  viewAll(){
+    this.router.navigate(['/layout/project-listing'], { replaceUrl: true });
   }
 }

@@ -30,7 +30,8 @@
         "HELLO": "Hello {{name}}!",
         "WELCOME_LBL" : "Welcome back",
         "CREATE_PROJECT_BTN" : "Create Project",
-        "EMPTY_LBL" : "No data available for your user id"
+        "EMPTY_LBL" : "No data available for your user id",
+        "VIEW_LBL" : "View All Projects"
     },
     "PROJECT_CREATION" :{
         "HEADER" : "PROJECT CREATION",
@@ -80,6 +81,8 @@
             "END_DATE": "End Date"
         }
     },
+    "CREATED_BY_ME" : "Created By Me",
+    "DISCOVERED_BY_ME" : "Discovered By Me",
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",

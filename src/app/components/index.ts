@@ -5,3 +5,5 @@ export * from './back-button/back-button.component';
 export * from './form-component/form-component.component';
 export * from './task-forms/task-forms.component'
 export * from './project-search/project-search.component';
+export * from './project-listing/project-listing.component'
+export * from './no-data-component/no-data-component.component'

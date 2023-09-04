@@ -63,7 +63,7 @@ export class ProjectDetailsPage implements OnInit {
   }
 
   addTask(){
-    
+    this.router.navigateByUrl('/layout/create-task');
   }
 
 }

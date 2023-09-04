@@ -10,6 +10,8 @@ import { CreateProjectPage } from './pages/create-project/create-project.page';
 import { ProjectDetailsPage } from './pages/project-details/project-details.page';
 import { TaskFormsComponent } from './components';
 import { ProjectSearchComponent } from './components';
+import { ProjectListingComponent } from './components/project-listing/project-listing.component';
+
 
 const routes: Routes = [
   {
@@ -40,6 +42,7 @@ const routes: Routes = [
       { path: 'create-project', component: CreateProjectPage },
       { path: 'project-details/:id', component: ProjectDetailsPage },
       { path: 'create-task', component: TaskFormsComponent },
+      { path: 'project-listing', component: ProjectListingComponent },
       { path: 'search', component: ProjectSearchComponent   }
     ],
   },
@@ -54,6 +57,10 @@ const routes: Routes = [
   {
     path: 'create-task',
     component: TaskFormsComponent,
+  },
+  {
+    path: 'project-listing',
+    component : ProjectListingComponent
   },
 ];
 @NgModule({

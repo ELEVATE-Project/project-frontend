@@ -1,5 +1,4 @@
-<ion-content [fullscreen]="true">
-  <div style="padding: 1%;">
+ <div style="padding: 1%;">
     <ion-grid>
       <ion-row >
         <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="rounded-container">
@@ -14,14 +13,21 @@
           </ion-row>
         </ion-col>
         <ion-col size="12" size-sm="12" size-md="5" size-lg="5" (click)="redirectToProjectCreation()" class="center-container">
-          <ion-button fill="outline" color="primary" class="btn">{{ "HOME.CREATE_PROJECT_BTN" | translate}}</ion-button>
+          <ion-button fill="outline" color="primary" class="btn lbl">{{ "HOME.CREATE_PROJECT_BTN" | translate}}</ion-button>
         </ion-col>
       </ion-row>
-
-      <ion-row *ngIf="!showEmptyMessage">
-        <ion-col size="12" size-sm="12" size-md="7" size-lg="7" >
-          <div>
-            <ion-list *ngFor="let project of projects">
+    
+      <ion-row>
+        <ion-col size="12" size-sm="12" size-md="7" size-lg="7">
+          <ion-segment value="createdByMe"> 
+            <ion-segment-button value="createdByMe" (click)="selectTab($event)">
+              <ion-label>{{ lblCreated | translate }}</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="discoveredByMe" (click)="selectTab($event)">
+              <ion-label>{{ lblDiscovered | translate }}</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <div *ngFor="let project of projects">
               <app-project-card
                 class="projects-details"
                 [projectName]="project.name"
@@ -30,8 +36,15 @@
                 [id]="project.id"
                 [type]="type"
               ></app-project-card>
-            </ion-list>
+           
           </div>
+          <ion-row>
+            <ion-col size="12" class="center-container ">
+            <ion-button (click)="viewAll()">
+              {{ "HOME.VIEW_LBL" | translate }}
+            </ion-button>
+          </ion-col>
+          </ion-row>
         </ion-col>
         <ion-col size="12" size-sm="12" size-md="5" size-lg="5" *ngIf="!showEmptyMessage">
           <div class="pie-chart">
@@ -41,15 +54,11 @@
         </ion-col>
       </ion-row>
 
-      <ion-row *ngIf="showEmptyMessage" class="empty-box ">
-        <ion-col size="12" size-sm="12" size-md="7" size-lg="7" >
-          <div>
-            <ion-label>
-              {{ "HOME.EMPTY_LBL" | translate  }}
-            </ion-label>
-          </div>
+      <ion-row *ngIf="showEmptyMessage">
+        <ion-col>
+          <app-no-data-component [message]="emptyLbl"></app-no-data-component>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-</ion-content>
+
