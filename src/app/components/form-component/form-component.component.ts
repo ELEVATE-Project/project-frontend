@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { urlConstants } from 'src/app/core/constants';
 import { HttpService, ToastService } from 'src/app/core/services';
+import { AlertService } from 'src/app/core/services/alert/alert.service';
 
 @Component({
   selector: 'app-form-component',
@@ -16,7 +17,8 @@ export class FormComponent  implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpService,
-    private toast: ToastService
+    private toast: ToastService,
+    private alertService: AlertService
     ) { }
   
  ngOnInit() {
@@ -124,6 +126,19 @@ export class FormComponent  implements OnInit {
   onReset(){
     this.projectForm.reset();
   }
+
+  async showAlert() {
+    const result = await this.alertService.presentAlert('Are you sure?');
+    if (result) {
+      // User clicked "Yes"
+      console.log('User clicked Yes');
+      this.onSubmit();
+    } else {
+      // User clicked "No"
+      console.log('User clicked No');
+    }
+  }
+
 
 
 }
