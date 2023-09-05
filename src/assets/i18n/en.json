@@ -69,6 +69,12 @@
         "NOT_STARTED" : "Not Started",
         "COMPLETED" : "Completed"
     },
+    "PROJECT_REPORT" : {
+        "REPORT_DDN" : "Select report type",
+        "WEEKLY" : "Weekly",
+        "MONTHLY" : "Monthly",
+        "QUARTERLY" : "Quarterly"
+    },
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
@@ -77,4 +83,5 @@
     "SUBMIT" : "Submit",
     "RESET_FORM" : "Reset Form",
     "NO_DATA" : "No Data Found"
+
     }

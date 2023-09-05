@@ -9,7 +9,7 @@ import { chartLabels } from 'src/app/core/constants/';
 export class PieChartComponent  implements OnInit {
   @Input() chartData: any
   @Input() title: any;
-  chartLabels = [chartLabels.SELECTED, chartLabels.NOT_STARTED];
+  chartLabels = [chartLabels.SELECTED, chartLabels.NOT_STARTED, chartLabels.COMPLETED];
 
   chartOptions = {
     responsive: true,

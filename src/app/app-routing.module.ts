@@ -8,6 +8,7 @@ import { LayoutPage } from './pages/layout/layout.page';
 import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
 import { ProjectSearchComponent } from './components';
+import { ProjectReportsComponent } from './components/project-reports/project-reports.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
     component: ProjectSearchComponent, 
   },
   {
+    path: 'reports', 
+    component: ProjectReportsComponent, 
+  },
+  {
     path: 'layout',
     canActivate: [HomeGuard],
     component: LayoutPage,
@@ -36,7 +41,8 @@ const routes: Routes = [
       { path:'', component: HomePage, pathMatch: 'full'},
       { path: 'home', component: HomePage },
       { path: 'create-project', component: CreateProjectPage },
-      { path: 'search', component: ProjectSearchComponent   }
+      { path: 'search', component: ProjectSearchComponent   },
+      { path: 'reports', component: ProjectReportsComponent   },
     ],
   },
   {

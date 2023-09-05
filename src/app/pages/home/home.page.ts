@@ -75,12 +75,15 @@ export class HomePage implements OnInit {
       [headerConfigKeys.SHOW_SEARCH]: true,
       [headerConfigKeys.SHOW_NOTIFICATION]: false,
       [headerConfigKeys.SHOW_PROFILE]: true,
-      })
-
-  
+      })  
   }
 
   redirectToProjectCreation(){
     this.router.navigateByUrl('/layout/create-project');
+  }
+
+  navigateToReports(){
+    console.log('reports');
+    this.router.navigateByUrl('/layout/reports');
   }
 }
