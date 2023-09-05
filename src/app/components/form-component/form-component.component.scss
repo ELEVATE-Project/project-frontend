@@ -7,6 +7,7 @@
   ion-modal {
     --height: 382px;
     --border-radius: 8px;
+    color: white;
   }
 
   ion-modal ion-datetime {
@@ -17,9 +18,6 @@
       width: 100%;
       border-bottom: 1px solid var(--ion-color-primary);
       margin-top: 2%;
-      // border-radius: 10px;
-      // border: 2px solid var(--ion-color-primary);
-      // height: 80px;
   }
   .ion-item{
     margin-top: 20px;
@@ -40,10 +38,10 @@
     color: var(--ion-color-primary);
 }
 
-  ion-modal{
-    color: white;
-  }
-
   ion-row{
     width: 100%;
+  }
+
+  .large-label {
+    font-size: 24px;
   }

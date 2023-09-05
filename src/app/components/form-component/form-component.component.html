@@ -4,7 +4,7 @@
     <div *ngFor="let field of createProjectForm" lines="none" >
          
         <ion-item  *ngIf="field.input === 'text'" class="ion-items inputs">
-          <ion-label position="stacked" >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+          <ion-label position="stacked"   class="large-label">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
           <ion-input 
             formControlName="{{ field.field }}"
             type="text"
@@ -14,7 +14,7 @@
         </ion-item>
      
       <ion-item  *ngIf="field.input === 'textarea'" class="inputs">
-        <ion-label position="stacked" >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+        <ion-label position="stacked"  class="large-label">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
         <ion-textarea
         formControlName="{{ field.field }}"
         rows="2"
@@ -23,7 +23,7 @@
       </ion-item>
 
       <ion-item  *ngIf="field.input === 'select'" class="inputs">
-      <ion-label position="stacked" >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+      <ion-label position="stacked"  class="large-label">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
       <ion-select
         formControlName="{{ field.field }}"
         interface="popover"
@@ -50,14 +50,14 @@
     
     
         
-          <ion-item *ngIf="field.input === 'date'">
+          <ion-item *ngIf="field.input === 'date'" class="inputs">
             <ion-row>
-          <ion-col size="6" size-md="6" size-sm="12">
-            <ion-label
+          <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
+            <ion-label class="large-label"  position="stacked" 
             readonly
           >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
           </ion-col>
-          <ion-col size="6" size-md="6" size-sm="12">
+          <ion-col size="12" size-lg="8" size-md="12" size-sm="12">
             <ion-datetime-button color="white" *ngIf="field.input === 'date'" datetime="{{ field.field }}" ></ion-datetime-button>
       <ion-modal [keepContentsMounted]="true">
     <ng-template>
@@ -76,9 +76,6 @@
 </div>
 <ion-row>
   <ion-col size="12" class="ion-text-right">
-    <ion-button fill="outline" (click)="onReset()" class="form-btn">
-      {{ "RESET_FORM" | translate }}
-    </ion-button>
     <ion-button (click)="onSubmit()" class="form-btn">
       {{ "SUBMIT" | translate }}
     </ion-button>

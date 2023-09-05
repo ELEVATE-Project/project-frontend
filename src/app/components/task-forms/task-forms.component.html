@@ -1,60 +1,67 @@
-<ion-content>
+  <app-back-button 
+  [pageTitle]="title"  
+  [configBackButton]="configBackButton">
+  </app-back-button> 
   <ion-grid>
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="glass-effect">
-      <ion-item lines="none" class="ion-item">
-        <fieldset  class="input-item">
-          <legend>{{ "TASK_CREATION.FORM.TITLE" | translate }}<span class="required-marker">*</span></legend> 
+      <ion-item lines="none" class="ion-item" class="inputs">
+          <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.TITLE" | translate }}<span class="required-marker">*</span></ion-label> 
           <ion-input formControlName="title" type="text" ></ion-input>
-        </fieldset>
       </ion-item>
 
-      <ion-item lines="none" class="ion-item">
-        <fieldset  class="input-item">
-        <legend>{{ "TASK_CREATION.FORM.STATUS" | translate }}<span class="required-marker">*</span></legend> 
+      <ion-item lines="none" class="ion-item" class="inputs">
+        <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.STATUS" | translate }}<span class="required-marker">*</span></ion-label> 
         <ion-input formControlName="status" type="text"></ion-input>
-  </fieldset>
     </ion-item>
 
-    <ion-item lines="none" class="ion-item">
-      <fieldset  class="input-item">
-      <legend>{{ "TASK_CREATION.FORM.ASSIGNEE" | translate }}<span class="required-marker">*</span></legend> 
-      <ion-input formControlName="assignee" type="text"></ion-input>
-</fieldset>
-  </ion-item>
+    <ion-item >
+      <ion-row>
+    <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
+      <ion-label position="stacked" class="large-label"
+      readonly
+    >{{ "TASK_CREATION.FORM.START_DATE" | translate }}<span class="required-marker">*</span></ion-label>
+    </ion-col>
+    <ion-col size="12" size-lg="8" size-md="12" size-sm="12">
+      <ion-datetime-button color="white" datetime="startDate" ></ion-datetime-button>
+    </ion-col>
+<ion-modal [keepContentsMounted]="true">
+<ng-template>
+<ion-datetime id="startDate" 
+displayFormat="MMM DD, YYYY"
+(ionChange)="startDate($event)"></ion-datetime>
+</ng-template>
+</ion-modal>
+    
+  </ion-row>
+  </ion-item>  
 
-<ion-row>
+  <ion-item >
+    <ion-row>
   <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
-    <ion-label>{{ "TASK_CREATION.FORM.START_DATE" | translate }} <span class="required-marker">*</span></ion-label>
+    <ion-label position="stacked" class="large-label"
+    readonly
+  >{{ "TASK_CREATION.FORM.END_DATE" | translate }}<span class="required-marker">*</span></ion-label>
   </ion-col>
   <ion-col size="12" size-lg="8" size-md="12" size-sm="12">
-    <ion-datetime-button datetime="startDate" color="dark"></ion-datetime-button>
-  <ion-modal [keepContentsMounted]="true">
-    <ng-template>
-      <ion-datetime id="startDate" 
-      displayFormat="MMM DD, YYYY HH:mm"
-      (ionChange)="startDate($event)"></ion-datetime>
-    </ng-template>
-  </ion-modal>
+    <ion-datetime-button color="white" datetime="endDate" ></ion-datetime-button>
   </ion-col>
+<ion-modal [keepContentsMounted]="true">
+<ng-template>
+<ion-datetime id="endDate" 
+displayFormat="MMM DD, YYYY"
+(ionChange)="endDate($event)"></ion-datetime>
+</ng-template>
+</ion-modal>
+  
 </ion-row>
+</ion-item>  
 
 <ion-row>
-  <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
-  <ion-label>{{ "TASK_CREATION.FORM.END_DATE" | translate }}<span class="required-marker">*</span></ion-label>
-</ion-col>
-<ion-col size="12" size-lg="8" size-md="12" size-sm="12">
-    <ion-datetime-button datetime="endDate"></ion-datetime-button>
-  <ion-modal [keepContentsMounted]="true">
-    <ng-template>
-      <ion-datetime id="endDate" 
-      color="light"
-      displayFormat="MMM DD, YYYY HH:mm"
-      (ionChange)="endDate($event)"></ion-datetime>
-    </ng-template>
-  </ion-modal>
-</ion-col>
+  <ion-col size="12" class="ion-text-right">
+    <ion-button (click)="onSubmit()" class="form-btn">
+      {{ "SUBMIT" | translate }}
+    </ion-button>
+  </ion-col>
 </ion-row>
-  <ion-button class="rounded-custom-button" expand="block" (click)="onSubmit()"> {{ "PROJECT_CREATION.SUBMIT" | translate }} </ion-button>
     </form>
   </ion-grid>
-</ion-content>

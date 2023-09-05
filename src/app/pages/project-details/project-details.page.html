@@ -1,6 +1,4 @@
-
-<ion-content [fullscreen]="true">
-  <ion-grid>
+   <ion-grid>
     <app-back-button [pageTitle]="title"
     [configBackButton]="configBackButton">
     </app-back-button> 
@@ -43,7 +41,7 @@
                 [projectName]="task.name"
                 [projectStatus]="task.status"
                 [taskCount]="task.children.length"
-                [id]="task.id"
+                [id]="task._id"
                 [type]="type"
               ></app-project-card>
       </ion-item>
@@ -60,9 +58,7 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-</ion-content>
 
 
-<!-- <app-task-forms>
 
-</app-task-forms> -->
+

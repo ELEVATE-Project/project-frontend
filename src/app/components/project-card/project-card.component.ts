@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { utilKeys } from 'src/app/core/constants/util.key';
+import { UtilService } from 'src/app/shared/util.service';
 
 
 @Component({
@@ -17,8 +18,10 @@ export class ProjectCardComponent  implements OnInit {
   @Input() type: string = "";
 
   utilKeys = utilKeys;
-  isOpen: boolean = false;
+  isOpen: boolean = false;  // used to display popover
 
+
+  
   popoverbtn = [
     {icon : 'create' , lbl : 'EDIT'},
     {icon : 'trash' , lbl : 'DELETE'},
@@ -26,13 +29,14 @@ export class ProjectCardComponent  implements OnInit {
   ]
   constructor(
     private router: Router,
-    private popoverController: PopoverController
+    private popoverController: PopoverController,
+    private utilService: UtilService
   ) { }
 
   viewProject(id: any) {
     console.log(id);  
+    this.utilService.setId(id);
     this.router.navigateByUrl(`/layout/project-details/${id}`);
-
   }
 
   updateStatus(){
@@ -48,16 +52,29 @@ export class ProjectCardComponent  implements OnInit {
   }
 
   performAction(ev: any){
+    this.popover(false);
     switch(ev){
       case 'EDIT':
-        this.router.navigateByUrl('/layout/create-task');
+        this.onEdit();
         break;
       case 'DELETE':
         break;
       case 'SHARE':
         break;
     }
-    this.popover(false);
+  }
+
+  onEdit(){
+    const taskId = this.id;
+    const projectId = this.utilService.getId();
+
+    // Create an object to hold the route parameters (router arguments)
+    const navigationExtras: NavigationExtras = {
+      queryParams: { taskId, projectId }
+    };
+
+
+    this.router.navigate(["/layout/create-task/"], navigationExtras);
   }
 
 }

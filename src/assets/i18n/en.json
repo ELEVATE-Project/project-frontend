@@ -73,10 +73,11 @@
         "TITLE" : "Project Details"
     },
     "TASK_CREATION" :{
+        "HEADER": "Task Creation",
         "FORM" : {
             "TITLE": "Task Title",
-            "STATUS" : "Objective",
-            "ASSIGNEE" : "Enter objective of your  project",
+            "STATUS" : "Task Status",
+            "ASSIGNEE" : "Assignee", 
             "START_DATE": "Start Date",
             "END_DATE": "End Date"
         }

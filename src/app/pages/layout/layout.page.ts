@@ -60,10 +60,17 @@ export class LayoutPage implements OnInit {
   configMenu = menuLabelKeys;
 
   handleMenuClicks(action: string){
-      if(action == 'SIDE_MENU_LAYOUT.LOGOUT'){
+    switch(action){
+      case 'SIDE_MENU_LAYOUT.LOGOUT' :
         this.localStorageService.deleteAll();
         this.router.navigate(['/auth/login'], { replaceUrl: true });
-      }
+        break;
+      case 'SIDE_MENU_LAYOUT.HOME':
+        this.router.navigate(['/layout/home'], { replaceUrl: true });
+        break;
+      default:
+        break;
+    }
   }
   
 

@@ -7,8 +7,11 @@ import { subTaskData, taskData } from "../core/constants/util.key";
     providedIn: 'root',
   })
 
+
   export class UtilService{
     configHeader: any = new Subject();
+    public projectId: any = 0;
+    public taskId: any = 0;
     constructor(){ }
 
     setHeaders(setHeaderVal: any){
@@ -26,6 +29,18 @@ import { subTaskData, taskData } from "../core/constants/util.key";
         default:
           return {};
       }
+    }
+
+    setId(pid: any){
+      this.projectId = pid;
+      // this.taskId = tid;
+    }
+
+    getId(){
+      // const projId = this.projectId
+      // const taskId = this.taskId
+      // return { projId, taskId };
+      return this.projectId;
     }
   }
 

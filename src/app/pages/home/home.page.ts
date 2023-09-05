@@ -76,8 +76,6 @@ export class HomePage implements OnInit {
           });
           await this.storage.init();
           await this.storage.set('proj', this.projects);
-          await this.storage.get('proj');
-
           this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
           return data;
         }      
