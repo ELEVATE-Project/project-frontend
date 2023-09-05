@@ -39,6 +39,7 @@
         "DESC_LBL" : "Project Description",
         "DESC_PLACEHOLDER" : "Enter project description",
         "BTN" : "Create Project",
+        "ALERT_MSG" : "Do you want to Create Project?",
         "FORM" : {
             "PRJ_TITLE": "Project Title",
             "PRJ_TITLE_HINT" : "Enter your project title",
@@ -75,6 +76,7 @@
         "MONTHLY" : "Monthly",
         "QUARTERLY" : "Quarterly"
     },
+    "ALERT" : "Alert",
     "EMAIL" : "Email Id",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
