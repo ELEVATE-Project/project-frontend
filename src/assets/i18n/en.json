@@ -70,6 +70,7 @@
         "COMPLETED" : "Completed"
     },
     "EMAIL" : "Email Id",
+    "NAME" : "Name",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
     "PASSWORD_PLACEHOLDER" : "Enter your password",

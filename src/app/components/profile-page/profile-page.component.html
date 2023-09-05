@@ -1,0 +1,28 @@
+<ion-grid >
+  <app-back-button [pageTitle]="title">
+  </app-back-button> 
+  <ion-card class="custom-card">
+    <ion-row>
+    <ion-col class="center-container" size="12" size-sm="12" size-md="12" size-lg="4">
+      <div class="avatar" >
+     {{ initials }}
+   </div>
+   </ion-col>
+   <ion-col size="8" size-sm="12" size-md="12" size-lg="8">
+  <ion-row class="center-container">
+    <ion-item lines="none">
+      <ion-label position="stacked">{{ "NAME" | translate}}</ion-label>
+      <ion-input [value]="user.name" readonly></ion-input>
+    </ion-item>
+  </ion-row>
+  <ion-row class="center-container">
+    <ion-item lines="none">
+      <ion-label position="stacked">{{ "EMAIL" | translate}}</ion-label>
+      <ion-input [value]="user.email.address" readonly></ion-input>
+    </ion-item>
+  </ion-row>
+</ion-col>
+</ion-row>
+</ion-card>
+</ion-grid>
+
