@@ -9,7 +9,7 @@
           <ion-label text-wrap class="status" [ngClass]="{
             'in-progress': projectStatus == 'started',
             'not-started': projectStatus == 'notStarted',
-            'completed': projectStatus == 'completed'
+            'completed': projectStatus == 'completed' || projectStatus == 'submitted'
           }">
           {{ utilKeys.STATUS_KEYS[projectStatus] | translate }}
           </ion-label>
@@ -18,7 +18,7 @@
           <ion-label text-wrap [ngClass]="{
             'in-progress': projectStatus == 'started',
             'not-started': projectStatus == 'notStarted',
-            'completed': projectStatus == 'completed'
+            'completed': projectStatus == 'completed' || projectStatus == 'submitted'
         }">
           {{ taskCount }}
         </ion-label>

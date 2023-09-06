@@ -38,7 +38,9 @@ export const taskData = {
     STATUS_KEYS : {
       "started" : 'PROJECT_STATUS.STARTED',
       "notStarted" : 'PROJECT_STATUS.NOT_STARTED',
-      "completed" : 'PROJECT_STATUS.COMPLETED'
+      "completed" : 'PROJECT_STATUS.COMPLETED',
+      "inProgress" : 'PROJECT_STATUS.IN_PROGRESS',
+      "submitted" : 'PROJECT_STATUS.COMPLETED'
     } as Record<string, string>  
   }
 

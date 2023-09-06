@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { headerConfigKeys, urlConstants } from 'src/app/core/constants';
 import { utilKeys } from 'src/app/core/constants/util.key';
-import { HttpService } from 'src/app/core/services';
+import { HttpService, ToastService } from 'src/app/core/services';
 import { LoaderService } from 'src/app/core/services/loader/loader.service';
 import { UtilService } from 'src/app/shared/util.service';
 import { StorageService } from 'src/app/storage.service';
@@ -30,7 +30,8 @@ export class ProjectDetailsPage implements OnInit {
     private http: HttpService,
     private utilsService : UtilService,
     private loaderService: LoaderService,
-    private storage: StorageService
+    private storage: StorageService,
+    private toast: ToastService
   ) { }
 
   ngOnInit() {
@@ -49,6 +50,7 @@ export class ProjectDetailsPage implements OnInit {
       if(project){
         // project available in local
         this.project = project;
+        this.tasksCompleted = project.tasks.filter((task: any) => task.status == 'completed').length;
         return;
       }
       this.loaderService.showLoader();
@@ -60,9 +62,7 @@ export class ProjectDetailsPage implements OnInit {
       await this.http.setHeader();
       this.http.get(config).subscribe(async (data) => {
         if (data) {
-          console.log(data);
           this.project = data.result;
-          console.log(this.project.tasks);
           this.tasksCompleted = data.result.tasks.filter((task: any) => task.status === 'completed').length;
           await this.storage.set(this.projectId, this.project);
         }
@@ -73,9 +73,6 @@ export class ProjectDetailsPage implements OnInit {
       
   }
 
-  deleteTask(task: any){
-    console.log(task);
-  }
 
   addTask(){
     const taskId = '';
@@ -89,5 +86,33 @@ export class ProjectDetailsPage implements OnInit {
 
     this.router.navigate(["/layout/create-task/"], navigationExtras);
   }
+
+  async onSubmit(){
+    // submit when all tasks are completed
+    this.project.status = 'completed';
+    await this.storage.set(this.projectId, this.project);
+    this.toast.showToast('Project submitted successfully', 'success');
+  }
+
+  async syncFunction() {
+    // sync logic here
+    if(this.project.status == 'completed' || this.project.status == 'submitted'){
+      // if project is already submitted
+      this.toast.showToast('Project already submitted', 'success');
+      return;
+    }
+    const dynamicUrl = urlConstants.API_URLS.POST_PROJECT(this.projectId, this.project.lastDownloadedAt);
+    const config = {
+      url: dynamicUrl,
+      payload: this.project
+    };
+    await this.http.setHeader();
+
+    this.http.post(config).subscribe((result: any)=> {
+      this.toast.showToast(result.msg, 'success');
+    });
+  }
+
+  checkAlready
 
 }

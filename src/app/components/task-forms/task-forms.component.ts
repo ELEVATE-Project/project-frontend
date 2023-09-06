@@ -38,8 +38,8 @@ export class TaskFormsComponent  implements OnInit {
       [headerConfigKeys.SHOW_SYNC]: false,
     }
     status: any = [
-      { type: utilKeys.STATUS_KEYS['started'], val: 'started' },
       { type: utilKeys.STATUS_KEYS['notStarted'], val: 'notStarted' },
+      { type: utilKeys.STATUS_KEYS['inProgress'], val: 'started' },
       { type: utilKeys.STATUS_KEYS['completed'], val: 'completed' },
     ]
   async ngOnInit() {
@@ -60,10 +60,6 @@ export class TaskFormsComponent  implements OnInit {
     this.activatedRoute.queryParams.subscribe(async (queryParams: any) => {
       this.taskId = queryParams.taskId;
       this.projectId = queryParams.projectId;
-  
-      // Now you can use taskId and projectId in your component
-      console.log('Task ID:', this.taskId);
-      console.log('Project ID:', this.projectId);
     });
    
     let taskData = null;
@@ -79,7 +75,6 @@ export class TaskFormsComponent  implements OnInit {
     this.setForm(taskData);
        
     this.newTask = this.utilService.getMetaData('task');
-    console.log(this.newTask)
  
   }
   setForm(taskData: any) {
@@ -92,9 +87,20 @@ export class TaskFormsComponent  implements OnInit {
   }
 
   async onSubmit(){
+    if(!this.projectForm.valid){
+        // show pop to complete the required details
+      this.toast.showToast('Please enter the required details', 'danger');
+      return;
+    }
+    const selectedEndDate = this.projectForm.get('endDate')?.value!;
+    const selectedStartDate = this.projectForm.get('startDate')?.value!;
+    // validation to check endDate > startDate
+    if(selectedStartDate > selectedEndDate){
+      this.toast.showToast('Start Date should be before End Date', 'danger');
+      return;
+    }
     const mappedData = { ...taskData }; // Create a copy of the taskData object
 
-    console.log(this.projectForm.value)
     let jsonData =   this.projectForm.value;
     // Map the JSON values to the corresponding fields
 
@@ -103,8 +109,6 @@ export class TaskFormsComponent  implements OnInit {
     mappedData.status = jsonData.status || '';
     mappedData.name = jsonData.title || '';
 
-
-    console.log(mappedData);
     if(this.taskId != ''){
       //  edit
       this.project.tasks.forEach((element: any, index: any) => {
@@ -139,8 +143,5 @@ export class TaskFormsComponent  implements OnInit {
     });
   }
 
-  changeSelectedType(ev: any){
-    console.log(ev.target.value);
-  }
-
+  
 }

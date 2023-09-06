@@ -68,7 +68,8 @@
     "PROJECT_STATUS" : {
         "STARTED" : "Started",
         "NOT_STARTED" : "Not Started",
-        "COMPLETED" : "Completed"
+        "COMPLETED" : "Completed",
+        "IN_PROGRESS" : "In Progress"
     },
     "PROJECT_DETAILS" :{
         "TITLE" : "Project Details"
@@ -110,5 +111,8 @@
         "EN" : "en",
         "HINDI" : "HINDI",
         "HN" : "hn"
-    }
+    },
+    "TASKS_LIST" : "Tasks List",
+    "PROFILE_TITLE" : "Profile",
+    "SEARCH" : "Search"
     }

@@ -140,11 +140,9 @@ export class FormComponent  implements OnInit {
     const result = await this.alertService.presentAlert('Are you sure?');
     if (result) {
       // User clicked "Yes"
-      console.log('User clicked Yes');
       this.onSubmit();
     } else {
       // User clicked "No"
-      console.log('User clicked No');
     }
   }
 

@@ -14,7 +14,7 @@
       </ion-col>
       <ion-col  size="6" size-sm="4" size-md="4" size-lg="4"  class="center-container-vertical" (click)="performAction(headerConfigKeys.SHOW_SEARCH)" >
         <div *ngIf="configHeader[headerConfigKeys.SHOW_SEARCH]">
-          <ion-searchbar class="custom"></ion-searchbar>
+          <ion-searchbar class="custom" placeholder='{{ "SEARCH" | translate }}'></ion-searchbar>
         </div>
       </ion-col>
       <ion-col size="1" size-sm="2" size-md="1" size-lg="1" class="center-container-vertical" (click)="performAction(headerConfigKeys.SHOW_NOTIFICATION)" >

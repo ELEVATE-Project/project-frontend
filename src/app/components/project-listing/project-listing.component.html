@@ -1,4 +1,5 @@
 
+  
   <app-back-button [pageTitle]="title">
   </app-back-button> 
   <ion-searchbar class="custom-searchbar" (ionChange)="onSearch($event)"></ion-searchbar>
@@ -10,15 +11,16 @@
       <ion-label>{{ lblDiscovered | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
-    <div *ngFor="let project of searchResults" lines="none">
+    <ion-item *ngFor="let project of searchResults" lines="none">
       <app-project-card
         class="projects-details"
         [projectName]="project.title"
         [projectStatus]="project.status"
         [taskCount]="project.tasks.length"
-        [id]="project._id"
+        [id]="project._id" 
+        [type]="type"
       ></app-project-card>
-    </div>
+    </ion-item>
 
   <div *ngIf="!searchResults.length">
     <app-no-data-component [message]="emptyLbl"></app-no-data-component>

@@ -50,9 +50,8 @@ export class ProjectReportsComponent  implements OnInit {
    const config = {
      url: dynamicUrl,
    };
-   this.http.get(config).subscribe((data: any)=>{
-    console.log(data);
-    this.dataAvailable = data.result.dataAvailable;  // to do: display no data component
+    this.http.get(config).subscribe((data: any)=>{
+    this.dataAvailable = data.result.dataAvailable; 
     const projData  = data.result.data.projects;
     this.started = projData.started;
     this.notStarted = projData.overdue;

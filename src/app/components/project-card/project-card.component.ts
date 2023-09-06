@@ -36,13 +36,8 @@ export class ProjectCardComponent  implements OnInit {
   ) { }
 
   viewProject(id: any) {
-    console.log(id);  
     this.utilService.setId(id);
     this.router.navigateByUrl(`/layout/project-details/${id}`);
-  }
-
-  updateStatus(){
-    console.log('updateStatus')
   }
 
   ngOnInit() {
@@ -87,12 +82,11 @@ export class ProjectCardComponent  implements OnInit {
       let project = data;
       data.tasks.forEach((element: any, index: any) => {
         if(element._id == taskId){
-          element.isDeleted = true;
+          data.tasks.splice(index,1);
         }
       });
       await this.storageService.set(projectId, project).then((data: any) => {
           this.toast.showToast('Task Deleted succesfully', 'danger');
-          // this.ngOnInit();
       })
 
     })

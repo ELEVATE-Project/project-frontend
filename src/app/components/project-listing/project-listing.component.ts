@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { headerConfigKeys, urlConstants } from 'src/app/core/constants';
 import { HttpService, ToastService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
+import { utilKeys } from 'src/app/core/constants/util.key';
 
 @Component({
   selector: 'app-project-listing',
@@ -18,7 +19,7 @@ export class ProjectListingComponent  implements OnInit {
   public title: string = 'GLOBAL_SEARCH.TITLE'
   selectedTab: any = 'createdByMe';
   searchTerm: any = "";
-  type='project'
+  type='PROJECT'
   lblCreated = 'CREATED_BY_ME';
   lblDiscovered = 'DISCOVERED_BY_ME';
   emptyLbl = 'NO_DATA';

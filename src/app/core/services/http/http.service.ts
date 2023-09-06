@@ -48,7 +48,7 @@ export class HttpService {
     console.log(this.baseUrl + requestParam.url, body)
     return this.http.post(this.baseUrl + requestParam.url, body, {headers: this.httpHeaders}).pipe(
       map((data:any)=>{
-      if (data.responseCode === "OK") {
+      if (data.responseCode === "OK" || data.status === 200) {
         return data;
       }
     }),

@@ -11,7 +11,7 @@ import { TranslateConfigService } from 'src/app/translate-config.service';
 })
 export class ProfilePageComponent  implements OnInit {
   user: any;
-  title: string = 'Profile';
+  title: string = 'PROFILE_TITLE';
 
   languages: any = [
     {
@@ -42,7 +42,6 @@ export class ProfilePageComponent  implements OnInit {
   }
 
   handleChange(ev: any){
-    console.log(ev.target.value);
     const lang = ev.target.value;
     if(lang == 'hn'){
       this.translateService.setLanguage('hn')

@@ -54,11 +54,11 @@
     },
     "SIDE_MENU_LAYOUT" :{
         "HEADER" : "UNNATI",
-        "HOME" : "Home",
-        "PROJECTS" : "Projects",
-        "PROFILE" : "Profile",
-        "SETTINGS" : "Settings",
-        "LOGOUT" : "Logout"
+        "HOME" : "होम",
+        "PROJECTS" : "प्रोजेक्ट्स",
+        "PROFILE" : "प्रोफ़ाइल",
+        "SETTINGS" : "सेटिंग्स",
+        "LOGOUT" : "लॉगआउट"
     },
     "GLOBAL_SEARCH" :{
         "TITLE" : "Search project"
@@ -83,5 +83,7 @@
         "EN" : "en",
         "HINDI" : "हिंदी",
         "HN" : "hn"
-    }
+    },
+    "PROFILE_TITLE" : "प्रोफ़ाइल",
+    "SEARCH" : "खोज"
     }

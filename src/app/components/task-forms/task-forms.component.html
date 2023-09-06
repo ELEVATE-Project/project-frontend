@@ -1,22 +1,30 @@
+<ion-grid >
   <app-back-button 
   [pageTitle]="title"  
   [configBackButton]="configBackButton">
   </app-back-button> 
-  <ion-grid>
-    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="glass-effect">
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="custom-card">
       <ion-item lines="none" class="ion-item" class="inputs">
-          <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.TITLE" | translate }}<span class="required-marker">*</span></ion-label> 
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.TITLE" | translate }}<span class="required-marker">*</span></ion-label> 
           <ion-input formControlName="title" type="text" ></ion-input>
+          </ion-col>
+        </ion-row>
       </ion-item>
 
       <ion-item lines="none" class="ion-item inputs">
-        <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.STATUS" | translate }}<span class="required-marker">*</span></ion-label> 
-        <ion-select  formControlName="status" type="text" (ionChange)="changeSelectedType($event)">
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.STATUS" | translate }}<span class="required-marker">*</span></ion-label> 
+        <ion-select  formControlName="status" type="text">
           <ion-select-option  
           *ngFor="let type of status"
           [value]=type.val> 
           {{ type.type | translate }}</ion-select-option>
         </ion-select>
+          </ion-col>
+        </ion-row>
     </ion-item>
 
     <ion-item >
