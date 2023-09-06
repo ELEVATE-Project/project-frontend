@@ -9,9 +9,9 @@ import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
 import { ProjectDetailsPage } from './pages/project-details/project-details.page';
 import { TaskFormsComponent } from './components';
-import { ProjectSearchComponent } from './components';
 import { ProjectListingComponent } from './components/project-listing/project-listing.component';
 
+import { ProfilePageComponent, ProjectReportsComponent, ProjectSearchComponent } from './components';
 
 const routes: Routes = [
   {
@@ -24,15 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthPageModule)
   },
   {
-    path: 'home',
-    canActivate: [HomeGuard],
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'search', 
-    component: ProjectSearchComponent, 
-  },
-  {
     path: 'layout',
     canActivate: [HomeGuard],
     component: LayoutPage,
@@ -43,7 +34,9 @@ const routes: Routes = [
       { path: 'project-details/:id', component: ProjectDetailsPage },
       { path: 'create-task', component: TaskFormsComponent },
       { path: 'project-listing', component: ProjectListingComponent },
-      { path: 'search', component: ProjectSearchComponent   }
+      { path: 'search', component: ProjectSearchComponent   },
+      { path: 'reports', component: ProjectReportsComponent   },
+      { path: 'profile', component: ProfilePageComponent   }
     ],
   },
   {
@@ -61,6 +54,23 @@ const routes: Routes = [
   {
     path: 'project-listing',
     component : ProjectListingComponent
+  },
+  {
+    path: 'home',
+    canActivate: [HomeGuard],
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'search', 
+    component: ProjectSearchComponent, 
+  },
+  {
+    path: 'reports', 
+    component: ProjectReportsComponent,
+  },
+  { 
+    path: 'profile', 
+    component: ProfilePageComponent, 
   },
 ];
 @NgModule({

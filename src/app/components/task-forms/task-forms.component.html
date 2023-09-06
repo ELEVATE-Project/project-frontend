@@ -9,9 +9,14 @@
           <ion-input formControlName="title" type="text" ></ion-input>
       </ion-item>
 
-      <ion-item lines="none" class="ion-item" class="inputs">
+      <ion-item lines="none" class="ion-item inputs">
         <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.STATUS" | translate }}<span class="required-marker">*</span></ion-label> 
-        <ion-input formControlName="status" type="text"></ion-input>
+        <ion-select  formControlName="status" type="text" (ionChange)="changeSelectedType($event)">
+          <ion-select-option  
+          *ngFor="let type of status"
+          [value]=type.val> 
+          {{ type.type | translate }}</ion-select-option>
+        </ion-select>
     </ion-item>
 
     <ion-item >

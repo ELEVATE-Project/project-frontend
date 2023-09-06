@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { urlConstants } from 'src/app/core/constants';
 import { HttpService, ToastService } from 'src/app/core/services';
 import { LoaderService } from 'src/app/core/services/loader/loader.service';
+import { AlertService } from 'src/app/core/services/alert/alert.service';
 
 @Component({
   selector: 'app-form-component',
@@ -20,7 +21,8 @@ export class FormComponent  implements OnInit {
     private http: HttpService,
     private toast: ToastService,
     private router: Router,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private alertService: AlertService
     ) { }
   
  ngOnInit() {
@@ -133,6 +135,19 @@ export class FormComponent  implements OnInit {
   onReset(){
     this.projectForm.reset();
   }
+
+  async showAlert() {
+    const result = await this.alertService.presentAlert('Are you sure?');
+    if (result) {
+      // User clicked "Yes"
+      console.log('User clicked Yes');
+      this.onSubmit();
+    } else {
+      // User clicked "No"
+      console.log('User clicked No');
+    }
+  }
+
 
 
 }

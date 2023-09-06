@@ -25,6 +25,7 @@ export const urlConstants = {
         TEMPLATE_SEARCH: (page: number, limit: number, search: string) =>
         `/c4gt-unnati/v1/project/templates/list?page=${page}&limit=${limit}&search=${search}`,
         GET_PROJECT_DETAIL: (id: any) => `/c4gt-unnati/v1/userProjects/details/${id}`,
+        GET_REPORT: (type: any) =>  `/c4gt-unnati/v1/reports/entity/?requestPdf=false&reportType=${type}`,
         // FORMS
         FORM_READ:'/mentoring/v1/form/read',
         GENERATE_OTP:"/user/v1/account/generateOtp",

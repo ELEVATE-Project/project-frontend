@@ -62,12 +62,15 @@ export class ProjectDetailsPage implements OnInit {
         if (data) {
           console.log(data);
           this.project = data.result;
+          console.log(this.project.tasks);
           this.tasksCompleted = data.result.tasks.filter((task: any) => task.status === 'completed').length;
           await this.storage.set(this.projectId, this.project);
         }
         this.loaderService.hideLoader();
       });
       });
+
+      
   }
 
   deleteTask(task: any){
@@ -75,7 +78,7 @@ export class ProjectDetailsPage implements OnInit {
   }
 
   addTask(){
-    const taskId = ''
+    const taskId = '';
     const projectId = this.projectId;
 
     // Create an object to hold the route parameters (router arguments)

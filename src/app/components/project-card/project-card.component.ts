@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { utilKeys } from 'src/app/core/constants/util.key';
+import { ToastService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
+import { StorageService } from 'src/app/storage.service';
 
 
 @Component({
@@ -20,8 +22,6 @@ export class ProjectCardComponent  implements OnInit {
   utilKeys = utilKeys;
   isOpen: boolean = false;  // used to display popover
 
-
-  
   popoverbtn = [
     {icon : 'create' , lbl : 'EDIT'},
     {icon : 'trash' , lbl : 'DELETE'},
@@ -30,7 +30,9 @@ export class ProjectCardComponent  implements OnInit {
   constructor(
     private router: Router,
     private popoverController: PopoverController,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private storageService: StorageService,
+    private toast: ToastService
   ) { }
 
   viewProject(id: any) {
@@ -58,6 +60,7 @@ export class ProjectCardComponent  implements OnInit {
         this.onEdit();
         break;
       case 'DELETE':
+        this.onDelete();
         break;
       case 'SHARE':
         break;
@@ -75,6 +78,24 @@ export class ProjectCardComponent  implements OnInit {
 
 
     this.router.navigate(["/layout/create-task/"], navigationExtras);
+  }
+
+  async onDelete(){
+    const taskId = this.id;
+    const projectId = this.utilService.getId()
+    await this.storageService.get(projectId).then(async (data) => {
+      let project = data;
+      data.tasks.forEach((element: any, index: any) => {
+        if(element._id == taskId){
+          element.isDeleted = true;
+        }
+      });
+      await this.storageService.set(projectId, project).then((data: any) => {
+          this.toast.showToast('Task Deleted succesfully', 'danger');
+          // this.ngOnInit();
+      })
+
+    })
   }
 
 }

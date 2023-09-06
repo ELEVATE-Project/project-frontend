@@ -10,8 +10,7 @@
       <ion-label>{{ lblDiscovered | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
-  <ion-list>
-    <ion-item *ngFor="let project of searchResults" lines="none">
+    <div *ngFor="let project of searchResults" lines="none">
       <app-project-card
         class="projects-details"
         [projectName]="project.title"
@@ -19,8 +18,7 @@
         [taskCount]="project.tasks.length"
         [id]="project._id"
       ></app-project-card>
-    </ion-item>
-  </ion-list>
+    </div>
 
   <div *ngIf="!searchResults.length">
     <app-no-data-component [message]="emptyLbl"></app-no-data-component>

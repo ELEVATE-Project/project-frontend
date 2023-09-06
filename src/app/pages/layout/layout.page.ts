@@ -46,7 +46,7 @@ export class LayoutPage implements OnInit {
         break;
       case headerConfigKeys.SHOW_PROFILE:
         // Handle profile action
-        console.log('Profile action triggered');
+        this.router.navigateByUrl('/layout/profile');
         break;
       case headerConfigKeys.SHOW_MENU:
         // Handle side menu action

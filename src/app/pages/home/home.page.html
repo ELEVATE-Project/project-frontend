@@ -47,7 +47,7 @@
           </ion-row>
         </ion-col>
         <ion-col size="12" size-sm="12" size-md="5" size-lg="5" *ngIf="!showEmptyMessage">
-          <div class="pie-chart">
+          <div class="pie-chart" (click)="navigateToReports()">
             <app-pie-chart  [chartData]=" chartData" [title]="pieChartHeader">
             </app-pie-chart>
           </div>

@@ -4,37 +4,55 @@ import {
   BackButtonComponent,
     FormComponent,
     NoDataComponentComponent,
-    ProjectCardComponent,
     TaskFormsComponent,
     ProjectListingComponent,
+    PieChartComponent,
+    ProfilePageComponent,
+    ProjectCardComponent,
+    ProjectReportsComponent,
     ProjectSearchComponent,
     } from '../components';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
     ProjectCardComponent,
     BackButtonComponent,
+    ProjectReportsComponent,
     FormComponent,
     TaskFormsComponent,
     ProjectSearchComponent,
     ProjectListingComponent,
-    ProjectSearchComponent,
-    NoDataComponentComponent
+    NoDataComponentComponent,
+    PieChartComponent,
+    ProfilePageComponent
 ],
-  imports: [CommonModule, IonicModule, TranslateModule, ReactiveFormsModule, TranslateModule],
+  imports: [
+    CommonModule, 
+    IonicModule, 
+    TranslateModule, 
+    ReactiveFormsModule, 
+    TranslateModule,
+    NgChartsModule 
+  ],
   exports: [
     ProjectCardComponent,
     BackButtonComponent,
+    ProjectReportsComponent,
     FormComponent,
     TaskFormsComponent,
     ProjectSearchComponent,
     ProjectListingComponent,
     ProjectSearchComponent,
-    NoDataComponentComponent
+    NoDataComponentComponent,
+    PieChartComponent,
+    ProjectSearchComponent,
+    ProjectSearchComponent,
+    ProfilePageComponent
   ]
 })
 export class SharedModule {}

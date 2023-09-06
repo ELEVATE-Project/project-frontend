@@ -104,3 +104,14 @@
     white-space: normal; 
   }
 
+
+  ion-alert {   
+    // lable of ddown
+    .alert-radio-label.sc-ion-alert-md {
+      white-space: pre-line !important;
+      color: var(--ion-color-primary);
+      font-weight: bold;
+    }
+  
+    
+  }

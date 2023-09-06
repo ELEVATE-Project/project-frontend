@@ -40,6 +40,7 @@
         "DESC_LBL" : "Project Description",
         "DESC_PLACEHOLDER" : "Enter project description",
         "BTN" : "Create Project",
+        "ALERT_MSG" : "Do you want to Create Project?",
         "FORM" : {
             "PRJ_TITLE": "Project Title",
             "PRJ_TITLE_HINT" : "Enter your project title",
@@ -84,7 +85,15 @@
     },
     "CREATED_BY_ME" : "Created By Me",
     "DISCOVERED_BY_ME" : "Discovered By Me",
+    "PROJECT_REPORT" : {
+        "REPORT_DDN" : "Select report type",
+        "WEEKLY" : "Weekly",
+        "MONTHLY" : "Monthly",
+        "QUARTERLY" : "Quarterly"
+    },
+    "ALERT" : "Alert",
     "EMAIL" : "Email Id",
+    "NAME" : "Name",
     "PASSWORD" : "Password",
     "EMAIL_PLACEHOLDER": "Enter your e-mail ID",
     "PASSWORD_PLACEHOLDER" : "Enter your password",
@@ -94,5 +103,12 @@
     "EDIT": "Edit",
     "SHARE" : "Share",
     "DELETE": "Delete",
-    "NO_DATA" : "No Data Found"
+    "SELECT_LANGUAGE" : "Select Language",
+    "NO_DATA" : "No Data Found",
+    "LANGUAGES" : {
+        "ENGLISH" : "English",
+        "EN" : "en",
+        "HINDI" : "HINDI",
+        "HN" : "hn"
+    }
     }

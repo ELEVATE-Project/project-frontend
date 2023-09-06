@@ -35,8 +35,8 @@
   </ion-grid>
 
   <ion-list *ngFor="let task of project.tasks" >
-      <ion-item lines="none">
-        <app-project-card
+      <ion-item lines="none" *ngIf="!task.isDeleted">
+                  <app-project-card
                 class="projects-details"
                 [projectName]="task.name"
                 [projectStatus]="task.status"
@@ -45,6 +45,7 @@
                 [type]="type"
               ></app-project-card>
       </ion-item>
+   
   </ion-list>
 
   <ion-fab slot="fixed" horizontal="center" vertical="bottom" *ngIf="!project.tasks.length">

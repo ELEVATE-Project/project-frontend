@@ -7,3 +7,5 @@ export * from './task-forms/task-forms.component'
 export * from './project-search/project-search.component';
 export * from './project-listing/project-listing.component'
 export * from './no-data-component/no-data-component.component'
+export * from './project-reports/project-reports.component'
+export * from './profile-page/profile-page.component'

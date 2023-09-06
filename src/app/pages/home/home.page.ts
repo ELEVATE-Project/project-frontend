@@ -107,4 +107,7 @@ export class HomePage implements OnInit {
   viewAll(){
     this.router.navigate(['/layout/project-listing'], { replaceUrl: true });
   }
+  navigateToReports(){
+    this.router.navigateByUrl('/layout/reports');
+  }
 }

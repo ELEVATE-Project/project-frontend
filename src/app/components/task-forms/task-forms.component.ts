@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { headerConfigKeys } from 'src/app/core/constants';
-import { taskData } from 'src/app/core/constants/util.key';
+import { taskData, utilKeys } from 'src/app/core/constants/util.key';
 import { ToastService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
 import { StorageService } from 'src/app/storage.service';
@@ -32,10 +32,16 @@ export class TaskFormsComponent  implements OnInit {
     ) { }
     newTask: any
     public title: string = 'TASK_CREATION.HEADER'
+    utilKeys= utilKeys;
     configBackButton = {
       [headerConfigKeys.SHOW_EDIT]: false,
       [headerConfigKeys.SHOW_SYNC]: false,
     }
+    status: any = [
+      { type: utilKeys.STATUS_KEYS['started'], val: 'started' },
+      { type: utilKeys.STATUS_KEYS['notStarted'], val: 'notStarted' },
+      { type: utilKeys.STATUS_KEYS['completed'], val: 'completed' },
+    ]
   async ngOnInit() {
     // two scenarios :
     // edit: task id (local storage) + project id , new: project id -> children arr
@@ -101,10 +107,9 @@ export class TaskFormsComponent  implements OnInit {
     console.log(mappedData);
     if(this.taskId != ''){
       //  edit
-      this.project.tasks.forEach((element: any) => {
+      this.project.tasks.forEach((element: any, index: any) => {
         if(element._id == this.taskId){
-          element = mappedData;
-          console.log("el", element)
+          this.project.tasks[index] = mappedData;
         }
       });
     }else{
@@ -112,7 +117,12 @@ export class TaskFormsComponent  implements OnInit {
       console.log(mappedData);
     }
     await this.storageService.set(this.projectId, this.project).then((data: any) => {
-      this.toast.showToast('Task Created succesfully', 'success');
+      if(this.taskId != ''){
+        this.toast.showToast('Task Updated succesfully', 'success');
+      }else{
+        this.toast.showToast('Task Created succesfully', 'success');
+      }
+
       this.navCtrl.back();
     })
   }
@@ -129,6 +139,8 @@ export class TaskFormsComponent  implements OnInit {
     });
   }
 
-
+  changeSelectedType(ev: any){
+    console.log(ev.target.value);
+  }
 
 }
