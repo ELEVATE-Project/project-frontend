@@ -3,14 +3,12 @@
   </app-back-button> 
   <ion-item lines="none">
   <ion-label>Select an option:</ion-label>
-  <ion-select [value]="selectedValue" (ionChange)="getReport()">
-    <ion-select-option
-    *ngFor="let type of reportTypes"
-    [value]=type.val
-  >
-    {{ type.type | translate }}
-  </ion-select-option>
-  </ion-select>
+  <ion-select [value]="selectedValue" (ionChange)="changeSelectedType($event)">
+  <ion-select-option  
+  *ngFor="let type of reportTypes"
+  [value]=type.val> 
+  {{ type.type | translate }}</ion-select-option>
+</ion-select>
 </ion-item>
 <ion-col size="12" size-sm="12" size-md="5" size-lg="5">
   <div class="pie-chart">

@@ -26,6 +26,7 @@ export class ProjectReportsComponent  implements OnInit {
   started: any = 0;
   notStarted: any = 0;
   completed: any = 0;
+  showEmpty: boolean = false;
   async ngOnInit() {
    this.getReport();
    this.utilsService.setHeaders({
@@ -37,6 +38,11 @@ export class ProjectReportsComponent  implements OnInit {
     })
   }
   
+  changeSelectedType(ev: any){
+    this.selectedValue = ev.target.value;
+    this.getReport();
+  }
+
   async getReport(){
     await this.http.setHeader();
    const dynamicUrl = urlConstants.API_URLS.GET_REPORT(this.selectedValue);
@@ -45,6 +51,12 @@ export class ProjectReportsComponent  implements OnInit {
    };
    this.http.get(config).subscribe((data: any)=>{
     console.log(data);
+    this.showEmpty = data.result.dataAvailable;  // to do: display no data component
+    const projData  = data.result.data.projects;
+    this.started = projData.started;
+    this.notStarted = projData.overdue;
+    this.completed = projData.submitted;
+
     this.chartData = [{ data: [this.started,this.notStarted, this.completed] }]
    });
   }

@@ -4,6 +4,7 @@ import {
   BackButtonComponent,
     FormComponent,
     PieChartComponent,
+    ProfilePageComponent,
     ProjectCardComponent,
     ProjectReportsComponent,
     ProjectSearchComponent,
@@ -22,6 +23,7 @@ import { NgChartsModule } from 'ng2-charts';
     FormComponent,
     ProjectSearchComponent,
     PieChartComponent,
+    ProfilePageComponent
 ],
   imports: [
     CommonModule, 
@@ -38,6 +40,8 @@ import { NgChartsModule } from 'ng2-charts';
     FormComponent,
     PieChartComponent,
     ProjectSearchComponent,
+    ProjectSearchComponent,
+    ProfilePageComponent
   ]
 })
 export class SharedModule {}

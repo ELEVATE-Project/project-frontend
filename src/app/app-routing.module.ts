@@ -7,8 +7,7 @@ import { CreateProjectPageModule } from './pages/create-project/create-project.m
 import { LayoutPage } from './pages/layout/layout.page';
 import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
-import { ProjectSearchComponent } from './components';
-import { ProjectReportsComponent } from './components/project-reports/project-reports.component';
+import { ProfilePageComponent, ProjectReportsComponent, ProjectSearchComponent } from './components';
 
 const routes: Routes = [
   {
@@ -31,7 +30,11 @@ const routes: Routes = [
   },
   {
     path: 'reports', 
-    component: ProjectReportsComponent, 
+    component: ProjectReportsComponent,
+  },
+  { 
+    path: 'profile', 
+    component: ProfilePageComponent, 
   },
   {
     path: 'layout',
@@ -43,6 +46,7 @@ const routes: Routes = [
       { path: 'create-project', component: CreateProjectPage },
       { path: 'search', component: ProjectSearchComponent   },
       { path: 'reports', component: ProjectReportsComponent   },
+      { path: 'profile', component: ProfilePageComponent   }
     ],
   },
   {
