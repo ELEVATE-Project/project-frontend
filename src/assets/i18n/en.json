@@ -39,6 +39,7 @@
         "DESC_LBL" : "Project Description",
         "DESC_PLACEHOLDER" : "Enter project description",
         "BTN" : "Create Project",
+        "ALERT_MSG" : "Do you want to Create Project?",
         "FORM" : {
             "PRJ_TITLE": "Project Title",
             "PRJ_TITLE_HINT" : "Enter your project title",
@@ -50,7 +51,6 @@
             "ENDDATE": "End Date",
             "OTHER": "Other",
             "OTHER_HINT": "Enter name of other category"
-
         }
     },
     "SIDE_MENU_LAYOUT" :{
@@ -69,6 +69,13 @@
         "NOT_STARTED" : "Not Started",
         "COMPLETED" : "Completed"
     },
+    "PROJECT_REPORT" : {
+        "REPORT_DDN" : "Select report type",
+        "WEEKLY" : "Weekly",
+        "MONTHLY" : "Monthly",
+        "QUARTERLY" : "Quarterly"
+    },
+    "ALERT" : "Alert",
     "EMAIL" : "Email Id",
     "NAME" : "Name",
     "PASSWORD" : "Password",
@@ -77,5 +84,12 @@
     "SIGN_IN" : "Sign in?",
     "SUBMIT" : "Submit",
     "RESET_FORM" : "Reset Form",
-    "NO_DATA" : "No Data Found"
+    "SELECT_LANGUAGE" : "Select Language",
+    "NO_DATA" : "No Data Found",
+    "LANGUAGES" : {
+        "ENGLISH" : "English",
+        "EN" : "en",
+        "HINDI" : "HINDI",
+        "HN" : "hn"
+    }
     }
