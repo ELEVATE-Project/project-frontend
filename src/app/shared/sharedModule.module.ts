@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {  
   BackButtonComponent,
     FormComponent,
+    ProfilePageComponent,
     ProjectCardComponent,
     ProjectSearchComponent,
     } from '../components';
@@ -16,14 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProjectCardComponent,
     BackButtonComponent,
     FormComponent,
-    ProjectSearchComponent
+    ProjectSearchComponent,
+    ProfilePageComponent
 ],
   imports: [CommonModule, IonicModule, TranslateModule, ReactiveFormsModule, TranslateModule],
   exports: [
     ProjectCardComponent,
     BackButtonComponent,
     FormComponent,
-    ProjectSearchComponent
+    ProjectSearchComponent,
+    ProfilePageComponent
   ]
 })
 export class SharedModule {}
