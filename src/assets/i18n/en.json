@@ -50,7 +50,6 @@
             "ENDDATE": "End Date",
             "OTHER": "Other",
             "OTHER_HINT": "Enter name of other category"
-
         }
     },
     "SIDE_MENU_LAYOUT" :{
@@ -77,5 +76,12 @@
     "SIGN_IN" : "Sign in?",
     "SUBMIT" : "Submit",
     "RESET_FORM" : "Reset Form",
-    "NO_DATA" : "No Data Found"
+    "SELECT_LANGUAGE" : "Select Language",
+    "NO_DATA" : "No Data Found",
+    "LANGUAGES" : {
+        "ENGLISH" : "English",
+        "EN" : "en",
+        "HINDI" : "HINDI",
+        "HN" : "hn"
+    }
     }
