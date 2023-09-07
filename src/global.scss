@@ -112,6 +112,21 @@
       color: var(--ion-color-primary);
       font-weight: bold;
     }
+  }
+
+  //loader design
+  // loader wrapper
+  .loading-wrapper.sc-ion-loading-md {
+    border-radius: 10px; 
+    background-color: #fff  
+  }
   
-    
+  //loader spinner
+  .loading-spinner {
+    color: var(--ion-color-primary); 
+  }
+
+  //loader text : loading....
+  .loading-spinner.sc-ion-loading-md+.loading-content.sc-ion-loading-md{
+    color: var(--ion-color-primary); 
   }

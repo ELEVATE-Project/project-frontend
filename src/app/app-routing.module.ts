@@ -16,7 +16,7 @@ import { ProfilePageComponent, ProjectReportsComponent, ProjectSearchComponent }
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'layout/create-task',
+    redirectTo: 'layout/home',
     pathMatch: 'full'
   },
   {

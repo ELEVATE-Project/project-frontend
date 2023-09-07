@@ -78,11 +78,12 @@ export class TaskFormsComponent  implements OnInit {
  
   }
   setForm(taskData: any) {
+    
     this.projectForm.setValue({
-      status: taskData.status,
-      title: taskData.name,
-      startDate: taskData.startDate,
-      endDate: taskData.endDate,
+      status: taskData.status ? taskData.status : '' ,
+      title: taskData.name ? taskData.name : '' ,
+      startDate: taskData.startDate ? taskData.startDate : '' ,
+      endDate: taskData.endDate ? taskData.endDate : '' ,
     });
   }
 

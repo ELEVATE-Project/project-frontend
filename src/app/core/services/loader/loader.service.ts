@@ -14,7 +14,7 @@ export class LoaderService {
     this.loading = await this.loadingController.create({
       message,
       spinner: 'circles',
-      duration: 5000
+      duration: 3000
     });
     await this.loading.present();
     AbortSignal

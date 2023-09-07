@@ -116,8 +116,8 @@ export class FormComponent  implements OnInit {
       this.http.post(config).subscribe(async (userDetails : any)=>{
         if (userDetails !== null) {
           this.toast.showToast(userDetails.message, "success")
-          this.router.navigate(['/layout/home'], { replaceUrl: true });this.loaderService.hideLoader();
-
+          this.router.navigate(['/layout/home'], { replaceUrl: true });
+          this.loaderService.hideLoader();
       }
       this.loaderService.hideLoader();
       });
@@ -137,7 +137,7 @@ export class FormComponent  implements OnInit {
   }
 
   async showAlert() {
-    const result = await this.alertService.presentAlert('Are you sure?');
+    const result = await this.alertService.presentAlert('Create new project?');
     if (result) {
       // User clicked "Yes"
       this.onSubmit();

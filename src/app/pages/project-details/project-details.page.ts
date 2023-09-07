@@ -96,7 +96,7 @@ export class ProjectDetailsPage implements OnInit {
 
   async syncFunction() {
     // sync logic here
-    if(this.project.status == 'completed' || this.project.status == 'submitted'){
+    if( this.project.status == 'submitted'){
       // if project is already submitted
       this.toast.showToast('Project already submitted', 'success');
       return;
@@ -109,10 +109,10 @@ export class ProjectDetailsPage implements OnInit {
     await this.http.setHeader();
 
     this.http.post(config).subscribe((result: any)=> {
-      this.toast.showToast(result.msg, 'success');
+      this.toast.showToast(result.message, 'success');
     });
   }
 
-  checkAlready
+  
 
 }

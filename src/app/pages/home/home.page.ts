@@ -46,6 +46,7 @@ export class HomePage implements OnInit {
   }
     
   async getProjects(){
+    this.loaderService.showLoader();
     const dynamicUrl = urlConstants.API_URLS.PROJECTS(this.selectedTab, '', 1);
     const config = {
       url: dynamicUrl,
