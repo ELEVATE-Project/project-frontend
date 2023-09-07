@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { NavController, PopoverController } from '@ionic/angular';
 import { utilKeys } from 'src/app/core/constants/util.key';
 import { ToastService } from 'src/app/core/services';
+import { AlertService } from 'src/app/core/services/alert/alert.service';
 import { UtilService } from 'src/app/shared/util.service';
 import { StorageService } from 'src/app/storage.service';
 
@@ -32,7 +33,9 @@ export class ProjectCardComponent  implements OnInit {
     private popoverController: PopoverController,
     private utilService: UtilService,
     private storageService: StorageService,
-    private toast: ToastService
+    private toast: ToastService,
+    private alert: AlertService,
+    private navCtrl: NavController
   ) { }
 
   viewProject(id: any) {
@@ -49,7 +52,6 @@ export class ProjectCardComponent  implements OnInit {
   }
 
   performAction(ev: any){
-    this.popover(false);
     switch(ev){
       case 'EDIT':
         this.onEdit();
@@ -59,7 +61,10 @@ export class ProjectCardComponent  implements OnInit {
         break;
       case 'SHARE':
         break;
+      default:
+        this.popover(false);
     }
+    this.popover(false);
   }
 
   onEdit(){
@@ -76,6 +81,8 @@ export class ProjectCardComponent  implements OnInit {
   }
 
   async onDelete(){
+    const result = await this.alert.presentAlert('Do you want to delete?')
+    if(result){
     const taskId = this.id;
     const projectId = this.utilService.getId()
     await this.storageService.get(projectId).then(async (data) => {
@@ -90,6 +97,7 @@ export class ProjectCardComponent  implements OnInit {
       })
 
     })
+  }
   }
 
 }

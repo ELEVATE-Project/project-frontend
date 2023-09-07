@@ -131,11 +131,6 @@ export class FormComponent  implements OnInit {
   }
   
 
-  // reset the form on rest button press
-  onReset(){
-    this.projectForm.reset();
-  }
-
   async showAlert() {
     const result = await this.alertService.presentAlert('Create new project?');
     if (result) {
