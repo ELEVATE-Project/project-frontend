@@ -30,7 +30,8 @@
         "HELLO": "Hello {{name}}!",
         "WELCOME_LBL" : "Welcome back",
         "CREATE_PROJECT_BTN" : "Create Project",
-        "EMPTY_LBL" : "No data available for your user id"
+        "EMPTY_LBL" : "No data available for your user id",
+        "VIEW_LBL" : "View All Projects"
     },
     "PROJECT_CREATION" :{
         "HEADER" : "PROJECT CREATION",
@@ -67,8 +68,24 @@
     "PROJECT_STATUS" : {
         "STARTED" : "Started",
         "NOT_STARTED" : "Not Started",
-        "COMPLETED" : "Completed"
+        "COMPLETED" : "Completed",
+        "IN_PROGRESS" : "In Progress"
     },
+    "PROJECT_DETAILS" :{
+        "TITLE" : "Project Details"
+    },
+    "TASK_CREATION" :{
+        "HEADER": "Task Creation",
+        "FORM" : {
+            "TITLE": "Task Title",
+            "STATUS" : "Task Status",
+            "ASSIGNEE" : "Assignee", 
+            "START_DATE": "Start Date",
+            "END_DATE": "End Date"
+        }
+    },
+    "CREATED_BY_ME" : "Created By Me",
+    "DISCOVERED_BY_ME" : "Discovered By Me",
     "PROJECT_REPORT" : {
         "REPORT_DDN" : "Select report type",
         "WEEKLY" : "Weekly",
@@ -84,6 +101,9 @@
     "SIGN_IN" : "Sign in?",
     "SUBMIT" : "Submit",
     "RESET_FORM" : "Reset Form",
+    "EDIT": "Edit",
+    "SHARE" : "Share",
+    "DELETE": "Delete",
     "SELECT_LANGUAGE" : "Select Language",
     "NO_DATA" : "No Data Found",
     "LANGUAGES" : {
@@ -91,5 +111,8 @@
         "EN" : "en",
         "HINDI" : "HINDI",
         "HN" : "hn"
-    }
+    },
+    "TASKS_LIST" : "Tasks List",
+    "PROFILE_TITLE" : "Profile",
+    "SEARCH" : "Search"
     }

@@ -7,6 +7,10 @@ import { CreateProjectPageModule } from './pages/create-project/create-project.m
 import { LayoutPage } from './pages/layout/layout.page';
 import { HomePage } from './pages/home/home.page';
 import { CreateProjectPage } from './pages/create-project/create-project.page';
+import { ProjectDetailsPage } from './pages/project-details/project-details.page';
+import { TaskFormsComponent } from './components';
+import { ProjectListingComponent } from './components/project-listing/project-listing.component';
+
 import { ProfilePageComponent, ProjectReportsComponent, ProjectSearchComponent } from './components';
 
 const routes: Routes = [
@@ -18,6 +22,38 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthPageModule)
+  },
+  {
+    path: 'layout',
+    canActivate: [HomeGuard],
+    component: LayoutPage,
+    children: [
+      { path:'', component: HomePage, pathMatch: 'full'},
+      { path: 'home', component: HomePage },
+      { path: 'create-project', component: CreateProjectPage },
+      { path: 'project-details/:id', component: ProjectDetailsPage },
+      { path: 'create-task', component: TaskFormsComponent },
+      { path: 'project-listing', component: ProjectListingComponent },
+      { path: 'search', component: ProjectSearchComponent   },
+      { path: 'reports', component: ProjectReportsComponent   },
+      { path: 'profile', component: ProfilePageComponent   }
+    ],
+  },
+  {
+    path: 'create-project',
+    loadChildren: () => import('./pages/create-project/create-project.module').then( m => m.CreateProjectPageModule)
+  },
+  {
+    path: 'project-details/:id',
+    loadChildren: () => import('./pages/project-details/project-details.module').then( m => m.ProjectDetailsPageModule)
+  },
+  {
+    path: 'create-task',
+    component: TaskFormsComponent,
+  },
+  {
+    path: 'project-listing',
+    component : ProjectListingComponent
   },
   {
     path: 'home',
@@ -35,23 +71,6 @@ const routes: Routes = [
   { 
     path: 'profile', 
     component: ProfilePageComponent, 
-  },
-  {
-    path: 'layout',
-    canActivate: [HomeGuard],
-    component: LayoutPage,
-    children: [
-      { path:'', component: HomePage, pathMatch: 'full'},
-      { path: 'home', component: HomePage },
-      { path: 'create-project', component: CreateProjectPage },
-      { path: 'search', component: ProjectSearchComponent   },
-      { path: 'reports', component: ProjectReportsComponent   },
-      { path: 'profile', component: ProfilePageComponent   }
-    ],
-  },
-  {
-    path: 'create-project',
-    loadChildren: () => import('./pages/create-project/create-project.module').then( m => m.CreateProjectPageModule)
   },
 ];
 @NgModule({

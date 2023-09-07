@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import * as _ from 'lodash';
 import { urlConstants } from 'src/app/core/constants/';
 import { HttpService, UserService, ToastService } from 'src/app/core/services';
+import { LoaderService } from 'src/app/core/services/loader/loader.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,6 +26,7 @@ export class SignUpPage implements OnInit {
     public toast: ToastService,
     private http: HttpService,
     private userService: UserService,
+    private loaderService: LoaderService,
   ) {
     this.menuCtrl.enable(false);
     this.formData = this.fb.group({
@@ -55,9 +56,11 @@ export class SignUpPage implements OnInit {
   }
 
   async register(){
+    // generate OTP for user
     var form: any = this.formData;
     console.log(form)
     if (form.status=="VALID") {
+    this.loaderService.showLoader();
     if(form.value.password != form.value.cpassword){
         this.toast.showToast("Passwords don't match", 'danger');
         return
@@ -72,8 +75,10 @@ export class SignUpPage implements OnInit {
           // when OTP generated succesfully
           this.toast.showToast(data.message, "success")
           this.isOTPGenerated = true;
+          this.loaderService.hideLoader();
         }
       })
+      this.loaderService.hideLoader();
     }else{
       // show pop to complete the required details
       this.toast.showToast('Please enter the required details', 'danger');
@@ -85,6 +90,7 @@ export class SignUpPage implements OnInit {
     var form: any = this.formData;
     console.log(form)
     if (form.status=="VALID") {
+      this.loaderService.showLoader();
       form.value.isAMentor =  false;
       const config = {
       url: urlConstants.API_URLS.CREATE_ACCOUNT,
@@ -96,10 +102,11 @@ export class SignUpPage implements OnInit {
           this.menuCtrl.enable(true);
           this.toast.showToast(data.message, "success")
           this.router.navigate(['/layouts'], { replaceUrl: true });
+          this.loaderService.hideLoader();
       }
       this.menuCtrl.enable(true);
       });
-      
+      this.loaderService.hideLoader();
     }else{
       // show pop to complete the required details
       this.toast.showToast('Please enter the required details', 'danger');

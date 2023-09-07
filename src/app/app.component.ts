@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router} from '@angular/router';
 import { localKeys } from 'src/app/core/constants/';
 import { LocalStorageService } from 'src/app/core/services/';
+import { AlertService } from './core/services/alert/alert.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class AppComponent {
     private localStorage: LocalStorageService,
     public menuCtrl:MenuController,
     private router: Router,
+    private alert: AlertService
   ) {
     this.initializeApp();
     this.router.navigate(["/"]);
@@ -51,8 +53,15 @@ export class AppComponent {
     })
   }
 
-  logout(){
-
+  async logout(){
+    const result = await this.alert.presentAlert('Do you want to log out?');
+    if (result) {
+      // User clicked "Yes"
+      this.localStorage.deleteAll();
+      this.router.navigate(['/auth/login'], { replaceUrl: true });
+    } else {
+      // User clicked "No"
+    }
   }
 }
 

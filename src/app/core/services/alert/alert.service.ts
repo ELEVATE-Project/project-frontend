@@ -15,7 +15,6 @@ export class AlertService {
       buttons: [
         {
           text: 'No',
-          role: 'cancel',
           handler: () => {
             alert.dismiss(false);
             return false;

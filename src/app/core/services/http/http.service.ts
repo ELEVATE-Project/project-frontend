@@ -48,7 +48,7 @@ export class HttpService {
     console.log(this.baseUrl + requestParam.url, body)
     return this.http.post(this.baseUrl + requestParam.url, body, {headers: this.httpHeaders}).pipe(
       map((data:any)=>{
-      if (data.responseCode === "OK") {
+      if (data.responseCode === "OK" || data.status === 200) {
         return data;
       }
     }),
@@ -175,9 +175,4 @@ export class HttpService {
     }
   }
 
-  async search(query: string, page: number, limit: number) {
-    await this.setHeader();
-    const apiUrl = `https://dev.elevate-apis.shikshalokam.org/c4gt-unnati/v1/project/templates/list?page=${page}&limit=${limit}&search=${query}`;
-    return this.http.get(apiUrl, {headers: this.httpHeaders});
-  }
 }

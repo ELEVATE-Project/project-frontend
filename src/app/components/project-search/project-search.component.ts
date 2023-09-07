@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { headerConfigKeys, urlConstants } from 'src/app/core/constants';
+import { utilKeys } from 'src/app/core/constants/util.key';
 import { HttpService, ToastService } from 'src/app/core/services';
 import { UtilService } from 'src/app/shared/util.service';
 
@@ -17,7 +18,9 @@ export class ProjectSearchComponent  implements OnInit {
   limit = 25;
   public title: string = 'GLOBAL_SEARCH.TITLE'
   searchTerm: any = "";
+  type = utilKeys.PROJECT_TYPE.PROJECT
 
+  emptyLbl = 'NO_DATA';
   constructor(
     private http: HttpService,
     private toast: ToastService,
@@ -36,7 +39,7 @@ export class ProjectSearchComponent  implements OnInit {
 
   onSearch(event: any) {
     this.searchTerm = event.target.value.trim();
-    
+    this.searchResults = [];
     if (this.searchTerm.length >= 3) {
       this.currentPage = 1;
 
@@ -49,7 +52,7 @@ export class ProjectSearchComponent  implements OnInit {
   }
 
   async getProjects() {
-    const dynamicUrl = urlConstants.API_URLS.GLOBAL_SEARCH(this.currentPage, this.limit, this.searchTerm);
+    const dynamicUrl = urlConstants.API_URLS.TEMPLATE_SEARCH(this.currentPage, this.limit, this.searchTerm);
     const config = {
       url: dynamicUrl,
     };

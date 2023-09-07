@@ -12,16 +12,14 @@ export class ToastService {
       ) { }
 
       showToast(msg:any, color:any) {
-        let texts;
-        this.translate.get([msg]).subscribe(async (resp) =>{
-          texts = resp;
-          let toast = await this.toastCtrl.create({
-            message: texts[msg],
-            color:color,
+        this.translate.get(msg).subscribe(async (translatedMessage) => {
+          const toast = await this.toastCtrl.create({
+            message: translatedMessage,
+            color: color,
             duration: 5000,
             position: 'top',
           });
           toast.present();
-        })
+        });
       }
 }

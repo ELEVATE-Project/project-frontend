@@ -19,17 +19,14 @@
   }
 
 .custom-card {
-  background-color: #F5F5F7;
-  border-radius: 10px;
-  box-shadow: none;
   font-size: 14px;
   color: black;
-  padding: 0 10 0 10;
+  height: 9vh;
 }
-
 
 ion-card{
   padding: 2px;
+  margin: 5px
 }
 
 ion-grid{
@@ -55,3 +52,8 @@ ion-card-content{
   display: flex;
   align-items: center; /* Center vertically */
 }
+
+ion-icon{
+  font-size: 2rem;
+}
+

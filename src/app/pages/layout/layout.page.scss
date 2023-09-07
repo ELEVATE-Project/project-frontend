@@ -1,8 +1,29 @@
-app-header{
-    position: sticky;
-}
+:root {
+    --header-height: 56px; /* Default header height */
+  }
+  ion-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    --ion-toolbar-height: var(--header-height); 
+  }
 
+  .content {
+    margin-top: 70px; 
+    margin-left: 100px;
+  }
 
-app-side-nav-layout {
-    position: sticky;
-}
+  .ion-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1; 
+    margin-top: 80px; 
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      margin-left: 0; /* Reset margin for small screens */
+    }
+  }

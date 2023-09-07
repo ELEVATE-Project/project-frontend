@@ -10,6 +10,10 @@ import { UtilService } from 'src/app/shared/util.service';
 export class CreateProjectPage implements OnInit {
   formData = createProjectForm;
   public title: string = 'PROJECT_CREATION.HEADER'
+  configBackButton = {
+    [headerConfigKeys.SHOW_EDIT]: false,
+    [headerConfigKeys.SHOW_SYNC]: false,
+  }
   constructor(
     private utilsService : UtilService
   ) { }

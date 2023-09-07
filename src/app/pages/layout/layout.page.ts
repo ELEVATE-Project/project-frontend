@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { headerConfigKeys } from 'src/app/core/constants';
 import { menuLabelKeys } from 'src/app/core/constants/menu.keys';
+import { LocalStorageService } from 'src/app/core/services';
+import { AlertService } from 'src/app/core/services/alert/alert.service';
 import { UtilService } from 'src/app/shared/util.service';
 
 @Component({
@@ -20,7 +22,9 @@ export class LayoutPage implements OnInit {
     };
   constructor(
     private utlService: UtilService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService,
+    private alert: AlertService
   ) {
     this.utlService.setHeaders(this.configHeader);
     this.utlService.configHeader.subscribe((header: any)=>{
@@ -57,12 +61,26 @@ export class LayoutPage implements OnInit {
 
   configMenu = menuLabelKeys;
 
-  handleMenuClicks(action: string){
-      console.log('routing', action);
+  async handleMenuClicks(action: string){
+    switch(action){
+      case 'SIDE_MENU_LAYOUT.LOGOUT' :
+        const result = await this.alert.presentAlert('Do you want to log out?');
+        if (result) {
+          // User clicked "Yes"
+          this.localStorageService.deleteAll();
+          this.router.navigate(['/auth/login'], { replaceUrl: true });
+        } else {
+          // User clicked "No"
+          console.log('no');
+        }
+        break;
+      case 'SIDE_MENU_LAYOUT.HOME':
+        this.router.navigate(['/layout/home'], { replaceUrl: true });
+        break;
+      default:
+        break;
+    }
   }
   
-  logout(){
-
-  }
 
 }

@@ -1,0 +1,82 @@
+<ion-grid >
+  <app-back-button 
+  [pageTitle]="title"  
+  [configBackButton]="configBackButton">
+  </app-back-button> 
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="custom-card">
+      <ion-item lines="none" class="ion-item" class="inputs">
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.TITLE" | translate }}<span class="required-marker">*</span></ion-label> 
+          <ion-input formControlName="title" type="text" ></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-item inputs">
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked" class="large-label">{{ "TASK_CREATION.FORM.STATUS" | translate }}<span class="required-marker">*</span></ion-label> 
+        <ion-select  formControlName="status" type="text">
+          <ion-select-option  
+          *ngFor="let type of status"
+          [value]=type.val> 
+          {{ type.type | translate }}</ion-select-option>
+        </ion-select>
+          </ion-col>
+        </ion-row>
+    </ion-item>
+
+    <ion-item >
+      <ion-row>
+    <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
+      <ion-label position="stacked" class="large-label"
+      readonly
+    >{{ "TASK_CREATION.FORM.START_DATE" | translate }}<span class="required-marker">*</span></ion-label>
+    </ion-col>
+    <ion-col size="12" size-lg="8" size-md="12" size-sm="12">
+      <ion-datetime-button color="white" datetime="startDate" ></ion-datetime-button>
+    </ion-col>
+<ion-modal [keepContentsMounted]="true">
+<ng-template>
+<ion-datetime id="startDate" 
+displayFormat="MMM DD, YYYY"
+showDefaultButtons = true
+(ionChange)="startDate($event)"></ion-datetime>
+</ng-template>
+</ion-modal>
+    
+  </ion-row>
+  </ion-item>  
+
+  <ion-item >
+    <ion-row>
+  <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
+    <ion-label position="stacked" class="large-label"
+    readonly
+  >{{ "TASK_CREATION.FORM.END_DATE" | translate }}<span class="required-marker">*</span></ion-label>
+  </ion-col>
+  <ion-col size="12" size-lg="8" size-md="12" size-sm="12">
+    <ion-datetime-button color="white" datetime="endDate" ></ion-datetime-button>
+  </ion-col>
+<ion-modal [keepContentsMounted]="true">
+<ng-template>
+<ion-datetime id="endDate" 
+displayFormat="MMM DD, YYYY"
+showDefaultButtons = true
+(ionChange)="endDate($event)"></ion-datetime>
+</ng-template>
+</ion-modal>
+  
+</ion-row>
+</ion-item>  
+
+<ion-row>
+  <ion-col size="12" class="ion-text-right">
+    <ion-button (click)="onSubmit()" class="form-btn">
+      {{ "SUBMIT" | translate }}
+    </ion-button>
+  </ion-col>
+</ion-row>
+    </form>
+  </ion-grid>

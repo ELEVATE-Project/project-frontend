@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { urlConstants } from 'src/app/core/constants';
 import { HttpService, ToastService } from 'src/app/core/services';
+import { LoaderService } from 'src/app/core/services/loader/loader.service';
 import { AlertService } from 'src/app/core/services/alert/alert.service';
 
 @Component({
@@ -18,6 +20,8 @@ export class FormComponent  implements OnInit {
     private fb: FormBuilder,
     private http: HttpService,
     private toast: ToastService,
+    private router: Router,
+    private loaderService: LoaderService,
     private alertService: AlertService
     ) { }
   
@@ -94,6 +98,7 @@ export class FormComponent  implements OnInit {
     })
 
     // makke api call  
+    this.loaderService.showLoader();
       const payload = {
         ...this.projectForm.value,
         isDeleted: false,
@@ -111,9 +116,13 @@ export class FormComponent  implements OnInit {
       this.http.post(config).subscribe(async (userDetails : any)=>{
         if (userDetails !== null) {
           this.toast.showToast(userDetails.message, "success")
+          this.router.navigate(['/layout/home'], { replaceUrl: true });
+          this.loaderService.hideLoader();
       }
+      this.loaderService.hideLoader();
       });
     
+      
   }
 
   // set the dates into their respective controls
@@ -122,20 +131,13 @@ export class FormComponent  implements OnInit {
   }
   
 
-  // reset the form on rest button press
-  onReset(){
-    this.projectForm.reset();
-  }
-
   async showAlert() {
-    const result = await this.alertService.presentAlert('Are you sure?');
+    const result = await this.alertService.presentAlert('Create new project?');
     if (result) {
       // User clicked "Yes"
-      console.log('User clicked Yes');
       this.onSubmit();
     } else {
       // User clicked "No"
-      console.log('User clicked No');
     }
   }
 

@@ -1,16 +1,19 @@
-<ion-content class="ion-padding">
-    <app-header [configHeader]="configHeader"
-    (actionEmitter)="handleAction($event)"
-    >  
-    </app-header>
-  <ion-grid>
+<ion-content  >
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <app-header [configHeader]="configHeader" (actionEmitter)="handleAction($event)" class="head"></app-header>
+    </ion-toolbar>
+  
+  </ion-header>
+   
+  <ion-grid class="content">
     <ion-row>
-      <ion-col size="0" size-sm="0" size-md="1" size-lg="1">
+      <ion-col size="0" size-sm="0" size-md="1" size-lg="1" class="ion-menu">
         <app-side-nav-layout [configMenu]="configMenu"
         (actionEmitter)="handleMenuClicks($event)"></app-side-nav-layout>
       </ion-col>
        <ion-col size="11" size-sm="12" size-md="11" size-lg="11">
-        <router-outlet></router-outlet>
+          <router-outlet></router-outlet>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -9,7 +9,7 @@
           <ion-label text-wrap class="status" [ngClass]="{
             'in-progress': projectStatus == 'started',
             'not-started': projectStatus == 'notStarted',
-            'completed': projectStatus == 'completed'
+            'completed': projectStatus == 'completed' || projectStatus == 'submitted'
           }">
           {{ utilKeys.STATUS_KEYS[projectStatus] | translate }}
           </ion-label>
@@ -18,13 +18,28 @@
           <ion-label text-wrap [ngClass]="{
             'in-progress': projectStatus == 'started',
             'not-started': projectStatus == 'notStarted',
-            'completed': projectStatus == 'completed'
+            'completed': projectStatus == 'completed' || projectStatus == 'submitted'
         }">
           {{ taskCount }}
         </ion-label>
         </ion-col>
         <ion-col size="1" size-sm="1" size-md="1" size-lg="1" class="center-container">
-          <ion-icon size="large" color="primary" name="arrow-forward" (click)="viewProject(projectName)"></ion-icon>
+          <div *ngIf="type == utilKeys.PROJECT_TYPE.PROJECT">
+            <ion-icon color="primary" name="arrow-forward" (click)="viewProject(id)"></ion-icon>
+          </div>
+          <div *ngIf="type == utilKeys.PROJECT_TYPE.TASKS">
+            <ion-icon color="primary" name="ellipsis-vertical" id="click-trigger" (click)="popover(true)"></ion-icon>
+          </div>
+          <ion-popover  [isOpen]="isOpen" (didDismiss)="popover(false)">
+            <ng-template>
+              <div *ngFor="let btn of popoverbtn">
+                <ion-item (click)="performAction(btn.lbl)">
+                  <ion-icon [name]="btn.icon" slot="end" color="light"></ion-icon>
+                  <div>{{ btn.lbl | translate}}</div>
+                </ion-item>
+              </div>
+            </ng-template>
+          </ion-popover>
         </ion-col>
       </ion-row>
     </ion-grid>     

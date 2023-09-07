@@ -1,0 +1,29 @@
+.projects-details{
+    width: 100%;
+    color: #F5F5F7;
+  }
+
+  ion-list{
+    padding: 0;
+    margin: 0;
+}
+
+.lbl{
+  font-size: 16px;
+  color: black;
+}
+
+.list-title{
+  font-size: 20px;
+  color: var(--ion-color-primary);
+  font-weight: bold;
+  margin: 10px;
+}
+
+ion-card{
+  margin: 2%;
+}
+
+ion-card-content {
+  padding: 5px;
+}
