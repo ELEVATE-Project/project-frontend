@@ -4,7 +4,7 @@
     <div *ngFor="let field of createProjectForm" lines="none" >
          
         <ion-item  *ngIf="field.input === 'text'" class="ion-items inputs">
-          <ion-label position="stacked"   class="large-label">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+          <ion-label position="stacked"   class="large-label-24">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
           <ion-input 
             formControlName="{{ field.field }}"
             type="text"
@@ -14,7 +14,7 @@
         </ion-item>
      
       <ion-item  *ngIf="field.input === 'textarea'" class="inputs">
-        <ion-label position="stacked"  class="large-label">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+        <ion-label position="stacked"  class="large-label-24">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
         <ion-textarea
         formControlName="{{ field.field }}"
         rows="2"
@@ -23,7 +23,7 @@
       </ion-item>
 
       <ion-item  *ngIf="field.input === 'select'" class="inputs">
-      <ion-label position="stacked"  class="large-label">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
+      <ion-label position="stacked"  class="large-label-24">{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
       <ion-select
         formControlName="{{ field.field }}"
         interface="popover"
@@ -53,7 +53,7 @@
           <ion-item *ngIf="field.input === 'date'" class="inputs">
             <ion-row>
           <ion-col size="12" size-lg="4" size-md="12" size-sm="12">
-            <ion-label class="large-label"  position="stacked" 
+            <ion-label class="large-label-24"  position="stacked" 
             readonly
           >{{ field.label | translate }}<span class="required-marker">*</span></ion-label>
           </ion-col>
