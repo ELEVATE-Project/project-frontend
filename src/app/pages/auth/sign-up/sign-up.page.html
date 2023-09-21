@@ -44,7 +44,7 @@
           
           <p class="signin-text">{{ "SIGN_UP_PAGE.ALREADY_MEMBER" | translate }}&nbsp;<a (click)="redirectToSignIn()">{{ "SIGN_IN" | translate }}</a></p>
           <ion-button class="button" (click)="register()" *ngIf="!isOTPGenerated" expand="block">{{ "SIGN_UP_PAGE.SIGN_UP_BTN" | translate }}</ion-button>
-          <ion-button class="button" (click)="createUser()" *ngIf="isOTPGenerated"  expand="block">S{{ "SIGN_UP_PAGE.SUBMIT_OTP_BTN" | translate }}</ion-button>
+          <ion-button class="button" (click)="createUser()" *ngIf="isOTPGenerated"  expand="block">{{ "SIGN_UP_PAGE.SUBMIT_OTP_BTN" | translate }}</ion-button>
         </form>
       </ion-col>
     </ion-row>
