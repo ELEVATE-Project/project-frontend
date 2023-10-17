@@ -81,7 +81,7 @@ export class ProjectCardComponent  implements OnInit {
   }
 
   async onDelete(){
-    const result = await this.alert.presentAlert('Do you want to delete?')
+    const result = await this.alert.presentAlert('DELETE_ALERT')
     if(result){
     const taskId = this.id;
     const projectId = this.utilService.getId()

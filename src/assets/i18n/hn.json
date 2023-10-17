@@ -85,5 +85,10 @@
         "HN" : "hn"
     },
     "PROFILE_TITLE" : "प्रोफ़ाइल",
-    "SEARCH" : "खोज"
+    "SEARCH" : "खोज",
+    "LOG_OUT" : "क्या आप लॉगआउट करना चाहते हैं?",
+    "ALERT_HEADER": "चेतावनी",
+    "ALERT_YES": "हाँ",
+    "ALERT_NO": "नहीं",
+    "DELETE_ALERT" : "Do you want to delete?"
     }
