@@ -64,7 +64,7 @@ export class LayoutPage implements OnInit {
   async handleMenuClicks(action: string){
     switch(action){
       case 'SIDE_MENU_LAYOUT.LOGOUT' :
-        const result = await this.alert.presentAlert('Do you want to log out?');
+        const result = await this.alert.presentAlert("LOG_OUT");
         if (result) {
           // User clicked "Yes"
           this.localStorageService.deleteAll();
@@ -76,6 +76,9 @@ export class LayoutPage implements OnInit {
         break;
       case 'SIDE_MENU_LAYOUT.HOME':
         this.router.navigate(['/layout/home'], { replaceUrl: true });
+        break;
+        case 'SIDE_MENU_LAYOUT.PROFILE':
+          this.router.navigate(['/layout/profile'], { replaceUrl: true });
         break;
       default:
         break;

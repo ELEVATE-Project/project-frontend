@@ -114,5 +114,10 @@
     },
     "TASKS_LIST" : "Tasks List",
     "PROFILE_TITLE" : "Profile",
-    "SEARCH" : "Search"
+    "SEARCH" : "Search",
+    "LOG_OUT" : "Do you want to Logout?",
+    "ALERT_HEADER": "Alert",
+    "ALERT_YES" : "Yes",
+    "ALERT_NO" : "No",
+    "DELETE_ALERT" : "Do you want to delete?"
     }

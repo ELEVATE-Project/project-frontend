@@ -54,7 +54,7 @@ export class AppComponent {
   }
 
   async logout(){
-    const result = await this.alert.presentAlert('Do you want to log out?');
+    const result = await this.alert.presentAlert('LOG_OUT');
     if (result) {
       // User clicked "Yes"
       this.localStorage.deleteAll();
